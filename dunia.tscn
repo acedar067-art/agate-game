@@ -595,6 +595,6 @@ offset = Vector2(1, 0)
 zoom = Vector2(4, 4)
 
 [node name="Objects" type="Sprite2D" parent="."]
-position = Vector2(909, 311.25)
+position = Vector2(332, 624)
 scale = Vector2(2.0312495, 0.38221142)
 texture = ExtResource("3_i6oci")
