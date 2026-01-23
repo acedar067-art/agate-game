@@ -558,8 +558,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qd6tr"]
-radius = 6.32456
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qd6tr"]
+size = Vector2(10, 19)
 
 [node name="dunia" type="Node2D"]
 y_sort_enabled = true
@@ -586,8 +586,8 @@ sprite_frames = SubResource("SpriteFrames_5vr8a")
 animation = &"idle_atas"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-position = Vector2(53, 140)
-shape = SubResource("CircleShape2D_qd6tr")
+position = Vector2(52, 130.5)
+shape = SubResource("RectangleShape2D_qd6tr")
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(52, 137)
