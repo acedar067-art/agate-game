@@ -2673,12 +2673,12 @@ collision_layer = 3
 script = ExtResource("4_j6kj6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
-position = Vector2(52, 123)
+position = Vector2(53, 124)
 sprite_frames = SubResource("SpriteFrames_5vr8a")
 animation = &"idle_atas"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-position = Vector2(52, 130.5)
+position = Vector2(54, 133)
 shape = SubResource("RectangleShape2D_qd6tr")
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -2690,4 +2690,4 @@ zoom = Vector2(4, 4)
 position = Vector2(225, 277)
 
 [node name="npc" parent="." instance=ExtResource("6_j6kj6")]
-position = Vector2(77, 311)
+position = Vector2(77, 312)
