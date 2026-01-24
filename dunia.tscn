@@ -1,10 +1,11 @@
-[gd_scene load_steps=67 format=4 uid="uid://ghkpff8lx1kn"]
+[gd_scene load_steps=68 format=4 uid="uid://ghkpff8lx1kn"]
 
 [ext_resource type="Texture2D" uid="uid://dpyv016q3dpqj" path="res://arts/tilesets/spr_tileset_sunnysideworld_16px.png" id="1_c41f1"]
 [ext_resource type="Texture2D" uid="uid://cjwgf7tknr0v1" path="res://arts/tilesets/SunnysideWorld_Tileset_V0.1.png" id="2_qd6tr"]
 [ext_resource type="Texture2D" uid="uid://cts6tbph3nrop" path="res://arts/objects/objects.png" id="3_i6oci"]
 [ext_resource type="Script" uid="uid://dssy07xm6jwdt" path="res://player.gd" id="4_j6kj6"]
 [ext_resource type="Texture2D" uid="uid://ojwmonf7coa" path="res://arts/characters/player.png" id="4_qd6tr"]
+[ext_resource type="PackedScene" uid="uid://bgxyqlcd8mcji" path="res://npc.tscn" id="6_j6kj6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j6kj6"]
 texture = ExtResource("1_c41f1")
@@ -2684,3 +2685,9 @@ shape = SubResource("RectangleShape2D_qd6tr")
 position = Vector2(52, 137)
 offset = Vector2(1, 0)
 zoom = Vector2(4, 4)
+
+[node name="npc2" parent="." instance=ExtResource("6_j6kj6")]
+position = Vector2(225, 277)
+
+[node name="npc" parent="." instance=ExtResource("6_j6kj6")]
+position = Vector2(77, 311)

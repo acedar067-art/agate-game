@@ -16,7 +16,7 @@ func physics_update(_delta):
 		if Input.is_action_pressed(action):
 			var data = ARAH_MAP[action]
 			player.vel += data["vec"]
-			player.arah_terakhir = data["vec"] # simpan arah terkahir
+			player.arah_terakhir = data["vec"] # simpan arah terakhir
 			animasi.play(data["anim"])
 			if data.has("scale_x"):
 				animasi.scale.x = data["scale_x"]

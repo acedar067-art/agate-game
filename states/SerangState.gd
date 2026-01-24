@@ -10,10 +10,10 @@ const ARAH_MAP = {
 func enter():
 	var animasi = player.get_animasi()
 	# cek apakah ada input arah saat ini
-	var arah_sekarang = get_arah_sekarang()	
+	var arah_sekarang = get_arah_sekarang()
 	if arah_sekarang != Vector2.ZERO:
-		player.arah_terkahir = arah_sekarang
-	
+		player.arah_terakhir = arah_sekarang
+
 	# mulai animasi berdasarkan arah
 	setup_animasi_serang(player.arah_terakhir, animasi)
 

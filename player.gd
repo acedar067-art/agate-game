@@ -24,8 +24,9 @@ func get_animasi():
 func change_state(new_state):
 	if state:
 		state.exit()
-	state = states[new_state]
-	state.enter()
+	if states.has(new_state):
+		state = states[new_state]
+		state.enter()
 
 func _input(event):
 	state.handle_input(event)
