@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://bgxyqlcd8mcji"]
+[gd_scene load_steps=28 format=3 uid="uid://bgxyqlcd8mcji"]
 
 [ext_resource type="Texture2D" uid="uid://8xvyvm033ivk" path="res://arts/characters/Human-Worker-Red.png" id="1_ideak"]
 [ext_resource type="Script" uid="uid://djg2nubh3mxbb" path="res://npc.gd" id="1_xxcha"]
+[ext_resource type="Resource" uid="uid://c80mwxlmyqdxf" path="res://npc_dialogue.dialogue" id="2_kh24r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xxcha"]
 atlas = ExtResource("1_ideak")
@@ -186,11 +187,12 @@ radius = 21.0
 
 [node name="npc" type="CharacterBody2D"]
 script = ExtResource("1_xxcha")
+dialogue_resource = ExtResource("2_kh24r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ul7y6")
 animation = &"idle"
-frame_progress = 0.10481898
+frame_progress = 0.2833269
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
