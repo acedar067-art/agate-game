@@ -3,26 +3,52 @@ extends CanvasLayer
 @onready var counter_label: Label = $MarginContainer/Label
 
 func _ready() -> void:
-	# Connect to GameManager signals
-	GameManager.quest_started.connect(_on_quest_started)
-	GameManager.trash_collected.connect(_on_trash_collected)
-	GameManager.quest_completed_signal.connect(_on_quest_completed)
+	# Use call_deferred to ensure GameManager is ready
+	call_deferred("_connect_signals")
 	
 	# Start hidden
 	visible = false
+	print("[QuestUI] Ready, starting hidden")
+
+func _connect_signals() -> void:
+	# Connect to GameManager signals
+	if GameManager:
+		GameManager.quest_started.connect(_on_quest_started)
+		GameManager.trash_collected.connect(_on_trash_collected)
+		GameManager.quest_completed_signal.connect(_on_quest_completed)
+		GameManager.quest_failed_signal.connect(_on_quest_failed)
+		GameManager.timer_updated.connect(_on_timer_updated)
+		print("[QuestUI] Signals connected!")
+	else:
+		print("[QuestUI] ERROR: GameManager not found!")
 
 func _on_quest_started(_spawn_count: int) -> void:
+	print("[QuestUI] Quest started - showing UI")
 	visible = true
-	update_counter()
+	update_display()
 
 func _on_trash_collected(_count: int) -> void:
-	update_counter()
+	update_display()
+
+func _on_timer_updated(_time_left: float) -> void:
+	update_display()
 
 func _on_quest_completed() -> void:
-	# Show completion message briefly then hide
-	counter_label.text = "✅ Quest Complete! +100"
+	if counter_label:
+		counter_label.text = "✅ Quest Complete! +100"
 	await get_tree().create_timer(2.0).timeout
 	visible = false
 
-func update_counter() -> void:
-	counter_label.text = "🗑️ " + str(GameManager.trash_count) + "/" + str(GameManager.target_trash)
+func _on_quest_failed() -> void:
+	if counter_label:
+		counter_label.text = "❌ Waktu Habis!"
+	await get_tree().create_timer(2.0).timeout
+	visible = false
+
+func update_display() -> void:
+	if counter_label:
+		var trash_text = "🗑️ " + str(GameManager.trash_count) + "/" + str(GameManager.target_trash)
+		var timer_text = "⏱️ " + GameManager.get_formatted_time()
+		counter_label.text = trash_text + "  " + timer_text
+	else:
+		print("[QuestUI] ERROR: counter_label is null!")

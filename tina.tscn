@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://2cbrhka004qp"]
+
+[ext_resource type="Script" uid="uid://dcrmqthp56rw4" path="res://tina.gd" id="1_4k2qf"]
+[ext_resource type="Texture2D" uid="uid://74utlakbbfk5" path="res://arts/Quest Giver/Quest_Giver.png" id="2_j5fib"]
+[ext_resource type="Resource" uid="uid://btptpdgbagdri" path="res://tina_dialogue.dialogue" id="2_xl5ah"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyvg2"]
+size = Vector2(18, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y76ul"]
+atlas = ExtResource("2_j5fib")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uud7l"]
+atlas = ExtResource("2_j5fib")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je232"]
+atlas = ExtResource("2_j5fib")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa65w"]
+atlas = ExtResource("2_j5fib")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8n56s"]
+animations = [{
+"frames": [{
+"duration": 5.31,
+"texture": SubResource("AtlasTexture_y76ul")
+}, {
+"duration": 0.71,
+"texture": SubResource("AtlasTexture_uud7l")
+}, {
+"duration": 0.71,
+"texture": SubResource("AtlasTexture_je232")
+}, {
+"duration": 0.51,
+"texture": SubResource("AtlasTexture_wa65w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5vr8a"]
+radius = 26.989689
+
+[node name="QuestGiver" type="CharacterBody2D"]
+scale = Vector2(0.89, 0.89)
+script = ExtResource("1_4k2qf")
+dialogue_resource = ExtResource("2_xl5ah")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_nyvg2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1.1235955)
+sprite_frames = SubResource("SpriteFrames_8n56s")
+frame_progress = 0.17773795
+
+[node name="chat_detection_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
+shape = SubResource("CircleShape2D_5vr8a")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="chat_detection_area" to="." method="_on_chat_detection_area_body_entered"]
+[connection signal="body_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

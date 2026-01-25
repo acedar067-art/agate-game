@@ -1,44 +1,43 @@
 ~ start
-NPC: Halo! Bisakah kamu membantuku?
-NPC: Ada banyak sampah berserakan di sekitar hutan dan rumah warga.
-NPC: Tolong kumpulkan 10 sampah dan bersihkan area ini!
-- Baik, aku akan membantu! => quest_accepted
-- Maaf, aku sibuk => END
-
-~ quest_accepted
-NPC: Terima kasih! Aku sudah menandai lokasi sampahnya.
-NPC: Kembalilah setelah mengumpulkan 10 sampah.
-do GameManager.start_quest()
+NPC: Selamat pagi! Udara hari ini sangat segar, bukan?
 => END
 
-~ quest_in_progress
-NPC: Bagaimana? Sudah dapat berapa sampah?
-NPC: Kamu sudah mengumpulkan {{GameManager.trash_count}}/{{GameManager.target_trash}} sampah.
-NPC: Semangat! Kumpulkan sisanya.
+~ nature_1
+NPC: Alam adalah sumber kehidupan kita semua.
+NPC: Jagalah kebersihannya, maka alam akan menjaga kita.
 => END
 
-~ quest_ready_complete
-NPC: Wah hebat! Kamu sudah mengumpulkan semua sampah!
-NPC: Terima kasih banyak atas bantuanmu!
-do GameManager.complete_quest()
-NPC: Ini hadiahmu: 100 poin!
+~ nature_2
+NPC: Tahukah kamu? Satu pohon dapat menyerap ratusan kilogram CO2 per tahun.
+NPC: Pohon adalah paru-paru dunia kita!
 => END
 
-~ quest_completed_first
-NPC: Terima kasih sudah membantu!
-NPC: Tapi... sepertinya masih ada sampah lagi di area lain.
-NPC: Maukah kamu membantu lagi? Kali ini 20 sampah.
-- Baik, aku bantu lagi! => quest_accepted_second
-- Tidak, cukup untuk sekarang => END
-
-~ quest_accepted_second
-NPC: Kamu memang hebat! Aku tandai lagi lokasinya.
-NPC: Kumpulkan 20 sampah ya!
-do GameManager.start_quest()
+~ nature_3
+NPC: Bunga-bunga liar di padang rumput ini sangat indah.
+NPC: Mereka tumbuh tanpa perawatan manusia, murni dari alam.
 => END
 
-~ all_quests_done
-NPC: Kamu sudah membersihkan semua sampah di desa ini!
-NPC: Kamu benar-benar pahlawan lingkungan!
-NPC: Total skormu: {{GameManager.score}} poin!
+~ nature_4
+NPC: Air sungai di hutan ini sangat jernih.
+NPC: Jangan pernah membuang sampah ke sungai, ya!
+=> END
+
+~ nature_5
+NPC: Burung-burung berkicau dengan riang hari ini.
+NPC: Mereka berterima kasih karena habitatnya masih terjaga.
+=> END
+
+~ nature_6
+NPC: Kupu-kupu adalah tanda bahwa ekosistem kita sehat.
+NPC: Tanpa penyerbuk, banyak tanaman tidak bisa berkembang biak.
+=> END
+
+~ nature_7
+NPC: Malam hari, langit di sini dipenuhi bintang-bintang.
+NPC: Jauh dari polusi cahaya kota, alam menunjukkan keindahannya.
+=> END
+
+~ nature_8
+NPC: Daun-daun yang berguguran akan menjadi pupuk alami.
+NPC: Siklus alam bekerja dengan sempurna tanpa campur tangan manusia.
 => END

@@ -58,47 +58,28 @@ func update_animation():
 
 func _input(event):
 	if event.is_action_pressed("interact"):
-		print("E pressed! player_in_chat_zone=", player_in_chat_zone, " is_chatting=", is_chatting)
 		if player_in_chat_zone and !is_chatting:
 			start_dialogue()
 
 func start_dialogue():
-	print("Starting dialogue...")
 	is_chatting = true
 	is_roaming = false
 	velocity = Vector2.ZERO
 	$AnimatedSprite2D.play("idle")
 
-	var dialogue_title = "start"
-
-	if GameManager.all_quests_done():
-		dialogue_title = "all_quests_done"
-	elif GameManager.quest_completed:
-		if GameManager.quest_times_completed == 1:
-			dialogue_title = "quest_completed_first"
-	elif GameManager.quest_active:
-		if GameManager.can_complete_quest():
-			dialogue_title = "quest_ready_complete"
-		else:
-			dialogue_title = "quest_in_progress"
-	elif not GameManager.can_take_new_quest():
-		dialogue_title = "all_quests_done"
+	# NPC hanya berbicara tentang alam - random dialogue
+	var dialogue_title = dialogue_start
 
 	if dialogue_resource:
-		print("Dialogue resource found, showing: ", dialogue_title)
 		DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_title)
 		DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
-	else:
-		print("ERROR: dialogue_resource is null!")
 
 func _on_dialogue_ended(_resource):
-	print("Dialogue ended")
 	is_chatting = false
 	is_roaming = true
 	DialogueManager.dialogue_ended.disconnect(_on_dialogue_ended)
 
 func _on_chat_detection_area_body_entered(body: Node2D) -> void:
-	print("Body entered: ", body.name, " has Player method: ", body.has_method("Player"), " in player group: ", body.is_in_group("player"))
 	if body.has_method("Player") or body.is_in_group("player"):
 		player = body
 		player_in_chat_zone = true

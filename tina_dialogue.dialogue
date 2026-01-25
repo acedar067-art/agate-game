@@ -1,0 +1,70 @@
+~ start
+Tina: Selamat datang, perjalanan yang indah bukan?
+Tina: Aku Tina, penjaga hutan ini.
+Tina: Tahukah kamu? Alam adalah rumah bagi semua makhluk hidup.
+Tina: Sayangnya, manusia sering membuang sampah sembarangan...
+Tina: Maukah kamu membantuku membersihkan sampah di sekitar hutan dan desa?
+Tina: Kumpulkan 10 sampah dalam waktu 3 menit!
+- Baik, aku akan membantu Tina! => quest_accepted
+- Maaf, aku sedang sibuk => END
+
+~ quest_accepted
+Tina: Terima kasih! Kamu adalah teman alam yang baik.
+Tina: Aku sudah menandai lokasi sampahnya.
+Tina: Ingat, setiap sampah yang kamu kumpulkan adalah langkah untuk menjaga alam!
+Tina: Cepatlah, waktu terus berjalan!
+do GameManager.start_quest()
+=> END
+
+~ quest_in_progress
+Tina: Kamu sudah mengumpulkan {{GameManager.trash_count}}/{{GameManager.target_trash}} sampah.
+Tina: Waktu tersisa: {{GameManager.get_formatted_time()}}
+Tina: Semangat! Alam membutuhkan bantuanmu!
+=> END
+
+~ quest_ready_complete
+Tina: Luar biasa! Kamu berhasil mengumpulkan semua sampah!
+Tina: Alam sangat berterima kasih padamu.
+do GameManager.complete_quest()
+Tina: Ini hadiahmu: 100 poin!
+Tina: Kamu adalah pahlawan lingkungan sejati!
+=> END
+
+~ quest_completed_first
+Tina: Terima kasih sudah membantu, teman!
+Tina: Tapi... sepertinya masih ada sampah di area lain.
+Tina: Kali ini lebih banyak - 20 sampah dalam 5 menit.
+Tina: Maukah kamu membantu lagi?
+- Tentu, demi alam! => quest_accepted_second
+- Mungkin lain kali => END
+
+~ quest_accepted_second
+Tina: Kamu memang luar biasa!
+Tina: Kumpulkan 20 sampah dalam 5 menit, ya!
+Tina: Alam akan selalu mengingatmu.
+do GameManager.start_quest()
+=> END
+
+~ quest_failed
+Tina: Oh tidak... waktunya habis.
+Tina: Tidak apa-apa, jangan berkecil hati.
+Tina: Setiap usaha untuk menjaga alam tetap berarti.
+Tina: Yang penting adalah kita tidak menyerah!
+Tina: Maukah kamu mencoba lagi?
+- Ya, aku akan mencoba lagi! => quest_retry_accept
+- Aku butuh istirahat dulu => END
+
+~ quest_retry_accept
+Tina: Semangat yang bagus!
+Tina: Ingat, alam tidak akan melupakan kebaikanmu.
+do GameManager.reset_quest()
+do GameManager.start_quest()
+=> END
+
+~ all_quests_done
+Tina: Kamu telah membersihkan semua sampah di desa ini!
+Tina: Total skormu: {{GameManager.score}} poin!
+Tina: Alam sangat berterima kasih padamu.
+Tina: Jadilah contoh bagi yang lain untuk menjaga lingkungan!
+Tina: Terima kasih, pahlawan alam!
+=> END

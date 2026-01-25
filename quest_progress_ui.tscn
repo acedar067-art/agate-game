@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://xoj34jmedj0i"]
 
-[ext_resource type="Script" uid="uid://dsxk116v224lf" path="res://quest_progress_ui.gd" id="1_x46hv"]
+[ext_resource type="Script" uid="uid://dnvk4oan02pgb" path="res://quest_progress_ui.gd" id="1_x46hv"]
 
 [node name="QuestProgressUI" type="CanvasLayer"]
 process_mode = 3

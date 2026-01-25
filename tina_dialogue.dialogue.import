@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://btptpdgbagdri"
+path="res://.godot/imported/tina_dialogue.dialogue-36c4e3899aa2bfe9cdf7e1585e37ddff.tres"
+
+[deps]
+
+source_file="res://tina_dialogue.dialogue"
+dest_files=["res://.godot/imported/tina_dialogue.dialogue-36c4e3899aa2bfe9cdf7e1585e37ddff.tres"]
+
+[params]
+
+defaults=true
