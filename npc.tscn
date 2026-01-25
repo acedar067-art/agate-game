@@ -101,6 +101,21 @@ animations = [{
 "name": &"idle",
 "speed": 2.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation_2",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ul7y6")
@@ -191,8 +206,11 @@ dialogue_resource = ExtResource("2_kh24r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ul7y6")
+animation = &"new_animation_2"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ul7y6")
 animation = &"idle"
-frame_progress = 0.2833269
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)

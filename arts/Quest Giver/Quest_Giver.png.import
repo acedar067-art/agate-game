@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl1jwo48xs0g"
-path="res://.godot/imported/water4.png-58ec4b25a1369d621df3f166c6caa3ea.ctex"
+uid="uid://74utlakbbfk5"
+path="res://.godot/imported/Quest_Giver.png-b00eca8d4a4e551607c340be9ea2e979.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/tilesets/water4.png"
-dest_files=["res://.godot/imported/water4.png-58ec4b25a1369d621df3f166c6caa3ea.ctex"]
+source_file="res://arts/Quest Giver/Quest_Giver.png"
+dest_files=["res://.godot/imported/Quest_Giver.png-b00eca8d4a4e551607c340be9ea2e979.ctex"]
 
 [params]
 

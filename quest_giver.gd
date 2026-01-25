@@ -6,7 +6,7 @@ var current_state = IDLE
 var dir = Vector2.RIGHT
 var start_pos
 
-var is_roaming = true
+var is_roaming = false
 var is_chatting = false
 
 var player
@@ -17,45 +17,24 @@ var player_in_chat_zone = false
 @export var dialogue_start: String = "start"
 
 enum {
-	IDLE,
-	NEW_DIR,
-	MOVE
+	IDLE
 }
 
 func _ready():
 	randomize()
 	start_pos = position
 	$Timer.start()
-	$AnimatedSprite2D.play("idle")
+	$AnimatedSprite2D.play("idle_quest)giver")  # Always play idle animation
 
 func choose(array):
 	array.shuffle()
 	return array.front()
 
-func _physics_process(delta):
-	if is_roaming and !is_chatting:
-		move(delta)
-
+# No movement logic needed
 func move(delta):
-	velocity = dir * speed
-	move_and_slide()
-	update_animation()
+	pass
 
-func update_animation():
-	if velocity.length() == 0:
-		$AnimatedSprite2D.play("idle")
-	else:
-		if abs(velocity.x) > abs(velocity.y):
-			if velocity.x > 0:
-				$AnimatedSprite2D.play("walk_e")
-			else:
-				$AnimatedSprite2D.play("walk_w")
-		else:
-			if velocity.y > 0:
-				$AnimatedSprite2D.play("walk_s")
-			else:
-				$AnimatedSprite2D.play("walk_n")
-
+# Input handling for dialogue
 func _input(event):
 	if event.is_action_pressed("interact"):
 		print("E pressed! player_in_chat_zone=", player_in_chat_zone, " is_chatting=", is_chatting)
@@ -65,9 +44,7 @@ func _input(event):
 func start_dialogue():
 	print("Starting dialogue...")
 	is_chatting = true
-	is_roaming = false
-	velocity = Vector2.ZERO
-	$AnimatedSprite2D.play("idle")
+	$AnimatedSprite2D.play("idle_quest)giver")  # Ensure idle animation is playing
 
 	var dialogue_title = "start"
 
@@ -94,7 +71,6 @@ func start_dialogue():
 func _on_dialogue_ended(_resource):
 	print("Dialogue ended")
 	is_chatting = false
-	is_roaming = true
 	DialogueManager.dialogue_ended.disconnect(_on_dialogue_ended)
 
 func _on_chat_detection_area_body_entered(body: Node2D) -> void:
@@ -108,13 +84,6 @@ func _on_chat_detection_area_body_exited(body: Node2D) -> void:
 		player_in_chat_zone = false
 
 func _on_timer_timeout() -> void:
-	match current_state:
-		IDLE:
-			current_state = NEW_DIR
-			velocity = Vector2.ZERO
-			$AnimatedSprite2D.play("idle")
-		NEW_DIR:
-			current_state = MOVE
-			dir = choose([Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN])
-		MOVE:
-			current_state = IDLE
+	# Still cycles states, but doesn't move
+	current_state = IDLE
+	$Timer.wait_time = choose([0.5, 1, 1.5, 2.0])

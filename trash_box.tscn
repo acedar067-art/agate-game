@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b35gkxf1yaoj0"]
 
 [ext_resource type="Texture2D" uid="uid://cjd5jcayr7clq" path="res://addons/trash assets/box tile 16x16 5.png" id="1_okuni"]
-[ext_resource type="Script" path="res://trash_box.gd" id="1_y2eyt"]
+[ext_resource type="Script" uid="uid://b6npdie1m3tlu" path="res://trash_box.gd" id="1_y2eyt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2eyt"]
 size = Vector2(18, 18)
