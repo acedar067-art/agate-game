@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://djfudccfkfn0a"]
+
+[ext_resource type="Texture2D" uid="uid://53bw743tslfg" path="res://arts/tilesets/spr_deco_cow_strip4.png" id="1_avux5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18r2e"]
+atlas = ExtResource("1_avux5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbgtx"]
+atlas = ExtResource("1_avux5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3v1v"]
+atlas = ExtResource("1_avux5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cffh8"]
+atlas = ExtResource("1_avux5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bqur0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18r2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbgtx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3v1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cffh8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j48l6"]
+radius = 8.0
+
+[node name="sapi" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bqur0")
+autoplay = "default"
+frame_progress = 0.6949344
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_j48l6")

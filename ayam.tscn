@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7ahper0te0bg"]
+
+[ext_resource type="Texture2D" uid="uid://ds5cihicgpsu1" path="res://arts/tilesets/spr_deco_chicken_01_strip4.png" id="1_typxw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cdrw"]
+atlas = ExtResource("1_typxw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayqeg"]
+atlas = ExtResource("1_typxw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ltpy"]
+atlas = ExtResource("1_typxw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pisgb"]
+atlas = ExtResource("1_typxw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m688q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cdrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayqeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ltpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pisgb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v03"]
+radius = 5.0990195
+
+[node name="ayam" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_m688q")
+autoplay = "default"
+frame_progress = 0.85041076
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_g4v03")
