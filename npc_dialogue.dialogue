@@ -1,44 +1,11 @@
 ~ start
-NPC: Halo! Bisakah kamu membantuku?
-NPC: Ada banyak sampah berserakan di sekitar hutan dan rumah warga.
-NPC: Tolong kumpulkan 10 sampah dan bersihkan area ini!
-- Baik, aku akan membantu! => quest_accepted
-- Maaf, aku sibuk => END
-
-~ quest_accepted
-NPC: Terima kasih! Aku sudah menandai lokasi sampahnya.
-NPC: Kembalilah setelah mengumpulkan 10 sampah.
-do GameManager.start_quest()
-=> END
-
-~ quest_in_progress
-NPC: Bagaimana? Sudah dapat berapa sampah?
-NPC: Kamu sudah mengumpulkan {{GameManager.trash_count}}/{{GameManager.target_trash}} sampah.
-NPC: Semangat! Kumpulkan sisanya.
-=> END
-
-~ quest_ready_complete
-NPC: Wah hebat! Kamu sudah mengumpulkan semua sampah!
-NPC: Terima kasih banyak atas bantuanmu!
-do GameManager.complete_quest()
-NPC: Ini hadiahmu: 100 poin!
-=> END
-
-~ quest_completed_first
-NPC: Terima kasih sudah membantu!
-NPC: Tapi... sepertinya masih ada sampah lagi di area lain.
-NPC: Maukah kamu membantu lagi? Kali ini 20 sampah.
-- Baik, aku bantu lagi! => quest_accepted_second
-- Tidak, cukup untuk sekarang => END
-
-~ quest_accepted_second
-NPC: Kamu memang hebat! Aku tandai lagi lokasinya.
-NPC: Kumpulkan 20 sampah ya!
-do GameManager.start_quest()
-=> END
-
-~ all_quests_done
-NPC: Kamu sudah membersihkan semua sampah di desa ini!
-NPC: Kamu benar-benar pahlawan lingkungan!
-NPC: Total skormu: {{GameManager.score}} poin!
+Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- First one
+	Nathan: You picked the first one.
+- Second one
+	Nathan: You picked the second one.
+- Start again => start
+- End the conversation => END
+Nathan: For more information see the online documentation.
 => END

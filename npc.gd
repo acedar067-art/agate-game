@@ -74,27 +74,10 @@ func start_dialogue():
 	velocity = Vector2.ZERO
 	$AnimatedSprite2D.play("idle")
 	
-	# Determine which dialogue to show based on quest state
-	var dialogue_title = "start"
-	
-	if GameManager.all_quests_done():
-		dialogue_title = "all_quests_done"
-	elif GameManager.quest_completed:
-		# Just completed a quest, offer next one
-		if GameManager.quest_times_completed == 1:
-			dialogue_title = "quest_completed_first"
-	elif GameManager.quest_active:
-		if GameManager.can_complete_quest():
-			dialogue_title = "quest_ready_complete"
-		else:
-			dialogue_title = "quest_in_progress"
-	elif not GameManager.can_take_new_quest():
-		dialogue_title = "all_quests_done"
-	
 	# Show dialogue balloon
 	if dialogue_resource:
-		print("Dialogue resource found, showing: ", dialogue_title)
-		DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_title)
+		print("Dialogue resource found, showing balloon...")
+		DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start)
 		DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	else:
 		print("ERROR: dialogue_resource is null!")
