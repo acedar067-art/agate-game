@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://ghkpff8lx1kn"]
+[gd_scene load_steps=28 format=4 uid="uid://ghkpff8lx1kn"]
 
 [ext_resource type="Texture2D" uid="uid://dpyv016q3dpqj" path="res://arts/tilesets/spr_tileset_sunnysideworld_16px.png" id="1_c41f1"]
 [ext_resource type="PackedScene" uid="uid://xoj34jmedj0i" path="res://quest_progress_ui.tscn" id="1_ckdwd"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c6wxsxjslno6s" path="res://arts/tilesets/walls/dumpster_cleaned_up.png" id="6_uebvl"]
 [ext_resource type="Texture2D" uid="uid://ew5yeko5yw8v" path="res://arts/tilesets/walls/fence_remix.png" id="7_uebvl"]
 [ext_resource type="PackedScene" uid="uid://2cbrhka004qp" path="res://tina.tscn" id="13_5vr8a"]
+[ext_resource type="PackedScene" uid="uid://cup7j8sbj5he" path="res://shop.tscn" id="13_fujyx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_km0yn"]
 size = Vector2(20, 1442)
@@ -4143,3 +4144,6 @@ position = Vector2(230, 146)
 position = Vector2(317, 530)
 
 [node name="Tina Elf" parent="NPCs" instance=ExtResource("13_5vr8a")]
+
+[node name="shop" parent="." instance=ExtResource("13_fujyx")]
+position = Vector2(222, 274)
