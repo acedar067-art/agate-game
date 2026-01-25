@@ -5,6 +5,7 @@ var state: State
 var states = {}
 var vel = Vector2.ZERO
 var arah_terakhir = Vector2.RIGHT
+var can_move: bool = true  # Flag untuk kontrol movement
 
 func _ready():
 	# load states
@@ -18,6 +19,10 @@ func _ready():
 
 	change_state("idle")
 	
+	# Connect ke DialogueManager signals
+	DialogueManager.dialogue_started.connect(_on_dialogue_started)
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+	
 func get_animasi():
 	return $AnimatedSprite2D
 	
@@ -29,11 +34,26 @@ func change_state(new_state):
 		state.enter()
 
 func _input(event):
-	state.handle_input(event)
+	if can_move:
+		state.handle_input(event)
 
 func _process(delta):
-	state.update(delta)
+	if can_move:
+		state.update(delta)
 
 func _physics_process(delta):
-	state.physics_update(delta)
-	move_and_slide()
+	if can_move:
+		state.physics_update(delta)
+		move_and_slide()
+	else:
+		velocity = Vector2.ZERO
+
+func _on_dialogue_started(_resource) -> void:
+	can_move = false
+	velocity = Vector2.ZERO
+	change_state("idle")
+	print("[Player] Dialogue started - movement disabled")
+
+func _on_dialogue_ended(_resource) -> void:
+	can_move = true
+	print("[Player] Dialogue ended - movement enabled")
