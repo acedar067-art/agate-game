@@ -1,12 +1,26 @@
-[gd_scene load_steps=71 format=4 uid="uid://ghkpff8lx1kn"]
+[gd_scene load_steps=77 format=4 uid="uid://ghkpff8lx1kn"]
 
 [ext_resource type="Texture2D" uid="uid://dpyv016q3dpqj" path="res://arts/tilesets/spr_tileset_sunnysideworld_16px.png" id="1_c41f1"]
+[ext_resource type="PackedScene" uid="uid://xoj34jmedj0i" path="res://quest_progress_ui.tscn" id="1_ckdwd"]
+[ext_resource type="PackedScene" uid="uid://56eslpi2s0n4" path="res://trash_spawner.tscn" id="1_wgj0k"]
 [ext_resource type="Texture2D" uid="uid://cjwgf7tknr0v1" path="res://arts/tilesets/SunnysideWorld_Tileset_V0.1.png" id="2_qd6tr"]
 [ext_resource type="Texture2D" uid="uid://cts6tbph3nrop" path="res://arts/objects/objects.png" id="3_i6oci"]
 [ext_resource type="Script" uid="uid://dssy07xm6jwdt" path="res://player.gd" id="4_j6kj6"]
 [ext_resource type="Texture2D" uid="uid://b2xdfbvbg1wkn" path="res://arts/tilesets/TilesetHouse (1).png" id="4_km0yn"]
 [ext_resource type="Texture2D" uid="uid://ojwmonf7coa" path="res://arts/characters/player.png" id="4_qd6tr"]
 [ext_resource type="PackedScene" uid="uid://bgxyqlcd8mcji" path="res://npc.tscn" id="6_j6kj6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_km0yn"]
+size = Vector2(20, 1442)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckdwd"]
+size = Vector2(1462, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgj0k"]
+size = Vector2(36.5, 1448.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uebvl"]
+size = Vector2(1503.5, 45.25)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j6kj6"]
 texture = ExtResource("1_c41f1")
@@ -4409,6 +4423,40 @@ size = Vector2(10, 19)
 
 [node name="dunia" type="Node2D"]
 y_sort_enabled = true
+
+[node name="trash_spawner" parent="." instance=ExtResource("1_wgj0k")]
+
+[node name="QuestProgressUI" parent="." instance=ExtResource("1_ckdwd")]
+
+[node name="WorldBoundry" type="Node2D" parent="."]
+
+[node name="Top" type="StaticBody2D" parent="WorldBoundry"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundry/Top"]
+position = Vector2(-13, 730)
+shape = SubResource("RectangleShape2D_km0yn")
+
+[node name="Right" type="StaticBody2D" parent="WorldBoundry"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundry/Right"]
+position = Vector2(707, 0)
+shape = SubResource("RectangleShape2D_ckdwd")
+
+[node name="Node2D" type="Node2D" parent="WorldBoundry"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WorldBoundry/Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundry/Node2D/StaticBody2D"]
+position = Vector2(1456.75, 716.75)
+shape = SubResource("RectangleShape2D_wgj0k")
+
+[node name="Node2D2" type="Node2D" parent="WorldBoundry"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WorldBoundry/Node2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundry/Node2D2/StaticBody2D"]
+position = Vector2(729.25, 1468.625)
+shape = SubResource("RectangleShape2D_uebvl")
 
 [node name="tanah" type="TileMapLayer" parent="."]
 position = Vector2(13, 10)
