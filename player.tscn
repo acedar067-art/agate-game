@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dssy07xm6jwdt" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://ojwmonf7coa" path="res://arts/characters/player.png" id="2_i3pqv"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qd6tr"]
+size = Vector2(22, 22)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_86lrq"]
 atlas = ExtResource("2_i3pqv")
 region = Rect2(0, 96, 48, 48)
@@ -396,7 +399,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_uixn8")
 }],
 "loop": true,
-"name": &"serang_atas",
+"name": &"pickup_atas",
 "speed": 5.0
 }, {
 "frames": [{
@@ -413,7 +416,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_6soem")
 }],
 "loop": true,
-"name": &"serang_depan",
+"name": &"pickup_depan",
 "speed": 5.0
 }, {
 "frames": [{
@@ -430,29 +433,9 @@ animations = [{
 "texture": SubResource("AtlasTexture_uigvg")
 }],
 "loop": true,
-"name": &"serang_kanan",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aucme")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vxw3w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e352r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uigvg")
-}],
-"loop": true,
-"name": &"serang_kiri",
+"name": &"pickup_kanan",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qd6tr"]
-size = Vector2(22, 22)
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
@@ -460,14 +443,14 @@ y_sort_enabled = true
 collision_layer = 3
 script = ExtResource("1_onrkg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(53, 124)
-sprite_frames = SubResource("SpriteFrames_5vr8a")
-animation = &"serang_kanan"
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(56, 133)
 shape = SubResource("RectangleShape2D_qd6tr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(53, 122)
+sprite_frames = SubResource("SpriteFrames_5vr8a")
+animation = &"pickup_atas"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(56, 137)
