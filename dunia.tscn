@@ -4061,11 +4061,9 @@ texture = ExtResource("7_uebvl")
 0:6/0 = 0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nyvg2"]
-load_path = "res://.godot/imported/Gemini_Generated_Image_q8ea7bq8ea7bq8ea-removebg-preview.png-7addfebe29c5e2712401260141ebfa3b.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rrhh6"]
 texture = SubResource("CompressedTexture2D_nyvg2")
-12:4/size_in_atlas = Vector2i(16, 7)
 12:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0safm"]
@@ -4920,7 +4918,7 @@ position = Vector2(715, 490)
 position = Vector2(230, 146)
 
 [node name="npc" parent="NPCs" instance=ExtResource("6_j6kj6")]
-position = Vector2(317, 530)
+position = Vector2(346, 540)
 
 [node name="Tina Elf" parent="NPCs" instance=ExtResource("13_5vr8a")]
 position = Vector2(1155, 149)

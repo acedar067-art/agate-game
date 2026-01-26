@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7ahper0te0bg"]
+[gd_scene load_steps=9 format=3 uid="uid://c7ahper0te0bg"]
 
 [ext_resource type="Script" uid="uid://dlevxwx1yecnb" path="res://ayam.gd" id="1_0cdrw"]
 [ext_resource type="Texture2D" uid="uid://ds5cihicgpsu1" path="res://arts/tilesets/spr_deco_chicken_01_strip4.png" id="1_typxw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0cdrw"]
-radius = 14.035668
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v03"]
+radius = 9.055386
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0cdrw"]
 atlas = ExtResource("1_typxw")
@@ -42,24 +42,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g4v03"]
-radius = 9.055386
-
-[node name="ayam" type="CharacterBody2D"]
+[node name="ayam" type="Node2D"]
 script = ExtResource("1_0cdrw")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-z_index = 14
-shape = SubResource("CircleShape2D_0cdrw")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 14
-position = Vector2(1, -1)
-sprite_frames = SubResource("SpriteFrames_m688q")
-animation = &"IDLE"
-autoplay = "IDLE"
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_g4v03")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D/CollisionShape2D"]
+position = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_m688q")
+animation = &"IDLE"
+autoplay = "IDLE"
