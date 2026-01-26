@@ -4000,6 +4000,7 @@ texture = ExtResource("4_km0yn")
 29:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.766617, 16.007427, 29.22705, 15.647709, 29.766632, 32.014854, -28.867325, 31.11556)
 25:7/size_in_atlas = Vector2i(4, 5)
 25:7/0 = 0
+25:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30.199371, 28.78817, 0.28222656, 2.2578964, 30.19934, 28.78817, 30.763824, 42.900013, -29.070404, 40.642117)
 0:0/size_in_atlas = Vector2i(4, 3)
 0:0/0 = 0
 0:0/0/y_sort_origin = 2
