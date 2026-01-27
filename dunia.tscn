@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://djfudccfkfn0a" path="res://sapi.tscn" id="15_nyvg2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_km0yn"]
-size = Vector2(20, 1442)
+size = Vector2(2, 1442)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ckdwd"]
 size = Vector2(1462, 20)
@@ -5038,7 +5038,7 @@ y_sort_enabled = true
 [node name="Top" type="StaticBody2D" parent="WorldBoundry"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundry/Top"]
-position = Vector2(-13, 730)
+position = Vector2(-4, 730)
 shape = SubResource("RectangleShape2D_km0yn")
 
 [node name="Right" type="StaticBody2D" parent="WorldBoundry"]
