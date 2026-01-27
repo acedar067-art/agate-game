@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ds5cihicgpsu1" path="res://arts/tilesets/spr_deco_chicken_01_strip4.png" id="1_typxw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0cdrw"]
-radius = 14.035668
+radius = 15.033297
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0cdrw"]
 atlas = ExtResource("1_typxw")
@@ -49,7 +49,7 @@ radius = 9.055386
 script = ExtResource("1_0cdrw")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-z_index = 14
+z_index = -1
 shape = SubResource("CircleShape2D_0cdrw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
