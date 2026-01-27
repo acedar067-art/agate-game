@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const KECEPATAN = 130
+const KECEPATAN = 2000
 var state: State
 var states = {}
 var vel = Vector2.ZERO
@@ -9,7 +9,6 @@ var can_move: bool = true
 
 # Pickup system
 var nearby_trash: Array = []
-var is_picking_up: bool = false
 
 func _ready():
 	# load states
