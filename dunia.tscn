@@ -5036,6 +5036,7 @@ y_sort_enabled = true
 [node name="WorldBoundry" type="Node2D" parent="."]
 
 [node name="Top" type="StaticBody2D" parent="WorldBoundry"]
+position = Vector2(0, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundry/Top"]
 position = Vector2(-4, 730)
