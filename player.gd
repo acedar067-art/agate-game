@@ -9,6 +9,7 @@ var can_move: bool = true
 
 # Pickup system
 var nearby_trash: Array = []
+var is_playing_pickup: bool = false  # Flag untuk mencegah spam M1
 
 func _ready():
 	# load states
@@ -26,6 +27,9 @@ func _ready():
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	
+	# Connect animation finished signal untuk reset setelah pickup
+	get_animasi().animation_finished.connect(_on_animation_finished)
+	
 func get_animasi():
 	return $AnimatedSprite2D
 	
@@ -37,12 +41,12 @@ func change_state(new_state):
 		state.enter()
 
 func _input(event):
-	if can_move and not is_picking_up:
+	if can_move:
 		state.handle_input(event)
 		
-		# M1 - pickup animation biasa (kapanpun)
+		# M1 - pickup animation biasa (kapanpun, tapi hanya sekali per klik)
 		if event is InputEventMouseButton:
-			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_playing_pickup:
 				play_pickup_animation_only()
 		
 		# F key - pickup sampah (jika ada sampah nearby)
@@ -50,20 +54,27 @@ func _input(event):
 			try_pickup_trash()
 
 func _process(delta):
-	if can_move and not is_picking_up:
+	if can_move:
 		state.update(delta)
 
 func _physics_process(delta):
-	if can_move and not is_picking_up:
+	if can_move:
 		state.physics_update(delta)
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
 
-# M1 - hanya play animasi pickup sekali (bisa sambil jalan)
+# M1 - hanya play animasi pickup sekali (bisa sambil jalan, TIDAK loop)
 func play_pickup_animation_only():
+	is_playing_pickup = true  # Block spam klik
 	var anim = get_animasi()
 	var pickup_anim = get_pickup_animation()
+	
+	# Pastikan animasi pickup tidak loop
+	var frames = anim.sprite_frames
+	if frames:
+		frames.set_animation_loop(pickup_anim, false)
+	
 	anim.play(pickup_anim)
 
 # F - pickup sampah sekali (bisa sambil jalan, langsung ambil)
@@ -119,3 +130,13 @@ func _on_dialogue_started(_resource) -> void:
 func _on_dialogue_ended(_resource) -> void:
 	can_move = true
 	print("[Player] Dialogue ended - movement enabled")
+
+# Reset flag setelah animasi pickup selesai
+func _on_animation_finished():
+	if is_playing_pickup:
+		is_playing_pickup = false
+		# Kembali ke animasi idle/jalan yang sesuai
+		if velocity.length() > 0:
+			change_state("jalan")
+		else:
+			change_state("idle")
