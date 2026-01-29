@@ -81,14 +81,14 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u28fs"]
-radius = 6.0827627
+radius = 13.0
 
 [node name="angler fish" type="Sprite2D" unique_id=99796875]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=915302519]
 sprite_frames = SubResource("SpriteFrames_7emd1")
 autoplay = "default"
-frame_progress = 0.75748676
+frame_progress = 0.849932
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1085727712]
 

@@ -194,7 +194,8 @@ animations = [{
 }]
 
 [node name="player_berenang" type="Sprite2D" unique_id=2015335859]
+position = Vector2(0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=609120025]
 sprite_frames = SubResource("SpriteFrames_4rca2")
-frame_progress = 0.7900988
+frame_progress = 0.33792284
