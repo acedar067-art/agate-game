@@ -5341,6 +5341,7 @@ position = Vector2(230, 146)
 position = Vector2(346, 540)
 
 [node name="Tina Elf" parent="NPCs" unique_id=644686278 instance=ExtResource("13_5vr8a")]
+z_index = 4
 position = Vector2(1147.0001, 161.00002)
 
 [node name="ayam" parent="NPCs" unique_id=1646745480 instance=ExtResource("13_56qte")]
