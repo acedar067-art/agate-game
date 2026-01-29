@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://dmdidu3d7rrfo"]
+
+[ext_resource type="Texture2D" uid="uid://d17leulqfdhs0" path="res://arts/characters/SeaAngler.png" id="1_iiefk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qjql"]
+atlas = ExtResource("1_iiefk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j821n"]
+atlas = ExtResource("1_iiefk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b107"]
+atlas = ExtResource("1_iiefk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr8el"]
+atlas = ExtResource("1_iiefk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fo5q"]
+atlas = ExtResource("1_iiefk")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipkg7"]
+atlas = ExtResource("1_iiefk")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y66x1"]
+atlas = ExtResource("1_iiefk")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5oyt"]
+atlas = ExtResource("1_iiefk")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fof2"]
+atlas = ExtResource("1_iiefk")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcsle"]
+atlas = ExtResource("1_iiefk")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7emd1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qjql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j821n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b107")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr8el")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fo5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipkg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y66x1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5oyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fof2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcsle")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u28fs"]
+radius = 6.0827627
+
+[node name="angler fish" type="Sprite2D" unique_id=99796875]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=915302519]
+sprite_frames = SubResource("SpriteFrames_7emd1")
+autoplay = "default"
+frame_progress = 0.75748676
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1085727712]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2114425808]
+shape = SubResource("CircleShape2D_u28fs")

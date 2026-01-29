@@ -11,6 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://dxhqyx8cv7xl5" path="res://arts/Dead Small - 32x32.png" id="9_qykgt"]
 [ext_resource type="Texture2D" uid="uid://bhvc5xvqvb0yp" path="res://arts/Light.png" id="10_rpd0k"]
 [ext_resource type="Texture2D" uid="uid://cy6rupwv23sg3" path="res://arts/Shells - 16x16.png" id="11_7vrjm"]
+[ext_resource type="PackedScene" uid="uid://dxpsaivi7jkla" path="res://ikan_biru.tscn" id="12_b27ex"]
+[ext_resource type="PackedScene" uid="uid://di7s0d8mpybho" path="res://ikan_hijau.tscn" id="13_rjy5g"]
+[ext_resource type="PackedScene" uid="uid://76qyi1xfwljs" path="res://ikan_hiu.tscn" id="14_325uo"]
+[ext_resource type="PackedScene" uid="uid://dhr6kxwc0o3dn" path="res://ikan_pedang.tscn" id="15_w6fkj"]
+[ext_resource type="PackedScene" uid="uid://dqndh5v02axv7" path="res://ikan_pink.tscn" id="16_outj4"]
+[ext_resource type="PackedScene" uid="uid://jhaoqoiddfok" path="res://ikan_pisau.tscn" id="17_j4yrx"]
+[ext_resource type="PackedScene" uid="uid://dmdidu3d7rrfo" path="res://angler_fish.tscn" id="18_6mern"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewmgi"]
 texture = ExtResource("1_qfcdp")
@@ -4170,3 +4177,51 @@ polygon = PackedVector2Array(-1, 57, 1, 319, 14, 320, 16, 366, 29, 369, 31, 445,
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="border" unique_id=1230460198]
 polygon = PackedVector2Array(467, 450, 468, 465, 454, 465, 450, 492, 556, 495, 556, 466, 527, 465, 525, 448)
+
+[node name="ikan biru" parent="." unique_id=873593532 instance=ExtResource("12_b27ex")]
+position = Vector2(227, 432)
+
+[node name="ikan hijau" parent="." unique_id=912294391 instance=ExtResource("13_rjy5g")]
+position = Vector2(398, 381)
+
+[node name="ikan hiu" parent="." unique_id=334323042 instance=ExtResource("14_325uo")]
+position = Vector2(195, 595)
+
+[node name="ikan pedang" parent="." unique_id=2004964973 instance=ExtResource("15_w6fkj")]
+position = Vector2(451, 570)
+
+[node name="ikan pink" parent="." unique_id=1027729427 instance=ExtResource("16_outj4")]
+position = Vector2(461, 414)
+
+[node name="ikan pisau" parent="." unique_id=920899665 instance=ExtResource("17_j4yrx")]
+position = Vector2(611, 611)
+
+[node name="angler fish" parent="." unique_id=99796875 instance=ExtResource("18_6mern")]
+position = Vector2(1095, 544)
+
+[node name="ikan biru2" parent="." unique_id=1553636466 instance=ExtResource("12_b27ex")]
+position = Vector2(585, 408)
+
+[node name="ikan hijau2" parent="." unique_id=422471267 instance=ExtResource("13_rjy5g")]
+position = Vector2(695, 432)
+
+[node name="ikan biru3" parent="." unique_id=1722740644 instance=ExtResource("12_b27ex")]
+position = Vector2(749, 385)
+
+[node name="ikan pink2" parent="." unique_id=1985399608 instance=ExtResource("16_outj4")]
+position = Vector2(771, 430)
+
+[node name="ikan pink3" parent="." unique_id=373741569 instance=ExtResource("16_outj4")]
+position = Vector2(881, 352)
+
+[node name="ikan hijau3" parent="." unique_id=1236033710 instance=ExtResource("13_rjy5g")]
+position = Vector2(296, 273)
+
+[node name="ikan biru4" parent="." unique_id=877767331 instance=ExtResource("12_b27ex")]
+position = Vector2(514, 232)
+
+[node name="ikan biru5" parent="." unique_id=1565100737 instance=ExtResource("12_b27ex")]
+position = Vector2(485, 307)
+
+[node name="ikan hiu2" parent="." unique_id=1622078419 instance=ExtResource("14_325uo")]
+position = Vector2(662, 326)

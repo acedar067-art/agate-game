@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://dhr6kxwc0o3dn"]
+
+[ext_resource type="Texture2D" uid="uid://4vcrevw42c8p" path="res://arts/characters/SwordFish.png" id="1_3mx52"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86f13"]
+atlas = ExtResource("1_3mx52")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2ih4"]
+atlas = ExtResource("1_3mx52")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ey7e"]
+atlas = ExtResource("1_3mx52")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id6y3"]
+atlas = ExtResource("1_3mx52")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5s0o"]
+atlas = ExtResource("1_3mx52")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5byxy"]
+atlas = ExtResource("1_3mx52")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bf37l"]
+atlas = ExtResource("1_3mx52")
+region = Rect2(288, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep2xa"]
+atlas = ExtResource("1_3mx52")
+region = Rect2(336, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_44lq4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86f13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2ih4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ey7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_id6y3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5s0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5byxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bf37l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep2xa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3mx52"]
+radius = 8.001389
+height = 42.05439
+
+[node name="ikan pedang" type="Sprite2D" unique_id=2004964973]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1690662794]
+sprite_frames = SubResource("SpriteFrames_44lq4")
+autoplay = "default"
+frame_progress = 0.56835186
+
+[node name="Area2D" type="Area2D" parent="." unique_id=340576399]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1838979672]
+rotation = 1.5693998
+shape = SubResource("CapsuleShape2D_3mx52")

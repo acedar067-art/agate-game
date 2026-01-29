@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dc2l4xbaj0ul"]
+
+[ext_resource type="Texture2D" uid="uid://coer35y55olyu" path="res://arts/characters/JellyFish.png" id="1_os5yp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uy7k3"]
+atlas = ExtResource("1_os5yp")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjv2v"]
+atlas = ExtResource("1_os5yp")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llc60"]
+atlas = ExtResource("1_os5yp")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly8bv"]
+atlas = ExtResource("1_os5yp")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xldea"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uy7k3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjv2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llc60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly8bv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_os5yp"]
+radius = 8.001973
+height = 19.99996
+
+[node name="ubur ubur" type="Sprite2D" unique_id=490345087]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2130925245]
+sprite_frames = SubResource("SpriteFrames_xldea")
+autoplay = "default"
+frame_progress = 0.8171811
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1088740021]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=24570608]
+rotation = 1.5727856
+shape = SubResource("CapsuleShape2D_os5yp")
