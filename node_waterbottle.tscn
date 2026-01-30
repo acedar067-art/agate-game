@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc2h6ik4qearh"]
+[gd_scene format=3 uid="uid://dc2h6ik4qearh"]
 
 [ext_resource type="Script" uid="uid://bobl385ll82vt" path="res://node_waterbottle.gd" id="1_k147k"]
 [ext_resource type="Texture2D" uid="uid://0ynlst02u54d" path="res://addons/trash assets/water bottle clean & small.png" id="1_r17qj"]
@@ -6,14 +6,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k147k"]
 size = Vector2(7, 15)
 
-[node name="trash_bottle" type="Area2D"]
+[node name="trash_bottle" type="Area2D" unique_id=1525141794]
+z_index = 11
 script = ExtResource("1_k147k")
 
-[node name="WaterBottleClean&Small" type="Sprite2D" parent="."]
+[node name="WaterBottleClean&Small" type="Sprite2D" parent="." unique_id=1106713167]
 position = Vector2(-0.25, -1)
 scale = Vector2(2.1666667, 1.75)
 texture = ExtResource("1_r17qj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1349059463]
 position = Vector2(-0.5, -1.5)
 shape = SubResource("RectangleShape2D_k147k")

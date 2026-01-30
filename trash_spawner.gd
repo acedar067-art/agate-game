@@ -11,19 +11,23 @@ func _ready() -> void:
 	# Connect to GameManager quest_started signal
 	GameManager.quest_started.connect(_on_quest_started)
 
-func _on_quest_started(spawn_count: int) -> void:
-	# Spawn all trash at once when quest starts
-	spawn_trash_batch(spawn_count)
+func _on_quest_started(_spawn_count: int) -> void:
+	# Spawn 12-15 trash items saat quest dimulai
+	var actual_count = randi_range(12, 15)
+	print("[TrashSpawner] Quest started! Spawning ", actual_count, " trash...")
+	spawn_trash_batch(actual_count)
 
 func spawn_trash_batch(count: int) -> void:
 	if trash_scenes.is_empty():
-		print("[TrashSpawner] No trash scenes assigned!")
+		push_error("[TrashSpawner] ERROR: No trash scenes assigned! Assign di Inspector.")
 		return
 	
-	print("[TrashSpawner] Spawning ", count, " trash items...")
+	print("[TrashSpawner] Starting spawn of ", count, " trash items...")
 	
 	for i in range(count):
 		spawn_single_trash()
+	
+	print("[TrashSpawner] Finished spawning ", count, " trash items!")
 
 func spawn_single_trash() -> void:
 	# Pick random trash scene

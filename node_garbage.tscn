@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcrex23csl02d"]
+[gd_scene format=3 uid="uid://bcrex23csl02d"]
 
 [ext_resource type="Texture2D" uid="uid://nk11uu1ugml3" path="res://addons/trash assets/garbage bag small 2.png" id="1_7nte3"]
 [ext_resource type="Script" uid="uid://cxn8fthi6mul8" path="res://node_garbage.gd" id="1_fdlgn"]
@@ -7,15 +7,16 @@
 radius = 5.0
 height = 12.0
 
-[node name="trash_garbage" type="Area2D"]
+[node name="trash_garbage" type="Area2D" unique_id=1592676690]
+z_index = 11
 script = ExtResource("1_fdlgn")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=16395271]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=50098397]
 shape = SubResource("CapsuleShape2D_fdlgn")
 
-[node name="GarbageBagSmall2" type="Sprite2D" parent="."]
+[node name="GarbageBagSmall2" type="Sprite2D" parent="." unique_id=398168521]
 position = Vector2(4.7683716e-07, -4.7683716e-07)
 scale = Vector2(1.2499999, 0.89999855)
 texture = ExtResource("1_7nte3")

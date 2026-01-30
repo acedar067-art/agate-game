@@ -44,10 +44,13 @@ func _input(event):
 	if can_move:
 		state.handle_input(event)
 		
-		# M1 - pickup animation biasa (kapanpun, tapi hanya sekali per klik)
+		# M1 - pickup animation (hanya jika menghadap KANAN atau KIRI)
 		if event is InputEventMouseButton:
-			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_playing_pickup:
-				play_pickup_animation_only()
+			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+				# Cek apakah player menghadap kanan atau kiri
+				var facing_horizontal = abs(arah_terakhir.x) > abs(arah_terakhir.y)
+				if facing_horizontal:
+					play_pickup_animation_only()
 		
 		# F key - pickup sampah (jika ada sampah nearby)
 		if event.is_action_pressed("pickup"):
@@ -64,9 +67,8 @@ func _physics_process(delta):
 	else:
 		velocity = Vector2.ZERO
 
-# M1 - hanya play animasi pickup sekali (bisa sambil jalan, TIDAK loop)
+# M1 - play animasi pickup sekali per klik (TIDAK loop, bisa berulang kali)
 func play_pickup_animation_only():
-	is_playing_pickup = true  # Block spam klik
 	var anim = get_animasi()
 	var pickup_anim = get_pickup_animation()
 	
@@ -75,6 +77,8 @@ func play_pickup_animation_only():
 	if frames:
 		frames.set_animation_loop(pickup_anim, false)
 	
+	# Play dari awal setiap kali M1 ditekan
+	anim.stop()
 	anim.play(pickup_anim)
 
 # F - pickup sampah sekali (bisa sambil jalan, langsung ambil)
@@ -95,23 +99,15 @@ func try_pickup_trash():
 func get_pickup_animation() -> String:
 	var anim = get_animasi()
 	
-	# Choose pickup animation based on last direction
-	# Gunakan scale.x untuk flip, bukan flip_h (lebih konsisten)
-	if arah_terakhir == Vector2.UP:
-		anim.scale.x = 1
-		return "pickup_atas"
-	elif arah_terakhir == Vector2.DOWN:
-		anim.scale.x = 1
-		return "pickup_depan"
-	elif arah_terakhir == Vector2.LEFT:
-		anim.scale.x = -1  # Flip untuk kiri
-		return "pickup_kanan"
-	elif arah_terakhir == Vector2.RIGHT:
-		anim.scale.x = 1
-		return "pickup_kanan"
+	# Hanya pakai animasi kanan/kiri berdasarkan arah terakhir
+	if arah_terakhir.x < 0:
+		# LEFT - flip sprite
+		anim.scale.x = -1
 	else:
+		# RIGHT (default)
 		anim.scale.x = 1
-		return "pickup_depan"
+	
+	return "pickup_kanan"
 
 
 func register_nearby_trash(trash: Node):
