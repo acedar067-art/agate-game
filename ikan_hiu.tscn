@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://76qyi1xfwljs"]
 
 [ext_resource type="Texture2D" uid="uid://cu8v3ifcs4nep" path="res://arts/characters/Shark.png" id="1_pd0if"]
+[ext_resource type="Script" uid="uid://yhdqiqrj04fk" path="res://ikan_hiu.gd" id="1_tr328"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tr328"]
 atlas = ExtResource("1_pd0if")
@@ -85,6 +86,7 @@ radius = 6.0
 height = 26.0
 
 [node name="ikan hiu" type="Sprite2D" unique_id=334323042]
+script = ExtResource("1_tr328")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=646619563]
 sprite_frames = SubResource("SpriteFrames_60l35")

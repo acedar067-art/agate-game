@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dxpsaivi7jkla"]
 
 [ext_resource type="Texture2D" uid="uid://bjmuhsrhagaty" path="res://arts/characters/Blue.png" id="1_20jw8"]
+[ext_resource type="Script" uid="uid://cx6dhf5nlydog" path="res://ikan_biru.gd" id="1_c5rb5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5rb5"]
 atlas = ExtResource("1_20jw8")
@@ -239,6 +240,7 @@ radius = 5.0
 height = 20.0
 
 [node name="ikan biru" type="Sprite2D" unique_id=873593532]
+script = ExtResource("1_c5rb5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=529438215]
 sprite_frames = SubResource("SpriteFrames_aamv6")

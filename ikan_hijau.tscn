@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://di7s0d8mpybho"]
 
+[ext_resource type="Script" uid="uid://d6wx86b1kreq" path="res://ikan_hijau.gd" id="1_2bwee"]
 [ext_resource type="Texture2D" uid="uid://ch5wnm1m241xu" path="res://arts/characters/Green.png" id="1_ob803"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2bwee"]
@@ -238,6 +239,7 @@ animations = [{
 radius = 7.071068
 
 [node name="ikan hijau" type="Sprite2D" unique_id=912294391]
+script = ExtResource("1_2bwee")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=258038992]
 sprite_frames = SubResource("SpriteFrames_ylpla")

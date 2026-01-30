@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c7ahper0te0bg" path="res://ayam.tscn" id="13_56qte"]
 [ext_resource type="PackedScene" uid="uid://dcse1gjiowho8" path="res://domba.tscn" id="14_tdcp2"]
 [ext_resource type="PackedScene" uid="uid://djfudccfkfn0a" path="res://sapi.tscn" id="15_nyvg2"]
+[ext_resource type="PackedScene" uid="uid://bb2fr8fxoj6hn" path="res://sea_entrance.tscn" id="18_rrhh6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_km0yn"]
 size = Vector2(2, 1442)
@@ -28,7 +29,7 @@ size = Vector2(1462, 20)
 size = Vector2(36.5, 1448.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uebvl"]
-size = Vector2(1503.5, 417.25)
+size = Vector2(1014.80347, 102.01172)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_km0yn"]
 texture = ExtResource("2_qd6tr")
@@ -230,6 +231,7 @@ texture = ExtResource("2_qd6tr")
 8:8/0 = 0
 9:8/0 = 0
 10:8/0 = 0
+10:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.5971746, -8, -3.956892, 4.856186, -8, 5.215904)
 11:8/0 = 0
 12:8/0 = 0
 13:8/0 = 0
@@ -257,6 +259,7 @@ texture = ExtResource("2_qd6tr")
 8:9/0 = 0
 9:9/0 = 0
 10:9/0 = 0
+10:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.5971746, -8, -3.956892, 4.856186, -8, 5.215904)
 11:9/0 = 0
 12:9/0 = 0
 13:9/0 = 0
@@ -277,7 +280,9 @@ texture = ExtResource("2_qd6tr")
 8:10/0 = 0
 9:10/0 = 0
 10:10/0 = 0
+10:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.5971746, -8, -3.956892, 4.856186, -8, 5.215904)
 11:10/0 = 0
+11:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.5971746, -8, -3.956892, 4.856186, -8, 5.215904)
 13:10/0 = 0
 26:10/0 = 0
 26:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -300,10 +305,15 @@ texture = ExtResource("2_qd6tr")
 8:11/0 = 0
 9:11/0 = 0
 10:11/0 = 0
+10:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.5971746, -8, -3.956892, 4.856186, -8, 5.215904)
 11:11/0 = 0
+11:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.5971746, -8, -3.956892, 4.856186, -8, 5.215904)
 12:11/0 = 0
+12:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 3.5971756, -8, 3.2374573)
 13:11/0 = 0
+13:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:11/0 = 0
+14:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(3.2374573, -8, 8, -8, 8, 3.5971756, 3.057598, 3.7770348)
 26:11/0 = 0
 27:11/0 = 0
 28:11/0 = 0
@@ -5172,7 +5182,15 @@ shape = SubResource("RectangleShape2D_wgj0k")
 [node name="StaticBody2D" type="StaticBody2D" parent="WorldBoundry/Node2D2" unique_id=1783608992]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundry/Node2D2/StaticBody2D" unique_id=1531235193]
-position = Vector2(729.25, 1282.625)
+position = Vector2(509.78857, 1127.8672)
+shape = SubResource("RectangleShape2D_uebvl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBoundry/Node2D2/StaticBody2D" unique_id=794129827]
+position = Vector2(1571.4017, 1119.4336)
+shape = SubResource("RectangleShape2D_uebvl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundry/Node2D2/StaticBody2D" unique_id=679947144]
+position = Vector2(1047, 1201.0059)
 shape = SubResource("RectangleShape2D_uebvl")
 
 [node name="player" parent="." unique_id=367214958 instance=ExtResource("3_kcb5e")]
@@ -5381,3 +5399,6 @@ position = Vector2(134, 627)
 [node name="sapi3" parent="NPCs" unique_id=1633424765 instance=ExtResource("15_nyvg2")]
 z_index = -3
 position = Vector2(185, 322)
+
+[node name="SeaEntrance" parent="." unique_id=877521688 instance=ExtResource("18_rrhh6")]
+position = Vector2(1040, 1144)

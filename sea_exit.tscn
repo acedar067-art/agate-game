@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c1u2jqspcfuot"]
+
+[ext_resource type="Script" uid="uid://deduvajmmmk6v" path="res://sea_exit.gd" id="1_4i08m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgjvu"]
+size = Vector2(601, 20)
+
+[node name="SeaExit" type="Area2D" unique_id=1385747314]
+script = ExtResource("1_4i08m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=562673835]
+position = Vector2(290.5, 0)
+shape = SubResource("RectangleShape2D_rgjvu")

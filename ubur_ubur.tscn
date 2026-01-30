@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dc2l4xbaj0ul"]
 
 [ext_resource type="Texture2D" uid="uid://coer35y55olyu" path="res://arts/characters/JellyFish.png" id="1_os5yp"]
+[ext_resource type="Script" uid="uid://c7eoqdujhbs5i" path="res://ubur_ubur.gd" id="1_uy7k3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uy7k3"]
 atlas = ExtResource("1_os5yp")
@@ -43,6 +44,7 @@ radius = 8.001973
 height = 19.99996
 
 [node name="ubur ubur" type="Sprite2D" unique_id=490345087]
+script = ExtResource("1_uy7k3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2130925245]
 sprite_frames = SubResource("SpriteFrames_xldea")

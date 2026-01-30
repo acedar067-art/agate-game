@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dmdidu3d7rrfo"]
 
+[ext_resource type="Script" uid="uid://dlmnvmbjj28gr" path="res://angler_fish.gd" id="1_3qjql"]
 [ext_resource type="Texture2D" uid="uid://d17leulqfdhs0" path="res://arts/characters/SeaAngler.png" id="1_iiefk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3qjql"]
@@ -84,6 +85,7 @@ animations = [{
 radius = 13.0
 
 [node name="angler fish" type="Sprite2D" unique_id=99796875]
+script = ExtResource("1_3qjql")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=915302519]
 sprite_frames = SubResource("SpriteFrames_7emd1")

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dqndh5v02axv7"]
 
+[ext_resource type="Script" uid="uid://h0oxvs65jj5c" path="res://ikan_pink.gd" id="1_e6yuu"]
 [ext_resource type="Texture2D" uid="uid://bie5ie5p7usw7" path="res://arts/characters/Pink.png" id="1_e840e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e6yuu"]
@@ -238,6 +239,7 @@ animations = [{
 radius = 7.0
 
 [node name="ikan pink" type="Sprite2D" unique_id=1027729427]
+script = ExtResource("1_e6yuu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=177469416]
 sprite_frames = SubResource("SpriteFrames_ju3em")
