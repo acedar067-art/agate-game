@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://jhaoqoiddfok" path="res://ikan_pisau.tscn" id="17_j4yrx"]
 [ext_resource type="PackedScene" uid="uid://dmdidu3d7rrfo" path="res://angler_fish.tscn" id="18_6mern"]
 [ext_resource type="PackedScene" uid="uid://dc2l4xbaj0ul" path="res://ubur_ubur.tscn" id="19_rjy5g"]
+[ext_resource type="PackedScene" uid="uid://bmqaphievt0c8" path="res://player_swim.tscn" id="21_w6fkj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewmgi"]
 texture = ExtResource("1_qfcdp")
@@ -4241,3 +4242,6 @@ position = Vector2(1013, 346)
 
 [node name="ubur ubur4" parent="." unique_id=1011754569 instance=ExtResource("19_rjy5g")]
 position = Vector2(84, 304)
+
+[node name="player_swim" parent="." unique_id=402193575 instance=ExtResource("21_w6fkj")]
+position = Vector2(137, 192)
