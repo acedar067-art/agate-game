@@ -5148,6 +5148,7 @@ sources/0 = SubResource("TileSetAtlasSource_j6kj6")
 
 [node name="dunia" type="Node2D" unique_id=1407303838]
 y_sort_enabled = true
+position = Vector2(-201, -407)
 metadata/_edit_vertical_guides_ = [-568.0]
 
 [node name="trash_spawner" parent="." unique_id=1904294572 instance=ExtResource("1_wgj0k")]

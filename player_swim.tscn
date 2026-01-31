@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bfksbdavh30s" path="res://3 SteamMan/Swim2.png" id="5_c4a7y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_er3tt"]
-radius = 24.0
-height = 48.0
+radius = 9.990763
+height = 44.131256
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wonke"]
 atlas = ExtResource("1_wm6bs")
@@ -218,11 +218,17 @@ animations = [{
 script = ExtResource("1_8bixb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1724473969]
+rotation = 1.5278078
 shape = SubResource("CapsuleShape2D_er3tt")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=26428418]
+position = Vector2(0, -2)
+zoom = Vector2(2, 2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=902706589]
+position = Vector2(3, -2)
+rotation = 0.025094336
+scale = Vector2(1.0110174, 1)
 sprite_frames = SubResource("SpriteFrames_i7ocn")
 animation = &"swim_repair"
 frame_progress = 0.39859897
