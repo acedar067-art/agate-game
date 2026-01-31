@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://cup7j8sbj5he" path="res://shop.tscn" id="13_0safm"]
 [ext_resource type="PackedScene" uid="uid://2cbrhka004qp" path="res://tina.tscn" id="13_5vr8a"]
 [ext_resource type="PackedScene" uid="uid://c7ahper0te0bg" path="res://ayam.tscn" id="13_56qte"]
-[ext_resource type="PackedScene" uid="uid://dcse1gjiowho8" path="res://domba.tscn" id="14_tdcp2"]
 [ext_resource type="PackedScene" uid="uid://djfudccfkfn0a" path="res://sapi.tscn" id="15_nyvg2"]
 [ext_resource type="PackedScene" uid="uid://bb2fr8fxoj6hn" path="res://sea_entrance.tscn" id="18_rrhh6"]
 
@@ -5377,22 +5376,6 @@ position = Vector2(127, 432)
 
 [node name="ayam3" parent="NPCs" unique_id=429892543 instance=ExtResource("13_56qte")]
 position = Vector2(461, 306)
-
-[node name="domba" parent="NPCs" unique_id=836851574 instance=ExtResource("14_tdcp2")]
-z_index = 5
-position = Vector2(797, 454)
-
-[node name="domba2" parent="NPCs" unique_id=1020462560 instance=ExtResource("14_tdcp2")]
-z_index = 5
-position = Vector2(838, 361)
-
-[node name="domba3" parent="NPCs" unique_id=1686536824 instance=ExtResource("14_tdcp2")]
-z_index = 5
-position = Vector2(544, 298)
-
-[node name="domba4" parent="NPCs" unique_id=1477068497 instance=ExtResource("14_tdcp2")]
-z_index = 5
-position = Vector2(141, 495)
 
 [node name="sapi" parent="NPCs" unique_id=2096702791 instance=ExtResource("15_nyvg2")]
 position = Vector2(499, 736)
