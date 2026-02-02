@@ -31,161 +31,161 @@ const _KEY_MAX_STACK_SIZE = _StackManager._KEY_MAX_STACK_SIZE
 
 ## A JSON resource containing prototype information.
 @export var protoset: JSON:
-    set(new_protoset):
-        if new_protoset == protoset:
-            return
-        clear()
-        _disconnect_protoset_signals()
-        protoset = new_protoset
-        _prototree = _ProtoTreeCache.get_cached(protoset)
-        _connect_protoset_signals()
-        protoset_changed.emit()
-        update_configuration_warnings()
+	set(new_protoset):
+		if new_protoset == protoset:
+			return
+		clear()
+		_disconnect_protoset_signals()
+		protoset = new_protoset
+		_prototree = _ProtoTreeCache.get_cached(protoset)
+		_connect_protoset_signals()
+		protoset_changed.emit()
+		update_configuration_warnings()
 
 var _prototree := _ProtoTreeCache.get_empty()
 
 var _items: Array[InventoryItem] = []
 var _constraint_manager: _ConstraintManager = null
 var _serialized_format: Dictionary:
-    set(new_serialized_format):
-        _serialized_format = new_serialized_format
+	set(new_serialized_format):
+		_serialized_format = new_serialized_format
 
 
 ## Returns the inventory prototree parsed from the protoset JSON resource.
 func get_prototree() -> ProtoTree:
-    # TODO: Consider returning null when protoset is null
-    return _prototree
+	# TODO: Consider returning null when protoset is null
+	return _prototree
 
 
 func _disconnect_protoset_signals() -> void:
-    if !is_instance_valid(protoset):
-        return
-    protoset.changed.disconnect(_on_protoset_changed)
+	if !is_instance_valid(protoset):
+		return
+	protoset.changed.disconnect(_on_protoset_changed)
 
 
 func _connect_protoset_signals() -> void:
-    if !is_instance_valid(protoset):
-        return
-    protoset.changed.connect(_on_protoset_changed)
+	if !is_instance_valid(protoset):
+		return
+	protoset.changed.connect(_on_protoset_changed)
 
 
 func _on_protoset_changed() -> void:
-    protoset_changed.emit()
+	protoset_changed.emit()
 
-    
+	
 func _get_property_list():
-    return [
-        {
-            "name": "_serialized_format",
-            "type": TYPE_DICTIONARY,
-            "usage": PROPERTY_USAGE_STORAGE
-        },
-    ]
+	return [
+		{
+			"name": "_serialized_format",
+			"type": TYPE_DICTIONARY,
+			"usage": PROPERTY_USAGE_STORAGE
+		},
+	]
 
 
 func _update_serialized_format() -> void:
-    if Engine.is_editor_hint():
-        _serialized_format = serialize()
+	if Engine.is_editor_hint():
+		_serialized_format = serialize()
 
 
 func _get_configuration_warnings() -> PackedStringArray:
-    if protoset == null:
-        return PackedStringArray([
-                "This inventory node has no prototree. Set the 'protoset' field to be able to " \
-                + "populate the inventory with items."])
-    return PackedStringArray()
+	if protoset == null:
+		return PackedStringArray([
+				"This inventory node has no prototree. Set the 'protoset' field to be able to " \
+				+ "populate the inventory with items."])
+	return PackedStringArray()
 
 
 func _init() -> void:
-    _constraint_manager = _ConstraintManager.new(self)
-    _constraint_manager.constraint_changed.connect(_on_constraint_changed)
+	_constraint_manager = _ConstraintManager.new(self)
+	_constraint_manager.constraint_changed.connect(_on_constraint_changed)
 
 
 func _on_constraint_changed(constraint: InventoryConstraint) -> void:
-    _update_serialized_format()
-    constraint_changed.emit(constraint)
+	_update_serialized_format()
+	constraint_changed.emit(constraint)
 
 
 func _ready() -> void:
-    renamed.connect(_update_serialized_format)
+	renamed.connect(_update_serialized_format)
 
-    if !_serialized_format.is_empty():
-        deserialize(_serialized_format)
+	if !_serialized_format.is_empty():
+		deserialize(_serialized_format)
 
-    for item in get_items():
-        _connect_item_signals(item)
+	for item in get_items():
+		_connect_item_signals(item)
 
 
 ## Moves the item at the given index in the inventory to a new index.
 func move_item(from: int, to: int) -> void:
-    assert(from >= 0)
-    assert(from < _items.size())
-    assert(to >= 0)
-    assert(to < _items.size())
-    if from == to:
-        return
+	assert(from >= 0)
+	assert(from < _items.size())
+	assert(to >= 0)
+	assert(to < _items.size())
+	if from == to:
+		return
 
-    var item = _items[from]
-    _items.remove_at(from)
-    _items.insert(to, item)
-    _update_serialized_format()
+	var item = _items[from]
+	_items.remove_at(from)
+	_items.insert(to, item)
+	_update_serialized_format()
 
-    item_moved.emit()
+	item_moved.emit()
 
 
 ## Returns the index of the given item in the inventory.
 func get_item_index(item: InventoryItem) -> int:
-    return _items.find(item)
+	return _items.find(item)
 
 
 ## Returns the number of items in the inventory.
 func get_item_count() -> int:
-    return _items.size()
+	return _items.size()
 
 
 func _connect_item_signals(item: InventoryItem) -> void:
-    _Utils.safe_connect(item.property_changed, _on_item_property_changed.bind(item))
+	_Utils.safe_connect(item.property_changed, _on_item_property_changed.bind(item))
 
 
 func _disconnect_item_signals(item: InventoryItem) -> void:
-    _Utils.safe_disconnect(item.property_changed, _on_item_property_changed)
+	_Utils.safe_disconnect(item.property_changed, _on_item_property_changed)
 
 
 func _on_item_property_changed(property: String, item: InventoryItem) -> void:
-    _update_serialized_format()
-    _constraint_manager._on_item_property_changed(item, property)
-    item_property_changed.emit(item, property)
+	_update_serialized_format()
+	_constraint_manager._on_item_property_changed(item, property)
+	item_property_changed.emit(item, property)
 
 
 ## Returns an array containing all the items in the inventory.
 func get_items() -> Array[InventoryItem]:
-    return _items
+	return _items
 
 
 ## Checks if the inventory contains the given item.
 func has_item(item: InventoryItem) -> bool:
-    return item in _items
+	return item in _items
 
 
 ## Adds the given item to the inventory.
 func add_item(item: InventoryItem) -> bool:
-    if !can_add_item(item):
-        return false
+	if !can_add_item(item):
+		return false
 
-    _add_item_unsafe(item)
-    return true
+	_add_item_unsafe(item)
+	return true
 
 
 func _add_item_unsafe(item: InventoryItem):
-    if item.get_inventory() != null:
-        item.get_inventory().remove_item(item)
+	if item.get_inventory() != null:
+		item.get_inventory().remove_item(item)
 
-    _items.append(item)
-    _update_serialized_format()
-    item._inventory = self
-    _connect_item_signals(item)
-    _constraint_manager._on_item_added(item)
-    # Adding an item can result in the item being freed (e.g. when it's merged with another item stack)
+	_items.append(item)
+	_update_serialized_format()
+	item._inventory = self
+	_connect_item_signals(item)
+	_constraint_manager._on_item_added(item)
+	# Adding an item can result in the item being freed (e.g. when it's merged with another item stack)
     if !is_instance_valid(item):
         item = null
     item_added.emit(item)
@@ -390,26 +390,26 @@ func split_stack(item: InventoryItem, new_stack_size: int) -> InventoryItem:
 ## enough stack space and `split_source` is set to `true`, `item_src` will be split and only partially merged. Returns
 ## `false` if the merge cannot be performed.
 func merge_stacks(item_dst: InventoryItem, item_src: InventoryItem, split_source: bool = false) -> bool:
-    return _StackManager.inv_merge_stack(self, item_dst, item_src, split_source)
+	return _StackManager.inv_merge_stack(self, item_dst, item_src, split_source)
 
 
 ## Adds the given item to the inventory and merges it with all compatible items. Returns `false` if the item cannot be
 ## added.
 func add_item_automerge(item: InventoryItem) -> bool:
-    return _StackManager.inv_add_automerge(self, item)
+	return _StackManager.inv_add_automerge(self, item)
 
 
 ## Adds the given item to the inventory, splitting it if there is not enough space for the whole stack.
 func add_item_autosplit(item: InventoryItem) -> bool:
-    return _StackManager.inv_add_autosplit(self, item)
+	return _StackManager.inv_add_autosplit(self, item)
 
 
 ## A combination of `add_item_autosplit` and `add_item_automerge`. Adds the given item stack into the inventory, splitting it up
 ## and joining it with available item stacks, as needed.
 func add_item_autosplitmerge(item: InventoryItem) -> bool:
-    return _StackManager.inv_add_autosplitmerge(self, item)
+	return _StackManager.inv_add_autosplitmerge(self, item)
 
 
 ## Merges the given item with all compatible items in the same inventory.
 func pack_item(item: InventoryItem) -> void:
-    return _StackManager.inv_pack_stack(self, item)
+	return _StackManager.inv_pack_stack(self, item)

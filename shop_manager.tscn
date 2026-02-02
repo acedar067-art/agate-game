@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://3eawctg8xuhd"]
+
+[ext_resource type="Script" uid="uid://beys2cydujdy0" path="res://shop_manager.gd" id="1_3rk3w"]
+[ext_resource type="Texture2D" uid="uid://b0iub6puykqdu" path="res://Gemini_Generated_Image_ur85juur85juur85-removebg-preview.png" id="2_8t7m5"]
+[ext_resource type="Texture2D" uid="uid://cnw72vlvl6n1c" path="res://Gemini_Generated_Image_4fmj6s4fmj6s4fmj-removebg-preview.png" id="3_dfcim"]
+[ext_resource type="Texture2D" uid="uid://cw08mlhwmcmxu" path="res://Gemini_Generated_Image_qko9c1qko9c1qko9-removebg-preview.png" id="4_ilwm6"]
+
+[node name="shop_manager" type="CanvasLayer" unique_id=1754504916]
+script = ExtResource("1_3rk3w")
+
+[node name="Panel" type="Panel" parent="." unique_id=980821513]
+offset_left = 328.0
+offset_top = 192.0
+offset_right = 784.0
+offset_bottom = 448.0
+
+[node name="Label" type="Label" parent="Panel" unique_id=97191860]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Coins: 0"
+
+[node name="BesiButton" type="Button" parent="Panel" unique_id=516733596]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.016
+anchor_bottom = 0.059000004
+offset_top = 24.0
+offset_right = 35.904
+offset_bottom = 55.975998
+
+[node name="TextureRect" type="TextureRect" parent="Panel/BesiButton" unique_id=1684951745]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_8t7m5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Panel/BesiButton" unique_id=1026434707]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 10
+text = "20"
+
+[node name="PasirButton" type="Button" parent="Panel" unique_id=1899005825]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.016
+anchor_bottom = 0.059000004
+offset_left = 112.0
+offset_top = 24.0
+offset_right = 147.904
+offset_bottom = 55.975998
+
+[node name="TextureRect" type="TextureRect" parent="Panel/PasirButton" unique_id=1039320087]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_dfcim")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Panel/PasirButton" unique_id=1222335494]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 36.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 10
+text = "15"
+
+[node name="CableButton" type="Button" parent="Panel" unique_id=658308235]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.016
+anchor_bottom = 0.059000004
+offset_left = 56.0
+offset_top = 24.0
+offset_right = 91.904
+offset_bottom = 55.975998
+
+[node name="TextureRect" type="TextureRect" parent="Panel/CableButton" unique_id=2006589740]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_ilwm6")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Panel/CableButton" unique_id=1794640712]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 36.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 10
+text = "10"
+
+[node name="CloseButton" type="Button" parent="Panel" unique_id=221679909]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.016
+anchor_bottom = 0.059000004
+offset_left = 424.0
+offset_top = 8.0
+offset_right = 445.90402
+offset_bottom = 30.976002
+text = "X"
+
+[node name="MessageLabel" type="Label" parent="Panel" unique_id=2024270559]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 104.0
+offset_right = 48.0
+offset_bottom = 127.0

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cmlkv4et1ilt2"]
+
+[ext_resource type="Script" uid="uid://c2ur5cdih5ohs" path="res://air_quality.gd" id="1_5bmat"]
+
+[node name="air_quality" type="CanvasLayer" unique_id=2036983131]
+script = ExtResource("1_5bmat")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1517894633]
+offset_right = 1152.0
+offset_bottom = 648.0

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bs38c6ok1bivt" path="res://shop.gd" id="1_e7rdd"]
 [ext_resource type="Texture2D" uid="uid://4h0nv6i4v7ai" path="res://shop.png" id="2_blqjs"]
+[ext_resource type="PackedScene" uid="uid://3eawctg8xuhd" path="res://shop_manager.tscn" id="2_fgaav"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7rdd"]
 size = Vector2(64, 64)
@@ -22,10 +23,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmb2m"]
-size = Vector2(52, 60)
+size = Vector2(96, 96)
 
-[node name="shop" type="CharacterBody2D" unique_id=1992342801]
+[node name="shop" type="Area2D" unique_id=1985890452]
+z_index = 50
 script = ExtResource("1_e7rdd")
+shop_ui_scene = ExtResource("2_fgaav")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1090736630]
 position = Vector2(0, -2.2737368e-13)

@@ -21,109 +21,109 @@ const _Utils = preload("res://addons/gloot/core/utils.gd")
 
 
 class PriorityPanel extends Panel:
-    enum StylePriority {HIGH = 0, MEDIUM = 1, LOW = 2}
+	enum StylePriority {HIGH = 0, MEDIUM = 1, LOW = 2}
 
-    var regular_style: StyleBox
-    var hover_style: StyleBox
-    var _styles: Array[StyleBox] = [null, null, null]
-
-
-    func _init(regular_style_: StyleBox = null, hover_style_: StyleBox = null) -> void:
-        regular_style = regular_style_
-        hover_style = hover_style_
+	var regular_style: StyleBox
+	var hover_style: StyleBox
+	var _styles: Array[StyleBox] = [null, null, null]
 
 
-    func _ready() -> void:
-        set_style(regular_style)
-        mouse_entered.connect(func():
-            set_style(hover_style)
-        )
-        mouse_exited.connect(func():
-            set_style(regular_style)
-        )
+	func _init(regular_style_: StyleBox = null, hover_style_: StyleBox = null) -> void:
+		regular_style = regular_style_
+		hover_style = hover_style_
 
 
-    func set_style(style: StyleBox, priority: int = StylePriority.LOW) -> void:
-        if priority > 2 || priority < 0:
-            return
-        if _styles[priority] == style:
-            return
-
-        _styles[priority] = style
-
-        for i in range(0, 3):
-            if _styles[i] != null:
-                _set_panel_style(_styles[i])
-                return
+	func _ready() -> void:
+		set_style(regular_style)
+		mouse_entered.connect(func():
+			set_style(hover_style)
+		)
+		mouse_exited.connect(func():
+			set_style(regular_style)
+		)
 
 
-    func _set_panel_style(style: StyleBox) -> void:
-        remove_theme_stylebox_override("panel")
-        if style != null:
-            add_theme_stylebox_override("panel", style)
+	func set_style(style: StyleBox, priority: int = StylePriority.LOW) -> void:
+		if priority > 2 || priority < 0:
+			return
+		if _styles[priority] == style:
+			return
+
+		_styles[priority] = style
+
+		for i in range(0, 3):
+			if _styles[i] != null:
+				_set_panel_style(_styles[i])
+				return
+
+
+	func _set_panel_style(style: StyleBox) -> void:
+		remove_theme_stylebox_override("panel")
+		if style != null:
+			add_theme_stylebox_override("panel", style)
 
 
 class CustomizablePanel extends Panel:
-    func set_style(style: StyleBox) -> void:
-        remove_theme_stylebox_override("panel")
-        if style != null:
-            add_theme_stylebox_override("panel", style)
+	func set_style(style: StyleBox) -> void:
+		remove_theme_stylebox_override("panel")
+		if style != null:
+			add_theme_stylebox_override("panel", style)
 
 ## Reference to an inventory with a GridConstraint that is being displayed.
 @export var inventory: Inventory = null:
-    set(new_inventory):
-        if inventory == new_inventory:
-            return
+	set(new_inventory):
+		if inventory == new_inventory:
+			return
 
-        _disconnect_inventory_signals()
-        inventory = new_inventory
-        _connect_inventory_signals()
+		_disconnect_inventory_signals()
+		inventory = new_inventory
+		_connect_inventory_signals()
 
-        if is_instance_valid(_ctrl_inventory_grid_basic):
-            _ctrl_inventory_grid_basic.inventory = inventory
-        _queue_refresh()
-        update_configuration_warnings()
+		if is_instance_valid(_ctrl_inventory_grid_basic):
+			_ctrl_inventory_grid_basic.inventory = inventory
+		_queue_refresh()
+		update_configuration_warnings()
 ## If enabled, stretches the icons based on `field_dimensions`.
 @export var stretch_item_icons: bool = true:
-    set(new_stretch_item_icons):
-        if is_instance_valid(_ctrl_inventory_grid_basic):
-            _ctrl_inventory_grid_basic.stretch_item_icons = new_stretch_item_icons
-        stretch_item_icons = new_stretch_item_icons
+	set(new_stretch_item_icons):
+		if is_instance_valid(_ctrl_inventory_grid_basic):
+			_ctrl_inventory_grid_basic.stretch_item_icons = new_stretch_item_icons
+		stretch_item_icons = new_stretch_item_icons
 ## Size of individual fields in the grid.
 @export var field_dimensions: Vector2 = Vector2(32, 32):
-    set(new_field_dimensions):
-        if is_instance_valid(_ctrl_inventory_grid_basic):
-            _ctrl_inventory_grid_basic.field_dimensions = new_field_dimensions
-        field_dimensions = new_field_dimensions
-        _queue_refresh()
+	set(new_field_dimensions):
+		if is_instance_valid(_ctrl_inventory_grid_basic):
+			_ctrl_inventory_grid_basic.field_dimensions = new_field_dimensions
+		field_dimensions = new_field_dimensions
+		_queue_refresh()
 ## Spacing between grid fields.
 @export var item_spacing: int = 0:
-    set(new_item_spacing):
-        if is_instance_valid(_ctrl_inventory_grid_basic):
-            _ctrl_inventory_grid_basic.item_spacing = new_item_spacing
-        item_spacing = new_item_spacing
-        _queue_refresh()
+	set(new_item_spacing):
+		if is_instance_valid(_ctrl_inventory_grid_basic):
+			_ctrl_inventory_grid_basic.item_spacing = new_item_spacing
+		item_spacing = new_item_spacing
+		_queue_refresh()
 ## Item selection mode. Set to SelectMode.SELECT_MULTI to enable selecting multiple items by holding down CTRL. See the
 ## `ItemList.SelectMode` constants for details.
 @export_enum("Single", "Multi") var select_mode: int = ItemList.SelectMode.SELECT_SINGLE:
-    set(new_select_mode):
-        if select_mode == new_select_mode:
-            return
-        select_mode = new_select_mode
-        if is_instance_valid(_ctrl_inventory_grid_basic):
-            _ctrl_inventory_grid_basic.select_mode = select_mode
+	set(new_select_mode):
+		if select_mode == new_select_mode:
+			return
+		select_mode = new_select_mode
+		if is_instance_valid(_ctrl_inventory_grid_basic):
+			_ctrl_inventory_grid_basic.select_mode = select_mode
 ## Custom control scene representing an `InventoryItem` (must inherit `CtrlInventoryItemBase`). If set to `null`,
 ## `CtrlInventoryItem` will be used to represent the item.
 @export var custom_item_control_scene: PackedScene = null:
-    set(new_custom_item_control_scene):
-        if new_custom_item_control_scene == custom_item_control_scene:
-            return
-        if !_valid_custom_item_control_scene(new_custom_item_control_scene):
-            push_error("Invalid scene! Make sure the custom item control scene inherits from CtrlInventoryItemBase!")
-            return
-        custom_item_control_scene = new_custom_item_control_scene
-        if is_instance_valid(_ctrl_inventory_grid_basic):
-            _ctrl_inventory_grid_basic.custom_item_control_scene = custom_item_control_scene
+	set(new_custom_item_control_scene):
+		if new_custom_item_control_scene == custom_item_control_scene:
+			return
+		if !_valid_custom_item_control_scene(new_custom_item_control_scene):
+			push_error("Invalid scene! Make sure the custom item control scene inherits from CtrlInventoryItemBase!")
+			return
+		custom_item_control_scene = new_custom_item_control_scene
+		if is_instance_valid(_ctrl_inventory_grid_basic):
+			_ctrl_inventory_grid_basic.custom_item_control_scene = custom_item_control_scene
 ## Multiplies the color of the item's texture when dragging.
 @export var drag_tint := Color.WHITE:
     set(new_drag_tint):
@@ -215,7 +215,7 @@ func _get_field_selected_style() -> StyleBox:
 func _get_configuration_warnings() -> PackedStringArray:
     if !is_instance_valid(inventory):
         return PackedStringArray([
-                "This CtrlInventoryGrid node has no inventory set. Set the 'inventory' field to be able to " \
+				"This CtrlInventoryGrid node has no inventory set. Set the 'inventory' field to be able to " \
                 + "display its contents."])
     if inventory.get_constraint(GridConstraint) == null:
         return PackedStringArray([
