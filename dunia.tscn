@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://cmlkv4et1ilt2" path="res://air_quality.tscn" id="1_0safm"]
 [ext_resource type="Texture2D" uid="uid://dpyv016q3dpqj" path="res://arts/tilesets/spr_tileset_sunnysideworld_16px.png" id="1_c41f1"]
 [ext_resource type="PackedScene" uid="uid://xoj34jmedj0i" path="res://quest_progress_ui.tscn" id="1_ckdwd"]
-[ext_resource type="PackedScene" uid="uid://bhj1mky26k6qq" path="res://custom_ballon.tscn" id="1_s33rg"]
 [ext_resource type="PackedScene" uid="uid://56eslpi2s0n4" path="res://trash_spawner.tscn" id="1_wgj0k"]
 [ext_resource type="Texture2D" uid="uid://cjwgf7tknr0v1" path="res://arts/tilesets/SunnysideWorld_Tileset_V0.1.png" id="2_qd6tr"]
 [ext_resource type="Texture2D" uid="uid://cts6tbph3nrop" path="res://arts/objects/objects.png" id="3_i6oci"]
@@ -5153,8 +5152,6 @@ sources/0 = SubResource("TileSetAtlasSource_j6kj6")
 y_sort_enabled = true
 position = Vector2(-201, -407)
 metadata/_edit_vertical_guides_ = [-568.0]
-
-[node name="custom_ballon" parent="." unique_id=487741153 instance=ExtResource("1_s33rg")]
 
 [node name="shop_manager" parent="." unique_id=1726327326 instance=ExtResource("20_fub3s")]
 
