@@ -24,8 +24,11 @@ func _ready() -> void:
 	if GameManager.has_signal("quest_failed_signal"):
 		GameManager.quest_failed_signal.connect(_on_quest_failed)
 	
-	# Set initial state - udara kotor
-	set_polluted(true)
+	# Check initial state based on game progress
+	if GameManager.all_quests_done():
+		set_polluted(false)
+	else:
+		set_polluted(true)
 	print("[AirQuality] Initialized - Air is polluted")
 
 func _process(delta: float) -> void:

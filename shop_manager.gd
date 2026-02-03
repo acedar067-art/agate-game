@@ -106,6 +106,10 @@ func open_shop() -> void:
 	get_tree().paused = false  # Atau true jika mau pause game
 	print("[Shop] Shop opened")
 
+signal shop_closed
+
+# ...
+
 func close_shop() -> void:
 	is_open = false
 	visible = false
@@ -116,6 +120,7 @@ func close_shop() -> void:
 		panel.visible = false
 		panel.modulate.a = 1.0  # Reset alpha
 	
+	shop_closed.emit()
 	print("[Shop] Shop closed")
 
 func buy_item(item_id: String) -> void:

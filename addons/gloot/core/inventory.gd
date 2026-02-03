@@ -186,204 +186,204 @@ func _add_item_unsafe(item: InventoryItem):
 	_connect_item_signals(item)
 	_constraint_manager._on_item_added(item)
 	# Adding an item can result in the item being freed (e.g. when it's merged with another item stack)
-    if !is_instance_valid(item):
-        item = null
-    item_added.emit(item)
+	if !is_instance_valid(item):
+		item = null
+	item_added.emit(item)
 
 
 ## Checks if the given item can be added to the inventory.
 func can_add_item(item: InventoryItem) -> bool:
-    if item == null || has_item(item):
-        return false
-        
-    if !_constraint_manager.has_space_for(item):
-        return false
+	if item == null || has_item(item):
+		return false
+		
+	if !_constraint_manager.has_space_for(item):
+		return false
 
-    return true
+	return true
 
 
 ## Creates an `InventoryItem` based on the prototype ID.
 func create_item(prototype_id: String) ->InventoryItem:
-    var item: InventoryItem = InventoryItem.new(protoset, prototype_id)
-    return item
+	var item: InventoryItem = InventoryItem.new(protoset, prototype_id)
+	return item
 
 
 ## Creates an `InventoryItem` based on the given prototype ID and adds it to the inventory. Returns `null` if the item
 ## cannot be added.
 func create_and_add_item(prototype_id: String) -> InventoryItem:
-    var item: InventoryItem = InventoryItem.new(protoset, prototype_id)
-    if add_item(item):
-        return item
-    else:
-        return null
+	var item: InventoryItem = InventoryItem.new(protoset, prototype_id)
+	if add_item(item):
+		return item
+	else:
+		return null
 
 
 ## Removes the given item from the inventory. Returns `false` if the item is not inside the inventory.
 func remove_item(item: InventoryItem) -> bool:
-    if !_can_remove_item(item):
-        return false
+	if !_can_remove_item(item):
+		return false
 
-    _items.erase(item)
-    _update_serialized_format()
-    item._inventory = null
-    _disconnect_item_signals(item)
-    _constraint_manager._on_item_removed(item)
-    item_removed.emit(item)
-    return true
+	_items.erase(item)
+	_update_serialized_format()
+	item._inventory = null
+	_disconnect_item_signals(item)
+	_constraint_manager._on_item_removed(item)
+	item_removed.emit(item)
+	return true
 
 
 func _can_remove_item(item: InventoryItem) -> bool:
-    return item != null && has_item(item)
+	return item != null && has_item(item)
 
 
 ## Returns the first found item with the given prototype ID. 
 func get_item_with_prototype_id(prototype_id: String) -> InventoryItem:
-    for item in get_items():
-        if !is_instance_valid(item.get_prototype()):
-            continue
-        if item.get_prototype().get_prototype_id() == prototype_id:
-            return item
-            
-    return null
+	for item in get_items():
+		if !is_instance_valid(item.get_prototype()):
+			continue
+		if item.get_prototype().get_prototype_id() == prototype_id:
+			return item
+			
+	return null
 
 
 ## Returns an array of all the items with the given prototype ID.
 func get_items_with_prototype_id(prototype_id: String) -> Array[InventoryItem]:
-    var result: Array[InventoryItem] = []
+	var result: Array[InventoryItem] = []
 
-    for item in get_items():
-        if !is_instance_valid(item.get_prototype()):
-            continue
-        if item.get_prototype().get_prototype_id() == prototype_id:
-            result.append(item)
-            
-    return result
+	for item in get_items():
+		if !is_instance_valid(item.get_prototype()):
+			continue
+		if item.get_prototype().get_prototype_id() == prototype_id:
+			result.append(item)
+			
+	return result
 
 
 ## Checks if the inventory has an item with the given prototype ID.
 func has_item_with_prototype_id(prototype_id: String) -> bool:
-    return get_item_with_prototype_id(prototype_id) != null
+	return get_item_with_prototype_id(prototype_id) != null
 
 
 func _on_constraint_added(constraint: InventoryConstraint) -> void:
-    _constraint_manager.register_constraint(constraint)
-    constraint_added.emit(constraint)
+	_constraint_manager.register_constraint(constraint)
+	constraint_added.emit(constraint)
 
-    
+	
 func _on_constraint_removed(constraint: InventoryConstraint) -> void:
-    _constraint_manager.unregister_constraint(constraint)
-    constraint_removed.emit(constraint)
+	_constraint_manager.unregister_constraint(constraint)
+	constraint_removed.emit(constraint)
 
 
 ## Returns the inventory constraint of the given type (script). Returns `null` if the inventory has no constraints of
 ## that type.
 func get_constraint(script: Script) -> InventoryConstraint:
-    return _constraint_manager.get_constraint(script)
+	return _constraint_manager.get_constraint(script)
 
 
 ## Removes all items from the inventory and sets its protoset to `null`.
 func reset() -> void:
-    clear()
-    protoset = null
+	clear()
+	protoset = null
 
 
 ## Removes all the items from the inventory.
 func clear() -> void:
-    while _items.size() > 0:
-        remove_item(_items[0])
-    _update_serialized_format()
+	while _items.size() > 0:
+		remove_item(_items[0])
+	_update_serialized_format()
 
 
 ## Serializes the inventory into a `Dictionary`.
 func serialize() -> Dictionary:
-    var result: Dictionary = {}
+	var result: Dictionary = {}
 
-    if protoset == null || _constraint_manager == null:
-        return result
+	if protoset == null || _constraint_manager == null:
+		return result
 
-    result[_KEY_NODE_NAME] = name as String
-    result[_KEY_PROTOSET] = _serialize_protoset(protoset)
-    if !_constraint_manager.is_empty():
-        result[_KEY_CONSTRAINTS] = _constraint_manager.serialize()
-    if !get_items().is_empty():
-        result[_KEY_ITEMS] = []
-        for item in get_items():
-            result[_KEY_ITEMS].append(item.serialize())
+	result[_KEY_NODE_NAME] = name as String
+	result[_KEY_PROTOSET] = _serialize_protoset(protoset)
+	if !_constraint_manager.is_empty():
+		result[_KEY_CONSTRAINTS] = _constraint_manager.serialize()
+	if !get_items().is_empty():
+		result[_KEY_ITEMS] = []
+		for item in get_items():
+			result[_KEY_ITEMS].append(item.serialize())
 
-    return result
+	return result
 
 
 static func _serialize_protoset(protoset: JSON) -> String:
-    if !is_instance_valid(protoset):
-        return ""
-    elif protoset.resource_path.is_empty():
-        return protoset.stringify(protoset.data)
-    else:
-        return protoset.resource_path
+	if !is_instance_valid(protoset):
+		return ""
+	elif protoset.resource_path.is_empty():
+		return protoset.stringify(protoset.data)
+	else:
+		return protoset.resource_path
 
 
 ## Loads the inventory data from the given `Dictionary`.
 func deserialize(source: Dictionary) -> bool:
-    if !_Verify.dict(source, true, _KEY_NODE_NAME, TYPE_STRING) || \
-        !_Verify.dict(source, true, _KEY_PROTOSET, TYPE_STRING) || \
-        !_Verify.dict(source, false, _KEY_ITEMS, TYPE_ARRAY, TYPE_DICTIONARY) || \
-        !_Verify.dict(source, false, _KEY_CONSTRAINTS, TYPE_DICTIONARY):
-        return false
+	if !_Verify.dict(source, true, _KEY_NODE_NAME, TYPE_STRING) || \
+		!_Verify.dict(source, true, _KEY_PROTOSET, TYPE_STRING) || \
+		!_Verify.dict(source, false, _KEY_ITEMS, TYPE_ARRAY, TYPE_DICTIONARY) || \
+		!_Verify.dict(source, false, _KEY_CONSTRAINTS, TYPE_DICTIONARY):
+		return false
 
-    clear()
-    protoset = null
+	clear()
+	protoset = null
 
-    if !source[_KEY_NODE_NAME].is_empty() && source[_KEY_NODE_NAME] != name:
-        name = source[_KEY_NODE_NAME]
-    protoset = _Utils._deserialize_protoset(source[_KEY_PROTOSET])
-    # TODO: Check return value:
-    if source.has(_KEY_ITEMS):
-        var items = source[_KEY_ITEMS]
-        for item_dict in items:
-            var item = InventoryItem.new()
-            # TODO: Check return value:
-            item.deserialize(item_dict)
-            _add_item_unsafe(item)
-    if source.has(_KEY_CONSTRAINTS):
-        if !_constraint_manager.deserialize(source[_KEY_CONSTRAINTS]):
-            return false
+	if !source[_KEY_NODE_NAME].is_empty() && source[_KEY_NODE_NAME] != name:
+		name = source[_KEY_NODE_NAME]
+	protoset = _Utils._deserialize_protoset(source[_KEY_PROTOSET])
+	# TODO: Check return value:
+	if source.has(_KEY_ITEMS):
+		var items = source[_KEY_ITEMS]
+		for item_dict in items:
+			var item = InventoryItem.new()
+			# TODO: Check return value:
+			item.deserialize(item_dict)
+			_add_item_unsafe(item)
+	if source.has(_KEY_CONSTRAINTS):
+		if !_constraint_manager.deserialize(source[_KEY_CONSTRAINTS]):
+			return false
 
-    return true
+	return true
 
 
 func _deserialize_undoable(source: Dictionary) -> bool:
-    # ConstraintManager.deserialize() results in weird behavior when used for undo/redo
-    # operations due to the creation of new nodes. ConstraintManager._deserialize_undoable()
-    # should reuse existing nodes instead, but has some other limitations.
+	# ConstraintManager.deserialize() results in weird behavior when used for undo/redo
+	# operations due to the creation of new nodes. ConstraintManager._deserialize_undoable()
+	# should reuse existing nodes instead, but has some other limitations.
 
-    if !_Verify.dict(source, true, _KEY_NODE_NAME, TYPE_STRING) || \
-        !_Verify.dict(source, false, _KEY_ITEMS, TYPE_ARRAY, TYPE_DICTIONARY) || \
-        !_Verify.dict(source, false, _KEY_CONSTRAINTS, TYPE_DICTIONARY):
-        return false
+	if !_Verify.dict(source, true, _KEY_NODE_NAME, TYPE_STRING) || \
+		!_Verify.dict(source, false, _KEY_ITEMS, TYPE_ARRAY, TYPE_DICTIONARY) || \
+		!_Verify.dict(source, false, _KEY_CONSTRAINTS, TYPE_DICTIONARY):
+		return false
 
-    clear()
+	clear()
 
-    if !source[_KEY_NODE_NAME].is_empty() && source[_KEY_NODE_NAME] != name:
-        name = source[_KEY_NODE_NAME]
-    # TODO: Check return value:
-    if source.has(_KEY_ITEMS):
-        var items = source[_KEY_ITEMS]
-        for item_dict in items:
-            var item = InventoryItem.new()
-            # TODO: Check return value:
-            item.deserialize(item_dict)
-            _add_item_unsafe(item)
-    if source.has(_KEY_CONSTRAINTS):
-        if !_constraint_manager._deserialize_undoable(source[_KEY_CONSTRAINTS]):
-            return false
-    return true
+	if !source[_KEY_NODE_NAME].is_empty() && source[_KEY_NODE_NAME] != name:
+		name = source[_KEY_NODE_NAME]
+	# TODO: Check return value:
+	if source.has(_KEY_ITEMS):
+		var items = source[_KEY_ITEMS]
+		for item_dict in items:
+			var item = InventoryItem.new()
+			# TODO: Check return value:
+			item.deserialize(item_dict)
+			_add_item_unsafe(item)
+	if source.has(_KEY_CONSTRAINTS):
+		if !_constraint_manager._deserialize_undoable(source[_KEY_CONSTRAINTS]):
+			return false
+	return true
 
 
 ## Splits the given item stack into two within the inventory. `new_stack_size` defines the size of the new stack,
 ## which is added to the inventory. Returns `null` if the split cannot be performed or if the new stack cannot be added
 ## to the inventory.
 func split_stack(item: InventoryItem, new_stack_size: int) -> InventoryItem:
-    return _StackManager.inv_split_stack(self, item, _ItemCount.new(new_stack_size))
+	return _StackManager.inv_split_stack(self, item, _ItemCount.new(new_stack_size))
 
 
 ## Merges the `item_src` item stack into the `item_dst` stack which is inside the inventory. If `item_dst` doesn't have

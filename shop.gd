@@ -20,6 +20,9 @@ func _ready():
 	
 	if shop_gui:
 		print("[Shop] Connected to Shop UI: ", shop_gui.name)
+		# Listen to UI closing signal
+		if shop_gui.has_signal("shop_closed"):
+			shop_gui.shop_closed.connect(_on_shop_closed_from_ui)
 	else:
 		print("[Shop] ERROR: shop_manager UI not found in scene!")
 
@@ -92,3 +95,15 @@ func _on_body_exited(body):
 		if shop_gui and shop_gui.visible:
 			close_shop()
 		player_ref = null
+
+func _on_shop_closed_from_ui() -> void:
+	# Called when X button pressed in UI
+	# Only unfreeze, don't call close_shop() recursively
+	
+	# Unfreeze player
+	if player_ref:
+		print("[Shop] Shop UI closed via X - Unfreezing player")
+		player_ref.set("can_move", true)
+	else:
+		var p = get_tree().get_first_node_in_group("player")
+		if p: p.set("can_move", true)
