@@ -24,12 +24,12 @@ text = "Coins: 0"
 z_index = 12
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.016
-anchor_bottom = 0.059000004
+anchor_right = 0.32900003
+anchor_bottom = 0.609
 offset_left = 86.0
 offset_top = 91.0
-offset_right = 142.704
-offset_bottom = 140.896
+offset_right = -0.024017334
+offset_bottom = 0.09599304
 
 [node name="TextureRect" type="TextureRect" parent="Panel/BesiButton" unique_id=1684951745]
 layout_mode = 0

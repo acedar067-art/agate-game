@@ -25,6 +25,13 @@ func _ready():
 	start_pos = position
 	$AnimatedSprite2D.play("idle")
 	
+	# Auto-load resource jika null (Fallback)
+	if not dialogue_resource:
+		if ResourceLoader.exists("res://tina_dialogue.dialogue"):
+			dialogue_resource = load("res://tina_dialogue.dialogue")
+		elif ResourceLoader.exists("res://npc_dialogue.dialogue"):
+			dialogue_resource = load("res://npc_dialogue.dialogue")
+	
 	# Connect to dialogue signals
 	if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_ended):
 		DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
