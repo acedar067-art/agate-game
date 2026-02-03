@@ -96,13 +96,13 @@ func update_ui() -> void:
 	# Update button texts with prices and owned count
 	if besi_btn:
 		var owned = GameManager.inventory.besi
-		besi_btn.text = "Besi (20) [" + str(owned) + "]"
+		besi_btn.text = " [" + str(owned) + "]"
 	if pasir_btn:
 		var owned = GameManager.inventory.pasir
-		pasir_btn.text = "Pasir (15) [" + str(owned) + "]"
+		pasir_btn.text = "[" + str(owned) + "]"
 	if cable_btn:
 		var owned = GameManager.inventory.cable_ties
-		cable_btn.text = "Cable Ties (10) [" + str(owned) + "]"
+		cable_btn.text = " [" + str(owned) + "]"
 
 func show_message(msg: String) -> void:
 	if message_label:
