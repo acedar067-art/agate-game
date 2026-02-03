@@ -24,6 +24,10 @@ func _ready():
 	randomize()
 	start_pos = position
 	$AnimatedSprite2D.play("idle")
+	
+	# Connect to dialogue signals
+	if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_ended):
+		DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
 func choose(array):
 	array.shuffle()
@@ -43,7 +47,7 @@ func start_dialogue():
 
 	var dialogue_title = "start"
 
-	# Check quest states
+	# Check quest states (urutan penting!)
 	if GameManager.all_quests_done():
 		dialogue_title = "all_quests_done"
 	elif GameManager.quest_failed:
@@ -51,25 +55,26 @@ func start_dialogue():
 	elif GameManager.quest_completed:
 		if GameManager.quest_times_completed == 1:
 			dialogue_title = "quest_completed_first"
+		# Quest 2 complete belum ada dialogue, use all_quests_done
 	elif GameManager.quest_active:
 		if GameManager.can_complete_quest():
 			dialogue_title = "quest_ready_complete"
 		else:
 			dialogue_title = "quest_in_progress"
-	elif GameManager.can_retry_quest():
-		dialogue_title = "quest_retry"
+	# Else: use "start" untuk new quest
 
 	if dialogue_resource:
 		print("Tina dialogue showing: ", dialogue_title)
+		# Use DialogueManager's main API
 		DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_title)
-		DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+		is_chatting = true
 	else:
 		print("ERROR: dialogue_resource is null!")
+		is_chatting = false
 
 func _on_dialogue_ended(_resource):
 	print("Tina dialogue ended")
 	is_chatting = false
-	DialogueManager.dialogue_ended.disconnect(_on_dialogue_ended)
 
 func _on_chat_detection_area_body_entered(body: Node2D) -> void:
 	print("Body entered Tina zone: ", body.name)
