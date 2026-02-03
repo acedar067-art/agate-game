@@ -39,14 +39,7 @@ func _ready() -> void:
 	
 	update_ui()
 
-func _input(event: InputEvent) -> void:
-	# Toggle shop dengan tombol tertentu (misal: B)
-	if event is InputEventKey:
-		if event.keycode == KEY_B and event.pressed:
-			toggle_shop()
-		# ESC untuk tutup
-		if event.keycode == KEY_ESCAPE and event.pressed and is_open:
-			close_shop()
+# Input handling removed - handled by shop.gd interaction area
 
 func toggle_shop() -> void:
 	if is_open:
@@ -57,6 +50,12 @@ func toggle_shop() -> void:
 func open_shop() -> void:
 	is_open = true
 	visible = true
+	
+	# Make sure Panel is visible too
+	var panel = get_node_or_null("Panel")
+	if panel:
+		panel.visible = true
+	
 	update_ui()
 	get_tree().paused = false  # Atau true jika mau pause game
 	print("[Shop] Shop opened")

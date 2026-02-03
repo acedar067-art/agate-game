@@ -53,6 +53,7 @@ radius = 8.0
 script = ExtResource("1_0t63x")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1968433105]
+position = Vector2(10, 10)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=1112785826]
 sprite_frames = SubResource("SpriteFrames_o4fra")
