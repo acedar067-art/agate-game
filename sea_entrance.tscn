@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cibhifj8m1y7t" path="res://sea_entrance.gd" id="1_3l1cg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qc06q"]
+size = Vector2(16, 16)
 
 [node name="SeaEntrance" type="Area2D" unique_id=877521688]
 script = ExtResource("1_3l1cg")

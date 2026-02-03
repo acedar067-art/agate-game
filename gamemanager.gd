@@ -23,6 +23,10 @@ var coins: int = 0
 const SAVE_PATH = "user://coins.txt"
 const QUEST_REWARD = 100  # Coin reward per quest
 
+# Spawn Position Management
+var spawn_at_bridge: bool = false
+var intro_shown: bool = false
+
 # === INVENTORY (Simple) ===
 var inventory = {
 	"besi": 0,

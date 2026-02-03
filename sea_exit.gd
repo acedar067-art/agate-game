@@ -12,17 +12,24 @@ func _ready() -> void:
 	body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == "player" or body.name == "player_berenang" or body.is_in_group("player"):
+	print("[SeaExit] Detected body entered: ", body.name)
+	if body.name == "player" or body.name == "player_berenang" or body.name == "player_swim" or body.is_in_group("player"):
 		player_in_area = true
-		print("[SeaExit] Tekan H untuk naik ke permukaan")
+		print("[SeaExit] Player detected! PRESS 'H' TO SURFACE")
 
 func _on_body_exited(body: Node2D) -> void:
-	if body.name == "player" or body.name == "player_berenang" or body.is_in_group("player"):
+	if body.name == "player" or body.name == "player_berenang" or body.name == "player_swim" or body.is_in_group("player"):
 		player_in_area = false
+		print("[SeaExit] Player left exit area")
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if player_in_area:
 		if event is InputEventKey:
 			if event.keycode == KEY_H and event.pressed:
-				print("[SeaExit] Naik ke permukaan!")
+				print("[SeaExit] H Pressed! Changing scene...")
+				# Set spawn flag so player appears at bridge in world
+				GameManager.spawn_at_bridge = true
+				
+				# Optional: Disable input to prevent double trigger
+				player_in_area = false
 				get_tree().change_scene_to_file(target_scene)
