@@ -25,7 +25,8 @@ func _ready() -> void:
 		GameManager.quest_failed_signal.connect(_on_quest_failed)
 	
 	# Check initial state based on game progress
-	if GameManager.all_quests_done():
+	# Jika sudah menyelesaikan minimal 1 quest, anggap udara bersih
+	if GameManager.quest_times_completed > 0:
 		set_polluted(false)
 	else:
 		set_polluted(true)
