@@ -12,8 +12,8 @@ func _ready() -> void:
 	GameManager.quest_started.connect(_on_quest_started)
 
 func _on_quest_started(_spawn_count: int) -> void:
-	# Spawn 12-15 trash items saat quest dimulai
-	var actual_count = randi_range(12, 15)
+	# Spawn 25-30 trash items saat quest dimulai (Increased for visibility)
+	var actual_count = randi_range(25, 30)
 	print("[TrashSpawner] Quest started! Spawning ", actual_count, " trash...")
 	spawn_trash_batch(actual_count)
 
