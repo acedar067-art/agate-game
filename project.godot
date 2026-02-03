@@ -26,6 +26,7 @@ GameManager="*res://gamemanager.gd"
 
 [dialogue_manager]
 
+runtime/balloon_path="uid://bhj1mky26k6qq"
 editor/advanced/custom_test_scene_path="uid://ugd552efvil0"
 
 [editor_plugins]
@@ -79,7 +80,7 @@ pickup={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://npc_dialogue.dialogue", "res://tina_dialogue.dialogue", "res://intro_dialogue.dialogue")
+locale/translations_pot_files=PackedStringArray("res://npc_dialogue.dialogue", "res://tina_dialogue.dialogue", "res://intro_dialogue.dialogue", "res://narration.dialogue")
 
 [rendering]
 

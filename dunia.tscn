@@ -3,7 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://cmlkv4et1ilt2" path="res://air_quality.tscn" id="1_0safm"]
 [ext_resource type="Texture2D" uid="uid://dpyv016q3dpqj" path="res://arts/tilesets/spr_tileset_sunnysideworld_16px.png" id="1_c41f1"]
 [ext_resource type="PackedScene" uid="uid://xoj34jmedj0i" path="res://quest_progress_ui.tscn" id="1_ckdwd"]
+[ext_resource type="Script" uid="uid://cvuf1k8wjd3eh" path="res://dunia.gd" id="1_k2k2b"]
+[ext_resource type="PackedScene" uid="uid://cxref52u1oqng" path="res://coin_display.tscn" id="1_s33rg"]
 [ext_resource type="PackedScene" uid="uid://56eslpi2s0n4" path="res://trash_spawner.tscn" id="1_wgj0k"]
+[ext_resource type="PackedScene" uid="uid://ctkhekh6yeeap" path="res://narration_trigger.tscn" id="2_i7lke"]
 [ext_resource type="Texture2D" uid="uid://cjwgf7tknr0v1" path="res://arts/tilesets/SunnysideWorld_Tileset_V0.1.png" id="2_qd6tr"]
 [ext_resource type="Texture2D" uid="uid://cts6tbph3nrop" path="res://arts/objects/objects.png" id="3_i6oci"]
 [ext_resource type="PackedScene" uid="uid://chvup5q4xn5tg" path="res://player.tscn" id="3_kcb5e"]
@@ -5151,7 +5154,12 @@ sources/0 = SubResource("TileSetAtlasSource_j6kj6")
 [node name="dunia" type="Node2D" unique_id=1407303838]
 y_sort_enabled = true
 position = Vector2(-201, -407)
+script = ExtResource("1_k2k2b")
 metadata/_edit_vertical_guides_ = [-568.0]
+
+[node name="NarrationTrigger" parent="." unique_id=894157302 instance=ExtResource("2_i7lke")]
+
+[node name="coin_display" parent="." unique_id=2106297102 instance=ExtResource("1_s33rg")]
 
 [node name="shop_manager" parent="." unique_id=1726327326 instance=ExtResource("20_fub3s")]
 

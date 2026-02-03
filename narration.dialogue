@@ -1,0 +1,34 @@
+~ intro_start
+Narrator: Di sebuah desa kecil yang damai...
+Narrator: Udara mulai tercemar oleh asap dan limbah.
+Narrator: Laut yang dulu jernih, kini dipenuhi sampah.
+Narrator: Koral-koral di dasar laut rusak dan mati.
+Narrator: ...
+Narrator: Tina, penjaga alam, membutuhkan bantuanmu.
+Narrator: Bisakah kamu menyelamatkan desa ini?
+=> END
+
+~ ending_poem
+Narrator: 🌿 Puisi untuk Pahlawan Alam 🌿
+Narrator: ...
+Narrator: Di bawah langit yang kembali cerah,
+Narrator: Udara segar, tanpa lagi keluh kesah.
+Narrator: ...
+Narrator: Sampah-sampah telah kau bersihkan,
+Narrator: Koral-koral pun telah diperbaiki dengan penuh kesabaran.
+Narrator: ...
+Narrator: Alam tersenyum, berbisik lembut,
+Narrator: "Terima kasih, pahlawan sejati yang teguh."
+Narrator: ...
+Narrator: Jagalah alam, karena ia adalah rumah kita,
+Narrator: Untuk hari ini, esok, dan selamanya.
+Narrator: ...
+Narrator: - Tina, Penjaga Alam
+=> END
+
+~ go_to_sea
+Tina: Kamu sudah membersihkan desa!
+Tina: Tapi masih ada satu tugas terakhir...
+Tina: Pergilah ke laut dan perbaiki koral yang rusak.
+Tina: Aku akan menunggumu di sini.
+=> END

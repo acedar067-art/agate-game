@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cgclpix8pejff"
+path="res://.godot/imported/narration.dialogue-53c5b737f7f8ddc22dcd0755e775db35.tres"
+
+[deps]
+
+source_file="res://narration.dialogue"
+dest_files=["res://.godot/imported/narration.dialogue-53c5b737f7f8ddc22dcd0755e775db35.tres"]
+
+[params]
+
+defaults=true
