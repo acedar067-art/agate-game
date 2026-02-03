@@ -21,16 +21,18 @@ var shop_items = {
 var is_open: bool = false
 
 func _ready() -> void:
+	# Ensure Shop UI is always on top and active
+	layer = 100
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	# Hide shop initially
 	visible = false
 	
-	# Connect buttons
-	if besi_btn:
-		besi_btn.pressed.connect(func(): buy_item("besi"))
-	if pasir_btn:
-		pasir_btn.pressed.connect(func(): buy_item("pasir"))
-	if cable_btn:
-		cable_btn.pressed.connect(func(): buy_item("cable_ties"))
+	# Configure Buttons (Component Based)
+	setup_button(besi_btn, "res://Gemini_Generated_Image_ur85juur85juur85-removebg-preview.png", "besi", 20, "Besi")
+	setup_button(pasir_btn, "res://Gemini_Generated_Image_4fmj6s4fmj6s4fmj-removebg-preview.png", "pasir", 15, "Pasir")
+	setup_button(cable_btn, "res://Gemini_Generated_Image_qko9c1qko9c1qko9-removebg-preview.png", "cable_ties", 10, "Cable")
+	
 	if close_btn:
 		close_btn.pressed.connect(close_shop)
 	
@@ -38,6 +40,50 @@ func _ready() -> void:
 	GameManager.coins_updated.connect(_on_coins_updated)
 	
 	update_ui()
+
+func setup_button(btn: Button, icon_path: String, item_id: String, price: int, item_name: String) -> void:
+	if not btn: return
+	
+	# ATTACH CUSTOM SCRIPT DYNAMICALLY
+	# Ini cara agar button punya logic sendiri sesuai request
+	var component_script = load("res://shop_item_button.gd")
+	if not btn.get_script(): # Only attach if not already attached
+		btn.set_script(component_script)
+		
+	# Configure properties on the new script instance
+	# Karena script baru di-attach, kita akses property-nya
+	btn.item_id = item_id
+	btn.item_name = item_name
+	btn.price = price
+	
+	if ResourceLoader.exists(icon_path):
+		btn.icon_texture = load(icon_path)
+		
+	# Trigger ready manual jika perlu, atau biarkan engine handle saat tree enter
+	# Tapi karena node sudah di tree, _ready mungkin sudah lewat. 
+	# Kita panggil func setup manual atau re-trigger _ready safely?
+	# Script replacement di runtime agak tricky untuk _ready.
+	# Mari kita panggil method manual jika ada.
+	if btn.has_method("_ready"):
+		btn._ready()
+
+# ... (rest of code)
+
+func update_ui() -> void:
+	# Update coin display
+	if coin_label:
+		coin_label.text = "Coins: " + str(GameManager.coins)
+	
+	# Update button texts with prices and owned count
+	if besi_btn:
+		var owned = GameManager.inventory.besi
+		besi_btn.text = "Besi (20 C) [" + str(owned) + "]"
+	if pasir_btn:
+		var owned = GameManager.inventory.pasir
+		pasir_btn.text = "Pasir (15 C) [" + str(owned) + "]"
+	if cable_btn:
+		var owned = GameManager.inventory.cable_ties
+		cable_btn.text = "Cable Ties (10 C) [" + str(owned) + "]"
 
 # Input handling removed - handled by shop.gd interaction area
 
@@ -88,21 +134,7 @@ func buy_item(item_id: String) -> void:
 	else:
 		show_message("Coin tidak cukup! Butuh " + str(price) + " coins")
 
-func update_ui() -> void:
-	# Update coin display
-	if coin_label:
-		coin_label.text = "Coins: " + str(GameManager.coins)
-	
-	# Update button texts with prices and owned count
-	if besi_btn:
-		var owned = GameManager.inventory.besi
-		besi_btn.text = " [" + str(owned) + "]"
-	if pasir_btn:
-		var owned = GameManager.inventory.pasir
-		pasir_btn.text = "[" + str(owned) + "]"
-	if cable_btn:
-		var owned = GameManager.inventory.cable_ties
-		cable_btn.text = " [" + str(owned) + "]"
+
 
 func show_message(msg: String) -> void:
 	if message_label:
