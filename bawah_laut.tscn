@@ -4253,4 +4253,4 @@ position = Vector2(84, 304)
 position = Vector2(137, 192)
 
 [node name="damaged_coral" parent="." unique_id=1641155543 instance=ExtResource("22_j4yrx")]
-position = Vector2(513, 437)
+position = Vector2(496, 437)
