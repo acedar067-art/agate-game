@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cxref52u1oqng" path="res://coin_display.tscn" id="1_s33rg"]
 [ext_resource type="PackedScene" uid="uid://56eslpi2s0n4" path="res://trash_spawner.tscn" id="1_wgj0k"]
 [ext_resource type="PackedScene" uid="uid://ctkhekh6yeeap" path="res://narration_trigger.tscn" id="2_i7lke"]
+[ext_resource type="PackedScene" uid="uid://dsxve5b1tbtg6" path="res://inventory_ui.tscn" id="2_k2k2b"]
 [ext_resource type="Texture2D" uid="uid://cjwgf7tknr0v1" path="res://arts/tilesets/SunnysideWorld_Tileset_V0.1.png" id="2_qd6tr"]
 [ext_resource type="Texture2D" uid="uid://cts6tbph3nrop" path="res://arts/objects/objects.png" id="3_i6oci"]
 [ext_resource type="PackedScene" uid="uid://chvup5q4xn5tg" path="res://player.tscn" id="3_kcb5e"]
@@ -5173,6 +5174,8 @@ y_sort_enabled = true
 position = Vector2(-201, -407)
 script = ExtResource("1_k2k2b")
 metadata/_edit_vertical_guides_ = [-568.0]
+
+[node name="InventoryUI" parent="." unique_id=1923181981 instance=ExtResource("2_k2k2b")]
 
 [node name="NarrationTrigger" parent="." unique_id=894157302 instance=ExtResource("2_i7lke")]
 

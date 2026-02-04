@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dsxve5b1tbtg6"]
+
+[ext_resource type="Script" uid="uid://4fp8dwcryxdd" path="res://inventory_ui.gd" id="1_5v8q7"]
+
+[node name="InventoryUI" type="CanvasLayer" unique_id=1923181981]
+script = ExtResource("1_5v8q7")
+
+[node name="Control" type="Control" parent="." unique_id=1943324830]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 168.0
+offset_bottom = 168.0
+
+[node name="Panel" type="Panel" parent="." unique_id=1671971791]
+offset_left = 256.0
+offset_top = 120.0
+offset_right = 960.0
+offset_bottom = 512.0
+
+[node name="Label" type="Label" parent="Panel" unique_id=642784395]
+layout_mode = 0
+offset_right = 75.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "Inventory"
+
+[node name="ItemGrid" type="GridContainer" parent="Panel" unique_id=1504730295]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="Button" type="Button" parent="Panel" unique_id=1638570143]
+layout_mode = 0
+offset_left = 680.0
+offset_top = 8.0
+offset_right = 698.0
+offset_bottom = 39.0
+text = "X"
+
+[node name="ItemGrid2" type="GridContainer" parent="Panel" unique_id=1846727813]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -20.0
+offset_right = -120.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="ItemGrid3" type="GridContainer" parent="Panel" unique_id=1658886224]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 96.0
+offset_top = -20.0
+offset_right = 136.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
