@@ -15,6 +15,7 @@ var facing_direction: Vector2 = Vector2.RIGHT
 var nearby_coral: Array = []
 
 func _ready() -> void:
+	add_to_group("player") # Ensure detection
 	var anim = get_animasi()
 	if anim:
 		anim.play("swim_idle")

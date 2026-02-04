@@ -25,7 +25,7 @@ func _ready():
 	visible = false
 	
 func _unhandled_input(event):
-	if event.is_action_pressed("open_inventory") or (event is InputEventKey and event.pressed and event.keycode == KEY_I):
+	if event.is_action_pressed("open_inventory") or (event is InputEventKey and event.pressed and event.keycode == KEY_T):
 		toggle_inventory()
 
 func toggle_inventory():

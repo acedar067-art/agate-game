@@ -191,8 +191,8 @@ func _ready() -> void:
 	load_coins()
 
 func _unhandled_input(event: InputEvent) -> void:
-	# DEBUG: Print inventory when 'I' is pressed
-	if event is InputEventKey and event.pressed and event.keycode == KEY_I:
+	# DEBUG: Print inventory when 'T' is pressed
+	if event is InputEventKey and event.pressed and event.keycode == KEY_T:
 		print_inventory_debug()
 
 func all_quests_done() -> bool:

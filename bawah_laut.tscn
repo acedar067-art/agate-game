@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dmdidu3d7rrfo" path="res://angler_fish.tscn" id="18_6mern"]
 [ext_resource type="PackedScene" uid="uid://dc2l4xbaj0ul" path="res://ubur_ubur.tscn" id="19_rjy5g"]
 [ext_resource type="PackedScene" uid="uid://bmqaphievt0c8" path="res://player_swim.tscn" id="21_w6fkj"]
+[ext_resource type="PackedScene" uid="uid://byfa1ogvlholl" path="res://damaged_coral.tscn" id="22_j4yrx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewmgi"]
 texture = ExtResource("1_qfcdp")
@@ -4250,3 +4251,6 @@ position = Vector2(84, 304)
 
 [node name="player_swim" parent="." unique_id=402193575 instance=ExtResource("21_w6fkj")]
 position = Vector2(137, 192)
+
+[node name="damaged_coral" parent="." unique_id=1641155543 instance=ExtResource("22_j4yrx")]
+position = Vector2(513, 437)
