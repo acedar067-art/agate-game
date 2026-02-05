@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameManager="*res://gamemanager.gd"
+AudioManager="*uid://0181fvn5aigb"
 
 [dialogue_manager]
 
@@ -31,7 +32,7 @@ editor/advanced/custom_test_scene_path="uid://ugd552efvil0"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/gloot/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 
