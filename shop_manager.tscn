@@ -18,7 +18,7 @@ offset_bottom = 444.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Coins: 0"
+text = "Shop"
 
 [node name="BesiButton" type="Button" parent="Panel" unique_id=516733596]
 z_index = 12

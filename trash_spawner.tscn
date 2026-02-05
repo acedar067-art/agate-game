@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://56eslpi2s0n4"]
+[gd_scene format=3 uid="uid://56eslpi2s0n4"]
 
 [ext_resource type="Script" uid="uid://cil57crgxg5ka" path="res://trash_spawner.gd" id="1_lpccn"]
 [ext_resource type="Script" uid="uid://ch1b84vv4fgfn" path="res://timer.gd" id="1_o4tsm"]
@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bcrex23csl02d" path="res://node_garbage.tscn" id="3_a5qsu"]
 [ext_resource type="PackedScene" uid="uid://dc2h6ik4qearh" path="res://node_waterbottle.tscn" id="4_j0sgr"]
 
-[node name="trash_spawner" type="Node2D"]
+[node name="trash_spawner" type="Node2D" unique_id=1575426215]
 script = ExtResource("1_lpccn")
 trash_scenes = Array[PackedScene]([ExtResource("2_leeuc"), ExtResource("3_a5qsu"), ExtResource("4_j0sgr")])
-spawn_area_max = Vector2(1000, 1000)
+spawn_area_max = Vector2(900, 700)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=274835558]
 script = ExtResource("1_o4tsm")

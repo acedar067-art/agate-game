@@ -56,7 +56,10 @@ func swap_to_repaired():
 		# 2. Masukkan ke scene tree (sebagai sibling)
 		get_parent().add_child(new_coral)
 		
-		# 3. Hapus diri sendiri (Coral Rusak)
+		# 3. Update Game State (Ending Trigger)
+		GameManager.set_coral_repaired()
+		
+		# 4. Hapus diri sendiri (Coral Rusak)
 		queue_free()
 		
 		print("[Coral] Repaired successfully!")

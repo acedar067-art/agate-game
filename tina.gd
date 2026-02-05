@@ -55,14 +55,13 @@ func start_dialogue():
 	var dialogue_title = "start"
 
 	# Check quest states (urutan penting!)
-	if GameManager.all_quests_done():
-		dialogue_title = "all_quests_done"
+	if GameManager.coral_repaired:
+		dialogue_title = "ending"
 	elif GameManager.quest_failed:
 		dialogue_title = "quest_failed"
 	elif GameManager.quest_completed:
-		if GameManager.quest_times_completed == 1:
-			dialogue_title = "quest_completed_first"
-		# Quest 2 complete belum ada dialogue, use all_quests_done
+		# Quest 1 selesai -> Instruksi Shop
+		dialogue_title = "quest_completed_first"
 	elif GameManager.quest_active:
 		if GameManager.can_complete_quest():
 			dialogue_title = "quest_ready_complete"

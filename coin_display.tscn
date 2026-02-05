@@ -49,7 +49,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_te2np"]
 radius = 8.0
 
-[node name="coin_display" type="CanvasLayer" unique_id=391418776]
+[node name="coin_display" type="Label" unique_id=429666398]
+offset_right = 21.0
+offset_bottom = 23.0
 script = ExtResource("1_0t63x")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1968433105]

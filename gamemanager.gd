@@ -205,4 +205,40 @@ func print_inventory_debug() -> void:
 		var count = inventory[item]
 		if count > 0:
 			print("- ", item.capitalize(), ": ", count)
-	print("==========================\n")
+# === ENDING MECHANIC ===
+var coral_repaired: bool = false
+
+func set_coral_repaired() -> void:
+	coral_repaired = true
+	print("[GameManager] Coral Repaired! Ending unlocked.")
+
+func save_poem_to_txt() -> void:
+	var poem_content = """
+    === JEJAK KEBAIKAN ===
+    
+    Di kedalaman laut yang sunyi,
+    Ada harapan yang kau beri.
+    Sampah yang hilang, karang yang semi,
+    Menjaga bumi, tugas yang murni.
+    
+    Terima kasih, Pahlawan Lingkungan.
+    Kebaikanmu abadi, takkan hilang ditelan zaman.
+    
+    - Tina & Alam Semesta
+	"""
+	
+	# Save to user documents or desktop if possible, but user:// is safest sandbox
+	# For Windows "My Documents" access needs OS.get_system_dir which might not be available or sandboxed.
+	# We will use user:// first.
+	var file = FileAccess.open("user://Puisi_Tina.txt", FileAccess.WRITE)
+	if file:
+		file.store_string(poem_content)
+		file.close()
+		
+		# Try to open folder so user sees it
+		OS.shell_open(ProjectSettings.globalize_path("user://"))
+		print("[GameManager] Poem saved. Exiting game...")
+		
+		# Exit game logic (wait a bit if possible, but immediate works too)
+		await get_tree().create_timer(3.0).timeout # Beri waktu 3 detik agar user sadar
+		get_tree().quit()

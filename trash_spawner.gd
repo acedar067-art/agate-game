@@ -4,16 +4,18 @@ extends Node2D
 @export var trash_scenes: Array[PackedScene] = []
 
 # Spawn settings
-@export var spawn_area_min: Vector2 = Vector2(100, 100)
-@export var spawn_area_max: Vector2 = Vector2(1800, 1000)
+# Spawn settings (Lebih aman agar tidak keluar map)
+@export var spawn_area_min: Vector2 = Vector2(200, 200)
+@export var spawn_area_max: Vector2 = Vector2(1700, 900)
 
 func _ready() -> void:
 	# Connect to GameManager quest_started signal
 	GameManager.quest_started.connect(_on_quest_started)
 
 func _on_quest_started(_spawn_count: int) -> void:
-	# Spawn 25-30 trash items saat quest dimulai (Increased for visibility)
-	var actual_count = randi_range(25, 30)
+	# Spawn cukup untuk target 10 (misal 13-15)
+	# Agar tidak terlalu banyak tapi cukup cadangan
+	var actual_count = randi_range(13, 15)
 	print("[TrashSpawner] Quest started! Spawning ", actual_count, " trash...")
 	spawn_trash_batch(actual_count)
 

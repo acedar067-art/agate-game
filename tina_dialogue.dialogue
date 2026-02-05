@@ -27,22 +27,27 @@ Tina: Luar biasa! Kamu berhasil mengumpulkan semua sampah!
 Tina: Alam sangat berterima kasih padamu.
 do GameManager.complete_quest()
 Tina: Ini hadiahmu: 100 poin!
-Tina: Kamu adalah pahlawan lingkungan sejati!
+Tina: Tapi tugas kita belum selesai...
+Tina: Di bawah laut sana, terumbu karang sedang sekarat.
+Tina: Gunakan koinmu untuk membeli **Besi, Pasir, dan Kabel** di Toko (Tekan B).
+Tina: Lalu pergilah berenang dan perbaiki karang yang rusak!
+Tina: Aku menunggumu di sini untuk kabar baiknya.
 => END
 
 ~ quest_completed_first
-Tina: Terima kasih sudah membantu, teman!
-Tina: Tapi... sepertinya masih ada sampah di area lain.
-Tina: Kali ini lebih banyak - 20 sampah dalam 5 menit.
-Tina: Maukah kamu membantu lagi?
-- Tentu, demi alam! => quest_accepted_second
-- Mungkin lain kali => END
+Tina: Jangan lupa, teman!
+Tina: Beli material di toko, lalu selamatkan terumbu karang di laut.
+Tina: Alam membutuhkan bantuanmu.
+=> END
 
-~ quest_accepted_second
-Tina: Kamu memang luar biasa!
-Tina: Kumpulkan 20 sampah dalam 5 menit, ya!
-Tina: Alam akan selalu mengingatmu.
-do GameManager.start_quest()
+~ ending
+Tina: Lihatlah! Lautan kembali bersinar!
+Tina: Kamu telah menyembuhkan luka alam ini.
+Tina: Terima kasih telah menjadi harapan bagi bumi.
+Tina: Sebagai kenang-kenangan, aku menulis puisi untukmu...
+do GameManager.save_poem_to_txt()
+Tina: (Puisi telah disimpan di folder User data kamu sebagai 'Puisi_Tina.txt')
+Tina: Sampai jumpa lagi, Pahlawan!
 => END
 
 ~ quest_failed
@@ -59,12 +64,4 @@ Tina: Semangat yang bagus!
 Tina: Ingat, alam tidak akan melupakan kebaikanmu.
 do GameManager.reset_quest()
 do GameManager.start_quest()
-=> END
-
-~ all_quests_done
-Tina: Kamu telah membersihkan semua sampah di desa ini!
-Tina: Total skormu: {{GameManager.score}} poin!
-Tina: Alam sangat berterima kasih padamu.
-Tina: Jadilah contoh bagi yang lain untuk menjaga lingkungan!
-Tina: Terima kasih, pahlawan alam!
 => END
