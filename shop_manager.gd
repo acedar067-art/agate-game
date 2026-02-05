@@ -134,9 +134,12 @@ func buy_item(item_id: String) -> void:
 	if GameManager.spend_coins(price):
 		GameManager.add_item(item_id)
 		GameManager.item_purchased.emit(item_id)
+		
+		AudioManager.play_sfx("buy")
 		show_message("Berhasil membeli " + item.name + "!")
 		update_ui()
 	else:
+		AudioManager.play_sfx("error")
 		show_message("Coin tidak cukup! Butuh " + str(price) + " coins")
 
 

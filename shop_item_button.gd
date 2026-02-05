@@ -36,10 +36,16 @@ func _ready() -> void:
 func _on_pressed() -> void:
 	if GameManager.spend_coins(price):
 		GameManager.add_item(item_id)
-		# Feedback visual bisa ditambah disini
+		# Feedback visual & Audio
+		if Engine.has_singleton("AudioManager") or get_tree().root.has_node("AudioManager"):
+			AudioManager.play_sfx("buy")
+			
 		print("Bought ", item_name)
 		update_text()
 	else:
+		if Engine.has_singleton("AudioManager") or get_tree().root.has_node("AudioManager"):
+			AudioManager.play_sfx("error")
+			
 		print("Not enough coins for ", item_name)
 		# Optional: Shake animation or red flash
 

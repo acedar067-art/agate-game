@@ -91,6 +91,7 @@ func complete_quest() -> void:
 		# Give coins as reward
 		add_coins(QUEST_REWARD)
 		
+		AudioManager.play_sfx("success")
 		quest_completed_signal.emit()
 		print("[GameManager] Quest completed! Coins: ", coins)
 

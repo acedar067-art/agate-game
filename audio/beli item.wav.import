@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/beli item.wav-2b406d6d9ee16233e12b056b4c8fac7
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0.0
 bpm=0.0
 beat_count=0

@@ -59,6 +59,8 @@ func swap_to_repaired():
 		# 3. Update Game State (Ending Trigger)
 		GameManager.set_coral_repaired()
 		
+		AudioManager.play_sfx("repair")
+		
 		# 4. Hapus diri sendiri (Coral Rusak)
 		queue_free()
 		

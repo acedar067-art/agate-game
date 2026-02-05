@@ -19,21 +19,27 @@ var music_player: AudioStreamPlayer
 var sfx_players: Array[AudioStreamPlayer] = []
 
 func _ready() -> void:
+	print("[AudioManager] Initializing...")
+	
 	# Setup Music Player
 	music_player = AudioStreamPlayer.new()
-	music_player.bus = "Master" # Use Master bus to ensure sound
+	music_player.bus = "Master"
 	add_child(music_player)
 	
-	# Setup Pool of SFX Players (supaya bisa bunyi bebarengan)
+	# Setup Pool of SFX Players
 	for i in range(5):
 		var p = AudioStreamPlayer.new()
-		p.bus = "Master" # Use Master bus
+		p.bus = "Master"
 		add_child(p)
 		sfx_players.append(p)
 	
-	print("[AudioManager] Initialized. Playing BGM...")
-	# Auto play BGM start
+	print("[AudioManager] Ready! Playing BGM...")
 	play_music("main_theme")
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_L:
+		print("[AudioManager] TEST KEYS: L pressed. Playing click...")
+		play_sfx("click")
 
 # --- FUNCTIONS ---
 
@@ -43,15 +49,12 @@ func play_music(track_name: String) -> void:
 		if music_player.stream != stream:
 			music_player.stream = stream
 			music_player.play()
-	else:
-		print("[AudioManager] Music track not found: ", track_name)
+			print("[AudioManager] Music started: ", track_name)
 
 func play_sfx(sfx_name: String) -> void:
 	if sfx_library.has(sfx_name):
 		var stream = sfx_library[sfx_name]
 		_play_stream_on_available_player(stream)
-	else:
-		print("[AudioManager] SFX not found: ", sfx_name)
 
 func _play_stream_on_available_player(stream: AudioStream) -> void:
 	for p in sfx_players:

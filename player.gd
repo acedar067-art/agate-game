@@ -95,6 +95,7 @@ func try_pickup_trash():
 			trash.queue_free()
 			nearby_trash.erase(trash)
 			print("[Player] Picked up trash!")
+			AudioManager.play_sfx("pickup")
 
 func get_pickup_animation() -> String:
 	var anim = get_animasi()
