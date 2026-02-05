@@ -1,5 +1,10 @@
 [gd_scene format=3 uid="uid://bdbi1cdq5jjwr"]
 
+[ext_resource type="FontFile" uid="uid://c4wyhe084fou3" path="res://blossom_sans/Blossom Sans (Demo_font).otf" id="1_jwbto"]
+
+[sub_resource type="FontVariation" id="FontVariation_ia0g5"]
+base_font = ExtResource("1_jwbto")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndybt"]
 bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 16
@@ -37,6 +42,7 @@ layout_mode = 2
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0.53808683, 0.81033194, 0.51459223, 1)
+theme_override_fonts/font = SubResource("FontVariation_ia0g5")
 theme_override_font_sizes/font_size = 46
 text = "coralisem"
 horizontal_alignment = 1
