@@ -81,6 +81,11 @@ func start_dialogue():
 func _on_dialogue_ended(_resource):
 	print("Tina dialogue ended")
 	is_chatting = false
+	
+	# Jika ini adalah dialog ending (coral sudah direpair), jalankan sequence ending
+	if GameManager.coral_repaired:
+		print("[Tina] Ending dialogue finished. Triggering Save & Quit.")
+		GameManager.save_poem_to_txt()
 
 func _on_chat_detection_area_body_entered(body: Node2D) -> void:
 	print("Body entered Tina zone: ", body.name)

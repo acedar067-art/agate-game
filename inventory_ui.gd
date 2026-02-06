@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var item_grid = $Panel/ItemGrid
 @onready var close_btn = $Panel/Button
 @onready var panel = $Panel
+@onready var coin_label = $Panel/CoinLabel # New Reference
 
 # Preload textures (Hardcoded for simplicity, or load dynamically)
 # Gunakan path yang valid dari project
@@ -20,6 +21,10 @@ func _ready():
 	# Listen to global updates
 	if GameManager.has_signal("inventory_updated"):
 		GameManager.inventory_updated.connect(update_ui)
+		
+	# Listen to coin updates too
+	if GameManager.has_signal("coins_updated"):
+		GameManager.coins_updated.connect(func(_coins): update_ui())
 	
 	# Hide initially
 	visible = false
@@ -40,6 +45,10 @@ func close_inventory():
 	# get_tree().paused = false
 
 func update_ui():
+	# Update Coin Label
+	if coin_label:
+		coin_label.text = "Koin: " + str(GameManager.coins)
+	
 	# Clear existing children
 	for child in item_grid.get_children():
 		child.queue_free()

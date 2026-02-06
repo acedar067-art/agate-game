@@ -1,18 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://xoj34jmedj0i"]
+[gd_scene format=3 uid="uid://xoj34jmedj0i"]
 
 [ext_resource type="Script" uid="uid://dnvk4oan02pgb" path="res://quest_progress_ui.gd" id="1_x46hv"]
 
-[node name="QuestProgressUI" type="CanvasLayer"]
+[node name="QuestProgressUI" type="CanvasLayer" unique_id=397459578]
 process_mode = 3
-visible = false
 script = ExtResource("1_x46hv")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=18329824]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer" unique_id=393839766]
 layout_mode = 2
-text = "🗑️ 0/10"
+text = "Sampah 0/10"

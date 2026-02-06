@@ -35,20 +35,20 @@ func _on_timer_updated(_time_left: float) -> void:
 
 func _on_quest_completed() -> void:
 	if counter_label:
-		counter_label.text = "✅ Quest Complete! +100"
+		counter_label.text = "[SUKSES] Quest Selesai! +100"
 	await get_tree().create_timer(2.0).timeout
 	visible = false
 
 func _on_quest_failed() -> void:
 	if counter_label:
-		counter_label.text = "❌ Waktu Habis!"
+		counter_label.text = "[GAGAL] Waktu Habis!"
 	await get_tree().create_timer(2.0).timeout
 	visible = false
 
 func update_display() -> void:
 	if counter_label:
-		var trash_text = "🗑️ " + str(GameManager.trash_count) + "/" + str(GameManager.target_trash)
-		var timer_text = "⏱️ " + GameManager.get_formatted_time()
-		counter_label.text = trash_text + "  " + timer_text
+		var trash_text = "Sampah: " + str(GameManager.trash_count) + "/" + str(GameManager.target_trash)
+		var timer_text = "Waktu: " + GameManager.get_formatted_time()
+		counter_label.text = trash_text + " | " + timer_text
 	else:
 		print("[QuestUI] ERROR: counter_label is null!")

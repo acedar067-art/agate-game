@@ -5187,7 +5187,7 @@ metadata/_edit_vertical_guides_ = [-568.0]
 
 [node name="trash_spawner" parent="." unique_id=1904294572 instance=ExtResource("1_wgj0k")]
 spawn_area_min = Vector2(200, 400)
-spawn_area_max = Vector2(1000, 1000)
+spawn_area_max = Vector2(900, 800)
 
 [node name="QuestProgressUI" parent="." unique_id=1496451541 instance=ExtResource("1_ckdwd")]
 

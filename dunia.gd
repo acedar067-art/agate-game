@@ -1,5 +1,7 @@
 extends Node2D
 
+var darkness: CanvasModulate
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,6 +41,33 @@ func _ready() -> void:
 			GameManager.intro_shown = true # Set flag agar tidak muncul lagi
 		else:
 			print("WARNING: NarrationTrigger node not found in dunia.tscn")
+			
+	# === VISUAL POLLUTION (Request: 75% Dark) ===
+	# === VISUAL POLLUTION (Request: 75% Dark) ===
+	# Kita tambahkan CanvasModulate via code agar aman
+	darkness = CanvasModulate.new()
+	
+	# Cek apakah quest sampah sudah selesai?
+	# Jika sudah (quest_times_completed >= 1), maka udara bersih (Putih)
+	# Jika belum, maka udara kotor (Gelap)
+	if GameManager.quest_times_completed >= 1:
+		darkness.color = Color.WHITE
+		print("[Dunia] Air is clean (Quest Done). Darkness Disabled.")
+	else:
+		darkness.color = Color(0.3, 0.3, 0.3, 1) # Gelap (75% hitam)
+		print("[Dunia] Visual Pollution Enabled (Darkness 70-75%)")
+		
+	add_child(darkness)
+	
+	# Connect signal to clear pollution when quest done
+	if GameManager:
+		GameManager.quest_completed_signal.connect(_on_quest_completed)
+
+func _on_quest_completed() -> void:
+	print("[Dunia] Quest Complete! Clearing Pollution...")
+	# Tween to White (Clean Air)
+	var tween = create_tween()
+	tween.tween_property(darkness, "color", Color.WHITE, 3.0) # Transisi 3 detik ke bersih
 
 func _process(delta: float) -> void:
 	pass

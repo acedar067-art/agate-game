@@ -24,6 +24,7 @@ func _ready() -> void:
 	# Setup Music Player
 	music_player = AudioStreamPlayer.new()
 	music_player.bus = "Master"
+	music_player.volume_db = -12.0 # Turunkan volume BGM agar seimbang (Background)
 	add_child(music_player)
 	
 	# Setup Pool of SFX Players

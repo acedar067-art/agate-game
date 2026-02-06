@@ -215,31 +215,75 @@ func set_coral_repaired() -> void:
 
 func save_poem_to_txt() -> void:
 	var poem_content = """
-    === JEJAK KEBAIKAN ===
-    
-    Di kedalaman laut yang sunyi,
-    Ada harapan yang kau beri.
-    Sampah yang hilang, karang yang semi,
-    Menjaga bumi, tugas yang murni.
-    
-    Terima kasih, Pahlawan Lingkungan.
-    Kebaikanmu abadi, takkan hilang ditelan zaman.
-    
-    - Tina & Alam Semesta
+	=== SURAT CINTA DARI BUMI ===
+	
+	Kepada Tuan Penyelamat,
+	
+	Maafkan aku yang dulu menangis diam-diam,
+	Tersedak plastik di kerongkongan sungai,
+	Terluka besi di jantung karang yang permai.
+	
+	Manusia sering lupa, Tuan.
+	Mereka kira aku abadi, padahal aku rapuh.
+	Mereka buang sisa nafsu mereka ke tubuhku,
+	Hingga nafasku sesak, hingga warnaku keruh.
+	
+	Tapi hari ini... Tanganmu berbeda.
+	Kau pungut luka-lukaku dengan cinta.
+	Kau jahit kembali karangku yang patah.
+	
+	Terima kasih telah mendengar jeritanku yang bisu.
+	Terima kasih telah menjadi manusia yang "manusia".
+	
+	Jagalah aku, Tuan.
+	Bukan karena aku butuh disembah,
+	Tapi karena akulah satu-satunya rumah
+	Tempat anak cucumu nanti merebah.
+	
+	Salam sayang,
+	Bumi & Tina.
 	"""
 	
-	# Save to user documents or desktop if possible, but user:// is safest sandbox
-	# For Windows "My Documents" access needs OS.get_system_dir which might not be available or sandboxed.
-	# We will use user:// first.
-	var file = FileAccess.open("user://Puisi_Tina.txt", FileAccess.WRITE)
+	# === WEB BUILD SUPPORT ===
+	# Jika running di Browser (HTML5), kita tidak bisa akses file system user langsung.
+	# Solusinya: Trigger "Download" dialog browser.
+	if OS.has_feature("web"):
+		print("[GameManager] Detected Web Build. Triggering browser download...")
+		# Convert string ke buffer (byte array)
+		var buffer = poem_content.to_utf8_buffer()
+		# Panggil fungsi Javascript untuk download
+		JavaScriptBridge.download_buffer(buffer, "Puisi_Tina.txt")
+		
+		# Tunggu sebentar lalu quit
+		await get_tree().create_timer(3.0, true, false, true).timeout 
+		# Note: Di web, quit() mungkin hanya stop game, tidak menutup tab browser (security policy)
+		return
+
+	# === DESKTOP / NATIVE BUILD SUPPORT ===
+	# Save to user documents (Lebih mudah diakses user)
+	var doc_path = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
+	var full_path = doc_path + "/Puisi_Tina.txt"
+	
+	var file = FileAccess.open(full_path, FileAccess.WRITE)
 	if file:
 		file.store_string(poem_content)
 		file.close()
 		
-		# Try to open folder so user sees it
-		OS.shell_open(ProjectSettings.globalize_path("user://"))
-		print("[GameManager] Poem saved. Exiting game...")
+		# Open folder so user sees it
+		OS.shell_open(doc_path)
+		print("[GameManager] Poem saved to: ", full_path)
+		print("[GameManager] Exiting game in 3 seconds...")
 		
-		# Exit game logic (wait a bit if possible, but immediate works too)
-		await get_tree().create_timer(3.0).timeout # Beri waktu 3 detik agar user sadar
+		# Exit game logic (Timer ignores pause state)
+		await get_tree().create_timer(3.0, true, false, true).timeout 
 		get_tree().quit()
+	else:
+		print("[GameManager] Failed to save poem to Documents. Trying user:// fallback...")
+		# Fallback ke user:// jika Documents tidak bisa diakses
+		file = FileAccess.open("user://Puisi_Tina.txt", FileAccess.WRITE)
+		if file:
+			file.store_string(poem_content)
+			file.close()
+			OS.shell_open(ProjectSettings.globalize_path("user://"))
+			await get_tree().create_timer(3.0, true, false, true).timeout 
+			get_tree().quit()

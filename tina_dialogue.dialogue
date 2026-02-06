@@ -1,67 +1,67 @@
 ~ start
-Tina: Selamat datang, perjalanan yang indah bukan?
-Tina: Aku Tina, penjaga hutan ini.
-Tina: Tahukah kamu? Alam adalah rumah bagi semua makhluk hidup.
-Tina: Sayangnya, manusia sering membuang sampah sembarangan...
-Tina: Maukah kamu membantuku membersihkan sampah di sekitar hutan dan desa?
-Tina: Kumpulkan 10 sampah dalam waktu 3 menit!
-- Baik, aku akan membantu Tina! => quest_accepted
-- Maaf, aku sedang sibuk => END
+Tina: Ah... kau datang juga akhirnya.
+Tina: Lihatlah sekelilingmu... Indah? Atau menyedihkan?
+Tina: Dulu, tempat ini adalah paru-paru dunia. Burung bernyanyi, air mengalir jernih.
+Tina: Tapi lihat sekarang... Plastik di mana-mana. Sisa keserakahan manusia yang tak bertanggung jawab.
+Tina: Mereka lupa, bahwa bumi ini bukan warisan nenek moyang, melainkan titipan anak cucu.
+Tina: Maukah kau membantuku? Bukan untukku, tapi untuk masa depan kita semua.
+Tina: Tolong, kumpulkan 10 sampah saja. Itu langkah kecil, tapi bermakna besar.
+- Aku akan membersihkannya, demi bumi. => quest_accepted
+- Maaf, aku tidak peduli. => END
 
 ~ quest_accepted
-Tina: Terima kasih! Kamu adalah teman alam yang baik.
-Tina: Aku sudah menandai lokasi sampahnya.
-Tina: Ingat, setiap sampah yang kamu kumpulkan adalah langkah untuk menjaga alam!
-Tina: Cepatlah, waktu terus berjalan!
+Tina: Dengar itu? Angin berbisik terima kasih.
+Tina: Aku sudah memetakan area yang paling parah tercemar.
+Tina: Setiap sampah yang kau pungut adalah nafas baru bagi tanah ini.
+Tina: Pergilah, tunjukkan bahwa masih ada manusia yang peduli.
 do GameManager.start_quest()
 => END
 
 ~ quest_in_progress
-Tina: Kamu sudah mengumpulkan {{GameManager.trash_count}}/{{GameManager.target_trash}} sampah.
-Tina: Waktu tersisa: {{GameManager.get_formatted_time()}}
-Tina: Semangat! Alam membutuhkan bantuanmu!
+Tina: Kau masih berjuang? Bagus.
+Tina: Sampah yang terkumpul: {{GameManager.trash_count}} dari {{GameManager.target_trash}}.
+Tina: Jangan menyerah. Alam tidak pernah menyerah memberi kita kehidupan, masa kita menyerah merawatnya?
 => END
 
 ~ quest_ready_complete
-Tina: Luar biasa! Kamu berhasil mengumpulkan semua sampah!
-Tina: Alam sangat berterima kasih padamu.
+Tina: ...Kau berhasil.
+Tina: Lihatlah tanah yang kau bersihkan. Ia bernafas kembali.
 do GameManager.complete_quest()
-Tina: Ini hadiahmu: 100 poin!
-Tina: Tapi tugas kita belum selesai...
-Tina: Di bawah laut sana, terumbu karang sedang sekarat.
-Tina: Gunakan koinmu untuk membeli **Besi, Pasir, dan Kabel** di Toko (Tekan B).
-Tina: Lalu pergilah berenang dan perbaiki karang yang rusak!
-Tina: Aku menunggumu di sini untuk kabar baiknya.
+Tina: Ini sedikit bekal untukmu. Tapi tugas kita belum usai.
+Tina: Luka di darat mungkin sembuh, tapi di bawah sana... di kedalaman laut...
+Tina: Terumbu karang sedang sekarat, tercekik oleh limbah yang kita buang ke sungai.
+Tina: Gunakan koinmu di Toko untuk membeli Besi, Pasir, dan Kabel untuk transplantasi karang.
+Tina: Selamatkan jantung lautan itu. Aku mohon padamu.
 => END
 
 ~ quest_completed_first
-Tina: Jangan lupa, teman!
-Tina: Beli material di toko, lalu selamatkan terumbu karang di laut.
-Tina: Alam membutuhkan bantuanmu.
+Tina: Lautan memanggilmu.
+Tina: Jangan biarkan karang-karang itu memutih dan mati sendirian.
+Tina: Beli peralatan di toko, dan jadilah penyembuh bagi samudra.
 => END
 
 ~ ending
-Tina: Lihatlah! Lautan kembali bersinar!
-Tina: Kamu telah menyembuhkan luka alam ini.
-Tina: Terima kasih telah menjadi harapan bagi bumi.
-Tina: Sebagai kenang-kenangan, aku menulis puisi untukmu...
-do GameManager.save_poem_to_txt()
-Tina: (Puisi telah disimpan di folder User data kamu sebagai 'Puisi_Tina.txt')
-Tina: Sampai jumpa lagi, Pahlawan!
+Tina: Rasakan itu...
+Tina: Ombak tidak lagi menangis. Mereka bernyanyi.
+Tina: Kau telah menyembuhkan luka yang menganga sekian lama.
+Tina: Seandainya semua manusia sepertimu... mungkin bumi ini akan tersenyum selamanya.
+Tina: Terima kasih... Terima kasih telah menjadi penjaga kehidupan.
+Tina: Aku menuliskan sebuah puisi untukmu, dari lubuk hatiku yang terdalam.
+Tina: (Puisi ini akan tersimpan abadi di komputermu)
+Tina: Selamat tinggal, Sahabat Alam. Jangan pernah berhenti berbuat baik.
 => END
 
 ~ quest_failed
-Tina: Oh tidak... waktunya habis.
-Tina: Tidak apa-apa, jangan berkecil hati.
-Tina: Setiap usaha untuk menjaga alam tetap berarti.
-Tina: Yang penting adalah kita tidak menyerah!
-Tina: Maukah kamu mencoba lagi?
-- Ya, aku akan mencoba lagi! => quest_retry_accept
-- Aku butuh istirahat dulu => END
+Tina: Waktu habis...
+Tina: Sayang sekali. Sampah-sampah itu masih di sana, meracuni tanah.
+Tina: Tapi kegagalan hari ini bukan akhir segalanya.
+Tina: Maukah kau mencoba sekali lagi? Demi bunga yang ingin mekar esok hari?
+- Aku tidak akan menyerah. => quest_retry_accept
+- Aku lelah... => END
 
 ~ quest_retry_accept
-Tina: Semangat yang bagus!
-Tina: Ingat, alam tidak akan melupakan kebaikanmu.
+Tina: Mata matamu... aku melihat harapan di sana.
+Tina: Mari kita mulai lagi. Kali ini, pasti bisa.
 do GameManager.reset_quest()
 do GameManager.start_quest()
 => END
