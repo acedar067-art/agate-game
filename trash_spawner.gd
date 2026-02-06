@@ -59,9 +59,35 @@ func spawn_single_trash_in_rect(rect: Rect2) -> void:
 	var trash_instance = trash_scene.instantiate()
 	
 	# Random position within specific RECT
-	var random_x = randf_range(rect.position.x, rect.position.x + rect.size.x)
-	var random_y = randf_range(rect.position.y, rect.position.y + rect.size.y)
-	trash_instance.position = Vector2(random_x, random_y)
+	var max_attempts = 10
+	var final_pos = Vector2.ZERO
+	var valid = false
 	
-	# Add to scene
-	get_parent().add_child(trash_instance) # Add to Dunias
+	for i in range(max_attempts):
+		var random_x = randf_range(rect.position.x, rect.position.x + rect.size.x)
+		var random_y = randf_range(rect.position.y, rect.position.y + rect.size.y)
+		var test_pos = Vector2(random_x, random_y)
+		
+		if is_valid_position(test_pos):
+			final_pos = test_pos
+			valid = true
+			break
+	
+	if valid:
+		trash_instance.position = final_pos
+		get_parent().add_child(trash_instance) # Add to Dunia
+	else:
+		# If failed 10 times, just skip or print warning
+		print("[TrashSpawner] WARNING: Could not find valid spot in rect after 10 tries.")
+		trash_instance.queue_free()
+
+func is_valid_position(pos: Vector2) -> bool:
+	var space_state = get_world_2d().direct_space_state
+	# Query point
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = pos
+	query.collide_with_areas = false # Ignore other areas (like triggers)
+	query.collide_with_bodies = true # Check walls/houses
+	
+	var result = space_state.intersect_point(query)
+	return result.is_empty() # Valid if no collision
