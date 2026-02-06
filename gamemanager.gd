@@ -189,7 +189,13 @@ func load_coins() -> void:
 			print("[GameManager] Coins loaded: ", coins)
 
 func _ready() -> void:
-	load_coins()
+	# === SUBMISSION BUILD: ALWAYS RESET COINS ===
+	coins = 0 
+	save_coins() # Reset/Overwrite file save lama agar selalu 0
+	print("[GameManager] DATA RESET FOR SUBMISSION (Coins: 0)")
+	
+	# load_coins() # Disabled - agar tidak load data lama
+	pass
 
 func _unhandled_input(event: InputEvent) -> void:
 	# DEBUG: Print inventory when 'T' is pressed

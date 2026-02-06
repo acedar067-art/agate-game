@@ -68,6 +68,16 @@ func _on_quest_completed() -> void:
 	# Tween to White (Clean Air)
 	var tween = create_tween()
 	tween.tween_property(darkness, "color", Color.WHITE, 3.0) # Transisi 3 detik ke bersih
+	
+	# CLEANUP: Hapus sisa sampah yang belum diambil
+	clean_up_garbage()
+
+func clean_up_garbage() -> void:
+	var trash_nodes = get_tree().get_nodes_in_group("trash")
+	print("[Dunia] Removing ", trash_nodes.size(), " remaining trash items.")
+	for node in trash_nodes:
+		if is_instance_valid(node):
+			node.queue_free()
 
 func _process(delta: float) -> void:
 	pass

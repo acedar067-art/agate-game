@@ -50,7 +50,12 @@ func _input(event):
 				# Cek apakah player menghadap kanan atau kiri
 				var facing_horizontal = abs(arah_terakhir.x) > abs(arah_terakhir.y)
 				if facing_horizontal:
-					play_pickup_animation_only()
+					# UPDATE: Coba ambil sampah dulu (User Request: m1 bisa ambil sampah)
+					if nearby_trash.size() > 0 and GameManager.quest_active:
+						try_pickup_trash() # Ini sudah include animasi pickup
+					else:
+						# Jika tidak ada sampah, mainkan animasi swing saja (feedback visual)
+						play_pickup_animation_only()
 		
 		# F key - pickup sampah (jika ada sampah nearby)
 		if event.is_action_pressed("pickup"):

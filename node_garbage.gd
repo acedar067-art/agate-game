@@ -3,6 +3,7 @@ extends Area2D
 var player_nearby: Node = null
 
 func _ready() -> void:
+	add_to_group("trash") # Identity for cleanup
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
