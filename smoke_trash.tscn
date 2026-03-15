@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cqoefxdjlc4br"]
+
+[ext_resource type="Texture2D" uid="uid://dt4xbmh84n4sv" path="res://smoke_animated/smoke_animated/smoke_animated_64x256.png" id="1_5cccf"]
+[ext_resource type="Script" uid="uid://cl1j10821nc32" path="res://smoke_trash.gd" id="1_s1bhu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1bhu"]
+atlas = ExtResource("1_5cccf")
+region = Rect2(0, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfo6g"]
+atlas = ExtResource("1_5cccf")
+region = Rect2(64, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34ckk"]
+atlas = ExtResource("1_5cccf")
+region = Rect2(128, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbjhe"]
+atlas = ExtResource("1_5cccf")
+region = Rect2(192, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvyot"]
+atlas = ExtResource("1_5cccf")
+region = Rect2(256, 0, 64, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l6t05"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1bhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfo6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34ckk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbjhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvyot")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="smoke_trash" type="Node2D" unique_id=677608672]
+script = ExtResource("1_s1bhu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1306415925]
+position = Vector2(4.7683716e-07, -16)
+scale = Vector2(0.1875, 0.12499998)
+sprite_frames = SubResource("SpriteFrames_l6t05")
+frame_progress = 0.9078219

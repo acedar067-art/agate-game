@@ -23,6 +23,9 @@ class_name DialogueManagerExampleBalloon extends CanvasLayer
 ## Temporary game states
 var temporary_game_states: Array = []
 
+var tina_sfx = preload("res://audio_dialogue_tina.mp3")
+var kazanaru_sfx = preload("res://kazanaru_dialogue.mp3")
+
 ## See if we are waiting for the player
 var is_waiting_for_input: bool = false
 
@@ -71,6 +74,8 @@ var mutation_cooldown: Timer = Timer.new()
 func _ready() -> void:
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
+	dialogue_label.started_typing.connect(_on_dialogue_label_started_typing)
+	dialogue_label.finished_typing.connect(_on_dialogue_label_finished_typing)
 
 	# If the responses menu doesn't have a next action set, use this one
 	if responses_menu.next_action.is_empty():
@@ -209,5 +214,20 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
 
+
+func _on_dialogue_label_started_typing() -> void:
+	var char_name = dialogue_line.character.to_lower()
+	if char_name == "tina":
+		audio_stream_player.stream = tina_sfx
+		audio_stream_player.pitch_scale = 1.0 # Reset pitch agar suaranya normal
+		audio_stream_player.play()
+	elif char_name == "kazanaru" or char_name == "narrator" or char_name == "npc":
+		audio_stream_player.stream = kazanaru_sfx
+		audio_stream_player.pitch_scale = 1.0
+		audio_stream_player.play()
+
+func _on_dialogue_label_finished_typing() -> void:
+	# Matikan suara persis saat teks selesai diketik
+	audio_stream_player.stop()
 
 #endregion
