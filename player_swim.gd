@@ -14,16 +14,44 @@ var facing_direction: Vector2 = Vector2.RIGHT
 # Repair/Interact system
 var nearby_coral: Array = []
 
+# Hurt system
+var hurt_timer: float =0.0
+var is_hurt_active: bool = false
+var is_hurt_playing: bool = false
+const HURT_INTERVAL: float = 2.0
+
+@onready var oxygen = $Oxygen
+
 func _ready() -> void:
 	add_to_group("player") # Ensure detection
 	var anim = get_animasi()
 	if anim:
 		anim.play("swim_idle")
+	
+	oxygen.o2_depleted.connect(_return_to_surface)
+	oxygen.o2_low_warning.connect(_on_o2_low)
+	oxygen.start_oxygen()
+
+func _on_o2_low():
+	is_hurt_active = true
+	hurt_timer = 0.0
+
+func _return_to_surface():
+	is_hurt_active = false
+	GameManager.spawn_at_bridge = true
+	get_tree().change_scene_to_file("res://dunia.tscn")
 
 func get_animasi():
 	return $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
+	# Hurt periodic timer
+	if is_hurt_active:
+		hurt_timer += delta
+		if hurt_timer >= HURT_INTERVAL:
+			hurt_timer = 0.0
+			play_hurt_animation()
+	
 	# Get input direction (WASD / Arrow keys)
 	input_direction = Vector2.ZERO
 	input_direction.x = Input.get_axis("ui_left", "ui_right")
@@ -45,7 +73,7 @@ func _physics_process(delta: float) -> void:
 		
 		# Idle animation saat berhenti
 		var anim = get_animasi()
-		if anim and velocity.length() < 10:
+		if anim and velocity.length() < 10 and not is_hurt_playing:
 			anim.play("swim_idle")
 	
 	# Move
@@ -58,7 +86,8 @@ func update_swim_animation() -> void:
 	var anim = get_animasi()
 	if not anim:
 		return
-	
+	if is_hurt_playing:
+		return
 	# Play swimming animation
 	if anim.animation != "swim":
 		anim.play("swim")
@@ -80,6 +109,28 @@ func update_sprite_rotation() -> void:
 		else:
 			anim.scale.x = 1
 			anim.rotation = angle
+
+func play_hurt_animation() -> void:
+	var anim = get_animasi()
+	if not anim or not anim.sprite_frames.has_animation("hurt_swim"):
+		return
+	
+	is_hurt_playing = true
+	
+	var frames = anim.sprite_frames
+	frames.set_animation_loop("hurt_swim", false)
+	anim.stop()
+	anim.play("hurt_swim")
+	
+	await anim.animation_finished
+	
+	is_hurt_playing = false
+	
+	if is_instance_valid(anim):
+		if velocity.length() > 10:
+			anim.play("swim")
+		else:
+			anim.play("swim_idle")
 
 func _input(event: InputEvent) -> void:
 	# F key - repair coral

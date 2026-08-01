@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b0iub6puykqdu" path="res://Gemini_Generated_Image_ur85juur85juur85-removebg-preview.png" id="2_8t7m5"]
 [ext_resource type="Texture2D" uid="uid://cnw72vlvl6n1c" path="res://Gemini_Generated_Image_4fmj6s4fmj6s4fmj-removebg-preview.png" id="3_dfcim"]
 [ext_resource type="Texture2D" uid="uid://cw08mlhwmcmxu" path="res://Gemini_Generated_Image_qko9c1qko9c1qko9-removebg-preview.png" id="4_ilwm6"]
+[ext_resource type="Texture2D" uid="uid://cy7hwch35qc4f" path="res://shp.png" id="5_dfcim"]
 
 [node name="shop_manager" type="CanvasLayer" unique_id=1754504916]
 script = ExtResource("1_3rk3w")
@@ -15,9 +16,12 @@ offset_right = 784.0
 offset_bottom = 444.0
 
 [node name="Label" type="Label" parent="Panel" unique_id=97191860]
+z_index = 2
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 56.0
+offset_bottom = 43.0
 text = "Shop"
 
 [node name="BesiButton" type="Button" parent="Panel" unique_id=516733596]
@@ -106,14 +110,15 @@ theme_override_font_sizes/font_size = 10
 text = "10"
 
 [node name="CloseButton" type="Button" parent="Panel" unique_id=221679909]
+z_index = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.016
 anchor_bottom = 0.059000004
-offset_left = 424.0
-offset_top = 8.0
-offset_right = 445.90402
-offset_bottom = 30.976002
+offset_left = 408.0
+offset_top = 28.0
+offset_right = 429.90402
+offset_bottom = 50.976
 text = "X"
 
 [node name="MessageLabel" type="Label" parent="Panel" unique_id=2024270559]
@@ -122,3 +127,11 @@ offset_left = 8.0
 offset_top = 104.0
 offset_right = 48.0
 offset_bottom = 127.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=990841355]
+layout_mode = 0
+offset_left = -176.0
+offset_top = -212.0
+offset_right = 640.0
+offset_bottom = 500.0
+texture = ExtResource("5_dfcim")

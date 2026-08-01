@@ -3,13 +3,39 @@
 [ext_resource type="Script" uid="uid://dthp7rni07cq2" path="res://player_swim.gd" id="1_8bixb"]
 [ext_resource type="Texture2D" uid="uid://dut8jmy5ul74p" path="res://3 SteamMan/Idle2.png" id="1_wm6bs"]
 [ext_resource type="Texture2D" uid="uid://dr535u1jgdapw" path="res://3 SteamMan/Hurt2.png" id="2_8bixb"]
+[ext_resource type="Texture2D" uid="uid://diy3vgs0sxvbt" path="res://3 SteamMan/Hurt3.png" id="3_h7a1p"]
 [ext_resource type="Texture2D" uid="uid://bg5vyyw8r5gx" path="res://3 SteamMan/Swim.png" id="3_rbqtj"]
 [ext_resource type="Texture2D" uid="uid://dcvfoqpyrt6eo" path="res://3 SteamMan/Attack.png" id="4_h7a1p"]
 [ext_resource type="Texture2D" uid="uid://bfksbdavh30s" path="res://3 SteamMan/Swim2.png" id="5_c4a7y"]
+[ext_resource type="PackedScene" uid="uid://daiusl88ba6g6" path="res://oxygen.tscn" id="7_rbqtj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_er3tt"]
 radius = 9.990763
 height = 44.131256
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4a7y"]
+atlas = ExtResource("2_8bixb")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er3tt"]
+atlas = ExtResource("2_8bixb")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7ocn"]
+atlas = ExtResource("2_8bixb")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i37m2"]
+atlas = ExtResource("3_h7a1p")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ipqt"]
+atlas = ExtResource("3_h7a1p")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybrwm"]
+atlas = ExtResource("3_h7a1p")
+region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wonke"]
 atlas = ExtResource("1_wm6bs")
@@ -34,18 +60,6 @@ region = Rect2(192, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1swk8"]
 atlas = ExtResource("1_wm6bs")
 region = Rect2(240, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ejv6"]
-atlas = ExtResource("2_8bixb")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1p7n7"]
-atlas = ExtResource("2_8bixb")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aacof"]
-atlas = ExtResource("2_8bixb")
-region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8tap8"]
 atlas = ExtResource("3_rbqtj")
@@ -115,6 +129,34 @@ region = Rect2(240, 0, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_c4a7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er3tt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7ocn")
+}],
+"loop": 1,
+"name": &"hurt_swim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i37m2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ipqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybrwm")
+}],
+"loop": 1,
+"name": &"hurt_swim_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_wonke")
 }, {
 "duration": 1.0,
@@ -132,22 +174,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1swk8")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_swim",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6ejv6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1p7n7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aacof")
-}],
-"loop": true,
-"name": &"swim_hurt",
 "speed": 5.0
 }, {
 "frames": [{
@@ -169,7 +197,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_idtjc")
 }],
-"loop": true,
+"loop": 1,
 "name": &"swim_idle",
 "speed": 5.0
 }, {
@@ -186,7 +214,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6l4u1")
 }],
-"loop": true,
+"loop": 1,
 "name": &"swim_repair",
 "speed": 5.0
 }, {
@@ -209,7 +237,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dswxe")
 }],
-"loop": true,
+"loop": 1,
 "name": &"swim_up",
 "speed": 5.0
 }]
@@ -230,5 +258,7 @@ position = Vector2(3, -2)
 rotation = 0.025094336
 scale = Vector2(1.0110174, 1)
 sprite_frames = SubResource("SpriteFrames_i7ocn")
-animation = &"swim_repair"
-frame_progress = 0.39859897
+animation = &"hurt_swim_up"
+
+[node name="Oxygen" parent="." unique_id=1476862055 instance=ExtResource("7_rbqtj")]
+position = Vector2(-384, -280)

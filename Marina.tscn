@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://doj75uwfqsq68"]
+
+[ext_resource type="Texture2D" uid="uid://dbaoq5o5eapd4" path="res://Mermaid Coralism/tile000.png" id="1_81stg"]
+[ext_resource type="Script" uid="uid://yau13u43kryq" path="res://marina.gd" id="1_rpsd3"]
+[ext_resource type="Texture2D" uid="uid://junt6bebtqnx" path="res://Mermaid Coralism/tile001.png" id="2_rpsd3"]
+[ext_resource type="Texture2D" uid="uid://da0kxy65j6bjc" path="res://Mermaid Coralism/tile002.png" id="3_mti51"]
+[ext_resource type="Texture2D" uid="uid://cjsxme6n4ycen" path="res://Mermaid Coralism/tile003.png" id="4_kd2o0"]
+[ext_resource type="Texture2D" uid="uid://b6in5eyemoil3" path="res://Mermaid Coralism/tile004.png" id="5_ssxlf"]
+[ext_resource type="Texture2D" uid="uid://ca5v5x5tc5fh8" path="res://Mermaid Coralism/tile005.png" id="6_xmrut"]
+[ext_resource type="Texture2D" uid="uid://c8pq7kkj73486" path="res://Mermaid Coralism/tile006.png" id="7_xhpnc"]
+[ext_resource type="Texture2D" uid="uid://d13nh1ay20jcs" path="res://Mermaid Coralism/tile007.png" id="8_q3nqe"]
+[ext_resource type="Texture2D" uid="uid://df7gai8ylt61i" path="res://Mermaid Coralism/tile008.png" id="9_jrcmr"]
+[ext_resource type="Texture2D" uid="uid://c1aw1pwbwx1n6" path="res://Mermaid Coralism/tile009.png" id="10_yxqw7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wnvte"]
+radius = 40.0
+height = 96.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_81stg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rpsd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mti51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kd2o0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ssxlf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xmrut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xhpnc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_q3nqe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jrcmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yxqw7")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Marina" type="CharacterBody2D" unique_id=457734440]
+script = ExtResource("1_rpsd3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=133907410]
+shape = SubResource("CapsuleShape2D_wnvte")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=992101385]
+position = Vector2(0, 16.000002)
+scale = Vector2(0.8888889, 0.86824334)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+autoplay = "default"
+frame_progress = 0.7141176
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=747126482]

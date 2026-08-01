@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bvif8bm2iigyb"]
+
+[ext_resource type="Texture2D" uid="uid://lw2oosrery2j" path="res://Asset sampah/organik.png" id="1_0yicv"]
+[ext_resource type="Script" uid="uid://bxv2a3skc3kxp" path="res://organik.gd" id="1_i33am"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(38, 30)
+
+[node name="organik" type="Area2D" unique_id=1957203631]
+script = ExtResource("1_i33am")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1621366428]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1144232017]
+position = Vector2(-4, -4)
+shape = SubResource("RectangleShape2D_57qmd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1495173114]
+position = Vector2(-3.8749998, -5.500001)
+scale = Vector2(0.11642157, 0.105468765)
+texture = ExtResource("1_0yicv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1109038397]
+position = Vector2(-3, -7)
+shape = SubResource("RectangleShape2D_g4v7s")

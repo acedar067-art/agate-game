@@ -8,3 +8,4 @@ script = ExtResource("1_5bmat")
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1517894633]
 offset_right = 1152.0
 offset_bottom = 648.0
+mouse_filter = 2

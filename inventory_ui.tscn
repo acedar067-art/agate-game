@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dsxve5b1tbtg6"]
 
 [ext_resource type="Script" uid="uid://4fp8dwcryxdd" path="res://inventory_ui.gd" id="1_5v8q7"]
+[ext_resource type="Texture2D" uid="uid://b5ofonghwswhs" path="res://inv1.png" id="2_gf3dx"]
 
 [node name="InventoryUI" type="CanvasLayer" unique_id=1923181981]
 script = ExtResource("1_5v8q7")
@@ -15,14 +16,22 @@ offset_bottom = 168.0
 
 [node name="Panel" type="Panel" parent="." unique_id=1671971791]
 offset_left = 256.0
-offset_top = 120.0
-offset_right = 960.0
+offset_top = 176.0
+offset_right = 888.0
 offset_bottom = 512.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=1130171424]
+layout_mode = 0
+offset_left = -240.0
+offset_top = -264.0
+offset_right = 840.0
+offset_bottom = 616.0
+texture = ExtResource("2_gf3dx")
 
 [node name="Label" type="Label" parent="Panel" unique_id=642784395]
 layout_mode = 0
-offset_right = 75.0
-offset_bottom = 23.0
+offset_right = 116.0
+offset_bottom = 35.0
 theme_override_font_sizes/font_size = 25
 text = "Inventory"
 
@@ -52,9 +61,9 @@ columns = 3
 
 [node name="Button" type="Button" parent="Panel" unique_id=1638570143]
 layout_mode = 0
-offset_left = 680.0
+offset_left = 600.0
 offset_top = 8.0
-offset_right = 698.0
+offset_right = 618.0
 offset_bottom = 39.0
 text = "X"
 

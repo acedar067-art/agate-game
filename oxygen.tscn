@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://daiusl88ba6g6"]
+
+[ext_resource type="Texture2D" uid="uid://c52qkb53dmyif" path="res://Oxygen Coralism/oxygen.png" id="1_7q1qm"]
+[ext_resource type="Script" uid="uid://wfv48pi8a7pw" path="res://oxygen.gd" id="1_orth8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orth8"]
+atlas = ExtResource("1_7q1qm")
+region = Rect2(1595, 0, 145, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tt0g"]
+atlas = ExtResource("1_7q1qm")
+region = Rect2(1450, 0, 145, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37bmx"]
+atlas = ExtResource("1_7q1qm")
+region = Rect2(1305, 0, 145, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2aery"]
+atlas = ExtResource("1_7q1qm")
+region = Rect2(1160, 0, 145, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fvh4"]
+atlas = ExtResource("1_7q1qm")
+region = Rect2(1015, 0, 145, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47qw7"]
+atlas = ExtResource("1_7q1qm")
+region = Rect2(870, 0, 145, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3q80"]
+atlas = ExtResource("1_7q1qm")
+region = Rect2(725, 0, 145, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0m4u"]
+atlas = ExtResource("1_7q1qm")
+region = Rect2(580, 0, 145, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tti0x"]
+atlas = ExtResource("1_7q1qm")
+region = Rect2(435, 0, 145, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cdti"]
+atlas = ExtResource("1_7q1qm")
+region = Rect2(290, 0, 145, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmj7w"]
+atlas = ExtResource("1_7q1qm")
+region = Rect2(145, 0, 145, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbcqt"]
+atlas = ExtResource("1_7q1qm")
+region = Rect2(0, 0, 145, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orth8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tt0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37bmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2aery")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fvh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47qw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3q80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0m4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tti0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cdti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmj7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbcqt")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Oxygen" type="Node2D" unique_id=1476862055]
+script = ExtResource("1_orth8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=353126252]
+position = Vector2(127.75, 64)
+scale = Vector2(2.7620687, 2.6000001)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+autoplay = "default"
+frame_progress = 0.393991

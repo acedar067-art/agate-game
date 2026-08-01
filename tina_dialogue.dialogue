@@ -7,7 +7,7 @@ Tina: Mereka lupa, bahwa bumi ini bukan warisan nenek moyang, melainkan titipan 
 Tina: Maukah kau membantuku? Bukan untukku, tapi untuk masa depan kita semua.
 Tina: Tolong, kumpulkan 10 sampah saja. Itu langkah kecil, tapi bermakna besar.
 - Aku akan membersihkannya, demi bumi. => quest_accepted
-- Maaf, aku tidak peduli. => END
+- Maaf, aku tidak peduli. => rejected
 
 ~ quest_accepted
 Tina: Dengar itu? Angin berbisik terima kasih.
@@ -15,6 +15,14 @@ Tina: Aku sudah memetakan area yang paling parah tercemar.
 Tina: Setiap sampah yang kau pungut adalah nafas baru bagi tanah ini.
 Tina: Pergilah, tunjukkan bahwa masih ada manusia yang peduli.
 do GameManager.start_quest()
+do AirQuality.on_accept_quest()
+=> END
+
+~ rejected
+Tina: ...Baiklah. Aku tidak bisa memaksamu.
+Tina: Tapi ingatlah, setiap detik yang kau buang, bumi semakin sesak.
+Tina: Pintu ini selalu terbuka, kalau kau berubah pikiran.
+do AirQuality.on_reject_quest()
 => END
 
 ~ quest_in_progress
@@ -64,4 +72,5 @@ Tina: Mata matamu... aku melihat harapan di sana.
 Tina: Mari kita mulai lagi. Kali ini, pasti bisa.
 do GameManager.reset_quest()
 do GameManager.start_quest()
+do AirQuality.on_accept_quest()
 => END

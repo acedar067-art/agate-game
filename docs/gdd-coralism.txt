@@ -1,0 +1,557 @@
+nice# GAME DESIGN DOCUMENT — CORALSIM
+
+---
+
+## BAB 1: PENDAHULUAN
+
+### A. TUJUAN PEMBUATAN GAME
+
+1. **Edukasi lingkungan** — Mengajarkan pemain tentang dampak polusi plastik, logam, dan organik terhadap ekosistem laut melalui gameplay interaktif.
+2. **Kesadaran pengelolaan sampah** — Melatih pemain memilah sampah (Plastik, Logam, Organik) dan memahami proses daur ulang.
+3. **Hiburan looping** — Menyediakan gameplay yang adiktif dan berulang dengan progression nyata, bukan game linear yang selesai dalam 10 menit.
+
+### B. DESKRIPSI GAME
+
+Coralsim adalah game 2D eco-simulation yang menggabungkan aksi petualangan dengan edukasi pengelolaan sampah laut. Pemain memulai perjalanan di darat, menyelesaikan misi dari Tina untuk membersihkan sampah dan memperbaiki terumbu karang. Setelah karang pulih, seorang putri duyung bernama Marina muncul dan membawa pemain ke petualangan inti: menyelam, mengumpulkan sampah laut, memilahnya ke tempat yang benar, mendaur ulang menjadi material berguna, dan gradually membersihkan seluruh zona laut dari polusi.
+
+Game ini menggunakan Godot Engine 4.7 dengan target platform Web (HTML5) dan Desktop.
+
+---
+
+## BAB 2: IDENTITAS GAME
+
+### A. JUDUL GAME
+
+**Coralsim**
+
+### B. PLATFORM & ENGINE
+
+| Aspek | Detail |
+|-------|--------|
+| Engine | Godot 4.7 (GL Compatibility) |
+| Bahasa | GDScript |
+| Platform Utama | Web (HTML5) |
+| Platform Sekunder | Desktop (Windows) |
+| Target Layar | Canvas items stretch mode |
+
+### C. GENRE GAME
+
+Eco-simulation, Action-Adventure, Educational
+
+### D. HIGH CONCEPT
+
+> "Bersihkan laut, pilah sampah, selamatkan terumbu karang. Semakin lama kamu diam, semakin gelap lautmu."
+
+Pollution adalah antagonis utama — bukan karakter jahat, tapi konsekuensi nyata dari kelalaian player.
+
+### E. CORE GAMEPLAY
+
+Gameplay inti adalah **looping diving → collecting → sorting → recycling → upgrading**:
+
+1. Player menyelam di 4 ocean zone dengan O₂ terbatas
+2. Mengumpulkan 3 jenis sampah bawah laut (Plastik 🟡, Logam ⚪, Organik 🟤)
+3. Kembali ke permukaan, memilah sampah ke bin yang benar
+4. Mendaur ulang material menjadi finished products
+5. Menggunakan hasil daur ulang untuk upgrade equipment
+6. Pollution turun, zone makin bersih — buka zone berikutnya
+
+### F. UNIQUE SELLING POINT (USP)
+
+1. **Looping gameplay** dengan progression nyata — bukan game linear selesai 10 menit
+2. **3 jenis sampah** (Plastik, Logam, Organik) — mudah diingat, fokus edukasi laut
+3. **Pollution sebagai antagonis** — layar makin gelap jika pemain abai
+4. **Player agency** — quest opsional, konsekuensi natural
+5. **Narrative 2 Act** — Act 1 (Tina di darat) → transisi Marina → Act 2 (laut)
+
+### G. TARGET PEMAIN
+
+| Kategori | Detail |
+|----------|--------|
+| Usia | 13+ |
+| Demografi | Pelajar, pecinta lingkungan, gamer kasual |
+| Platform | Web browser (main di sekolah/rumah) |
+| Skill Level | Pemula hingga menengah |
+
+---
+
+## BAB 3: GAMEPLAY
+
+### A. GAME LOOP
+
+```
+Surface World
+    │
+    ├── Pilih Ocean Zone
+    │       ↓
+    │   Diving (O₂ terbatas)
+    │       ↓
+    │   Collect 3 jenis sampah
+    │       ↓
+    │   Return ke Surface (manual / O₂ habis)
+    │
+    ├── Sorting Station (3 bin 🟡⚪🟤)
+    │       ↓
+    ├── Recycling Facility
+    │       ↓
+    ├── Upgrade Shop
+    │       ↓
+    └── Marina's Daily Quest (opsional)
+            ↓
+    ─── Repeat (pollution turun, zone makin bersih) ───
+```
+
+### B. OBJECTIVE
+
+**Objective Utama:** Bersihkan semua 4 ocean zone (100% clean per zone) untuk membuka ending.
+
+**Objective Sekunder:**
+- Kumpulkan material untuk upgrade equipment
+- Selesaikan daily quest dari Marina untuk bonus reward
+- Isi Ocean Encyclopedia dengan lore per zone
+- Tanam coral menggunakan Compost untuk mengundang ikan
+
+### C. WIN & LOSE CONDITION
+
+| Kondisi | Trigger | Hasil |
+|---------|---------|-------|
+| **WIN** | Semua 4 zone 100% bersih | Ending: Poem "Surat Cinta Dari Bumi" dari Marina & Tina |
+| **LOSE (Game Over)** | Pollution mencapai 100% | Layar blackout total, "Laut telah mati" — [Main Menu] [Restart] |
+| **Quest gagal** | — | Tidak ada. Quest tidak punya timer — hanya pollution yang terus naik |
+
+### D. FLOW PERMAINAN
+
+```
+ACT 1: DARAT — Tutorial
+  Main Menu → Intro Narration
+    → Grace Period 60s (polusi frozen, Tina ajarin dasar)
+    → Quest Tina: kumpulin sampah di darat
+    → Dapat koin → beli material → repair 1 karang rusak
+    → ★ Cutscene: Marina muncul ★
+
+ACT 2: LAUT — Core Game
+  Marina ajarin sorting 3 jenis sampah
+    → Daily quest diving & sorting
+    → Loop utama (Diving → Collect → Sort → Recycle → Upgrade)
+    → Bersihin Beach/Shallow → Coral Reef → Open Ocean → Deep Sea
+    → ENDING
+
+FREE MODE (setelah quest):
+  Pollution tetap berjalan
+  Sampah spawn lebih sedikit (3-5 visible)
+  Player bebas diving, collect, sort, recycle
+  Pollution > 50% → Marina offer quest lagi
+```
+
+---
+
+## BAB 4: MEKANIK GAME
+
+### A. KONTROL
+
+| Input | Aksi |
+|-------|------|
+| WASD / Arrow Keys | Gerak (darat & laut) |
+| E | Interaksi (NPC, Sorting Station, dll) |
+| F / M1 | Collect / ambil sampah |
+| H | Masuk / keluar laut |
+| Escape | Pause menu |
+
+### B. AKSI PEMAIN
+
+1. **Gerak** — 4 arah (atas, bawah, kiri, kanan) dengan animasi
+2. **Diving** — Swim bebas 360° di underwater, O₂ terus berkurang
+3. **Collect** — Ambil sampah yang ditemukan di dasar laut
+4. **Sorting** — Drag & drop sampah ke 3 bin yang benar
+5. **Recycle** — Proses material mentah jadi finished product via mini-game
+6. **Upgrade** — Beli upgrade equipment dari hasil recycle
+7. **Interaksi** — Bicara dengan Tina, Marina, NPC lain
+
+### C. INTERAKSI
+
+| Objek | Aksi | Hasil |
+|-------|------|-------|
+| Sampah | F / M1 | Masuk ke inventory (bag) |
+| Sorting Bin | Drag & drop | Correct: +material, Wrong: -score +polusi |
+| Recycling Machine | E | Buka UI recycle mini-game |
+| Tina | E | Dialog + shop upgrade |
+| Marina | E | Dialog + daily quest |
+| Entrance Laut | E / H | Transisi ke underwater |
+
+### D. SISTEM DASAR
+
+#### D.1. Pollution System
+
+Pollution adalah **mekanik inti** yang menggantikan timer buatan.
+
+| Aksi | Efek ke Pollution |
+|------|-------------------|
+| Natural increase (default) | +0.1% / 10 detik |
+| Natural increase (setelah tolak quest) | +0.4% / 10 detik |
+| Tolak quest | +0.5% (instant) |
+| Sortir salah | +1.0% |
+| Collect trash | -0.5% |
+| Sortir benar | -1.0% |
+| Quest selesai | -5.0% |
+| Zone 100% clean | -10.0% |
+
+**Threshold:**
+
+| Level | Visual | Efek |
+|-------|--------|------|
+| 0-25% | Cerah | Normal |
+| 25-50% | Agak gelap | Ikan mulai hilang |
+| 50-75% | Gelap | O₂ 20% lebih cepat habis |
+| 75-99% | Sangat gelap | O₂ 40% lebih cepat, zona terkunci |
+| 100% | Blackout | GAME OVER |
+
+**Grace Period:** 60 detik pertama — polusi frozen, Tina tutorial.
+
+#### D.2. Overflow Trash (3 Phase)
+
+- **Phase A:** Target quest capai → player bisa collect bonus dulu atau langsung balik
+- **Phase B:** Quest diserahkan → reward + despawn bertahap (1 trash/3 detik)
+- **Phase C:** Free mode → pollution naik pelan, quest baru > 50%
+
+#### D.3. Dialogue Rules
+
+1. **Non-skippable** — tiap baris klik untuk lanjut
+2. **Tidak ikut gelap** — balloon pakai CanvasLayer terpisah dari pollution overlay
+3. **Tina dialogue progresif** — berubah berdasarkan pollution level
+
+#### D.4. O₂ System
+
+- Diving time terbatas (default 60 detik)
+- Upgrade O₂ Tank untuk perpanjang waktu
+- Makin dalam zone, O₂ makin cepat habis
+- O₂ = 0 → otomatis return ke surface
+
+---
+
+## BAB 5: KARAKTER
+
+### A. KARAKTER UTAMA
+
+**Player (SteamMan / Diver)**
+
+| Aspek | Detail |
+|-------|--------|
+| Peran | Penyelamat laut — dikendalikan pemain |
+| Ability | Gerak (darat), Swim (laut), Collect, Sort, Recycle |
+| Visual | Sprite sheet: Idle, Swim, Attack, Death, Hurt |
+| Progression | Equipment upgrade (O₂, Bag, Flippers, Scanner) |
+
+### B. MUSUH
+
+| Musuh | Lokasi | Behavior |
+|-------|--------|----------|
+| Hiu | Open Ocean | Chase player jika terlalu dekat |
+| Swordfish | Open Ocean | Patrol line, damage if touched |
+
+> Musuh hanya ada di zone Open Ocean & Deep Sea. Beach/Shallow & Coral Reef aman.
+
+### C. NPC
+
+| NPC | Lokasi | Peran | Behavior |
+|-----|--------|-------|----------|
+| **Tina** | Surface (darat) | Mentor awal + Shop keeper | Diam di tempat. Dialog branching by pollution & progress. Menjual upgrade equipment. |
+| **Marina** | Underwater (coral reef) | Quest giver utama + Guru sorting | Diam di coral reef. Memberi daily quest diving & sorting. Mengajari cara memilah sampah. Dialog berubah saat zone bersih. |
+
+### D. BEHAVIOR
+
+#### Tina
+- Muncul di Act 1 sebagai quest giver pertama
+- Setelah Marina muncul: Tina jadi shop keeper (jual upgrade)
+- Dialog: ramah diawal → cemas saat pollution naik → panik saat > 75%
+- Tidak pernah maksa player ambil quest
+
+#### Marina
+- Muncul setelah coral repair (cutscene)
+- Menjadi quest giver utama di Act 2
+- Mengajari sorting 3 jenis sampah
+- Dialog: ceria saat zone bersih, sedih saat pollution tinggi
+- Memberi lore tentang setiap zone saat zone tersebut 100% clean
+
+---
+
+## BAB 6: LEVEL & PROGRESI
+
+### A. STRUKTUR LEVEL
+
+Game terdiri dari 2 area besar dengan 5 sub-area:
+
+```
+SURFACE WORLD (dunia.tscn)
+  ├── Tina's Shop
+  ├── Sorting Station (3 bin 🟡⚪🟤)
+  ├── Recycling Facility
+  └── Area jalan (transisi)
+
+OCEAN ZONES (bawah_laut.tscn)
+  ├── Beach/Shallow    → Free
+  ├── Coral Reef       → Beach 25% clean
+  ├── Open Ocean       → Coral Reef 100% clean
+  └── Deep Sea/Abyss   → Open Ocean 100% clean
+```
+
+### B. DESAIN LINEAR
+
+Game menggunakan **linear progression dengan branching gameplay**:
+
+- **Linear:** Zone dibuka berurutan (Beach → Coral Reef → Open Ocean → Deep Sea)
+- **Branching:** Dalam satu zone, player bebas eksplorasi, diving, collect, sort, recycle
+- **Looping:** Tidak ada "game selesai" — player bisa terus bermain
+- **Ending:** Hanya tercapai saat semua zone 100% bersih
+
+### C. FLOW LEVEL
+
+```
+Surface World ↔ Beach/Shallow (FREE)
+                    ↓ (25% clean)
+              Coral Reef (FREE)
+                    ↓ (100% clean)
+              Open Ocean (🔒 O₂ T2)
+                    ↓ (100% clean)
+              Deep Sea/Abyss (🔒 O₂ T4)
+                    ↓ (100% clean)
+              ENDING
+```
+
+### D. DIFFICULTY PROGRESSION
+
+| Zone | O₂ Drain | Musuh | Sampah Dominan | Upgrade Butuh |
+|------|----------|-------|----------------|---------------|
+| Beach/Shallow | 1x | Tidak ada | Plastik, Organik | — |
+| Coral Reef | 1.2x | Tidak ada | Logam | — |
+| Open Ocean | 1.5x | Hiu, Swordfish | Plastik, Logam | O₂ T2 |
+| Deep Sea/Abyss | 2x | Gelap, predator | Campuran | O₂ T4 |
+
+---
+
+## BAB 7: NARATIF
+
+### A. LATAR CERITA
+
+Laut di masa depan. Polusi plastik, logam, dan sampah organik telah mencekik ekosistem laut. Terumbu karang sekarat, ikan menghilang, dan laut perlahan berubah menjadi zona mati. Seorang penjaga pantai bernama Tina dan putri duyung bernama Marina menjadi satu-satunya harapan untuk menyelamatkan laut.
+
+### B. ALUR CERITA
+
+```
+ACT 1: DARAT
+  Intro — Laut tercemar, pemain tiba di pantai
+    → Tina menjelaskan situasi
+    → Grace Period 60s — bebas eksplorasi, belajar dasar
+    → Quest Tina: kumpulkan sampah di darat
+    → Dapat koin, beli material
+    → Repair 1 karang rusak di underwater
+    → ★ Marina muncul dari karang yang pulih ★
+
+ACT 2: LAUT
+  Marina: "Terima kasih telah menyelamatkan karangku..."
+    → Marina ajarin sorting 3 jenis sampah
+    → Mulai daily quest diving & sorting
+    → Beach/Shallow bersih → Marina senang
+    → Coral Reef bersih → "Karang mulai hidup lagi!"
+    → Open Ocean bersih → "Laut lepas mulai pulih..."
+    → Deep Sea bersih → ENDING
+
+ENDING:
+  Marina & Tina memberikan poem "Surat Cinta Dari Bumi"
+  File .txt disimpan (Desktop) atau download (Web)
+  Game selesai
+```
+
+### C. PROGRESS PER LEVEL
+
+| Kondisi | Narrative Event |
+|---------|----------------|
+| Grace Period | Tina: "Selamat datang! Laut masih tenang. Gunakan waktu ini." |
+| Tolak quest 1x | Tina: "Baiklah, kalau butuh aku di sini." |
+| Tolak quest 2x | Tina: "Polusinya makin parah..." |
+| Tolak quest 3x | Tina: "Tolong... laut kita sekarat." |
+| Tolak quest 4x+ | Tina: "MASIH MAU NOLAK?!" |
+| Beach 100% clean | Marina: "Kamu baru mulai, tapi ini awal yang bagus." |
+| Coral Reef 100% | Marina: "Karang hidup lagi, lihat ikan-ikannya!" |
+| Open Ocean 100% | Marina: "Laut lepas pulih..." |
+| Deep Sea 100% | ENDING |
+
+### D. DIALOG
+
+- Semua dialog menggunakan plugin `Dialogue Manager` di Godot
+- Mode: **non-skippable** — tiap baris klik untuk lanjut
+- **Tidak terpengaruh polusi** — dialog balloon pakai CanvasLayer terpisah
+- Branching berdasarkan: pollution level, zone progress, quest status
+
+---
+
+## BAB 8: AUDIO & VISUAL
+
+### A. ART STYLE
+
+| Aspek | Detail |
+|-------|--------|
+| Style | 2D Pixel Art / retro |
+| Palette | Warna cerah untuk laut bersih, gelap untuk laut tercemar |
+| Karakter | Sprite sheet pixel (16-32px) |
+| Lingkungan | Tilemap dengan tileset 16px |
+| Transisi | Tween warna (CanvasModulate) untuk perubahan polusi |
+
+### B. UI DESIGN
+
+| Elemen | Komponen Godot |
+|--------|----------------|
+| Sorting Station | Control nodes: Container, TextureRect, Label, Button |
+| Sorting Bins | 3 bin icon 🟡⚪🟤 (external asset) |
+| Pollution Bar | ColorRect + tween |
+| O₂ Bar | TextureProgress |
+| Inventory | GridContainer + TextureRect |
+| Dialog balloon | CanvasLayer (terpisah dari pollution) |
+| Quest progress | Label + ProgressBar |
+
+### C. REFERENSI VISUAL
+
+- **Pixel art style:** 16px tileset, karakter sprite sheet
+- **Underwater:** Gradasi biru, efek gelap di pollution tinggi
+- **Coral:** Warna-warni saat sehat, abu-abu saat tercemar
+- **Surface:** Pantai, pepohonan, rumah nelayan
+
+### D. SOUND & MUSIC
+
+#### Existing Assets
+
+| File | Type | Fungsi |
+|------|------|--------|
+| `backsound_lofi.mp3` | BGM | Musik latar (6.2 MB) |
+| `tapclick.wav` | SFX | Klik UI |
+| `succes.wav` | SFX | Quest selesai / sort benar |
+| `error.wav` | SFX | Sort salah |
+| `ngambil sampah.wav` | SFX | Collect sampah |
+| `repaircoral.wav` | SFX | Repair karang |
+| `beli item.wav` | SFX | Beli upgrade |
+| `dialogue.wav` | SFX | Dialog muncul |
+
+#### New SFX Needed
+
+| SFX | Fungsi | Sumber |
+|-----|--------|--------|
+| Sorting drop correct | Feedback sort benar | freesound.org |
+| Recycling machine | Suara mesin daur ulang | freesound.org |
+| Zone unlock | Fanfare zone bersih | freesound.org |
+| Pollution warning | Alarm threshold 50%/75% | freesound.org |
+
+---
+
+## BAB 9: PENGEMBANGAN
+
+### A. DAFTAR FITUR GAME
+
+| Fitur | Prioritas | Status |
+|-------|-----------|--------|
+| Pollution system (global meter + threshold) | P1 | Belum |
+| Grace period 60s | P1 | Belum |
+| O₂ system (diving timer) | P1 | Belum |
+| Diving + collect 3 jenis sampah | P1 | Belum |
+| Sorting station (3 bin drag & drop) | P1 | Belum |
+| Recycling mini-game (3 variasi) | P1 | Belum |
+| Upgrade tree (4 tier) | P1 | Belum |
+| 4 ocean zone + unlock | P2 | Belum |
+| Marina character + cutscene | P2 | Belum |
+| Daily quest system | P2 | Belum |
+| Ocean encyclopedia | P3 | Belum |
+| Musuh (hiu, swordfish) | P3 | Belum |
+| Ending poem | P3 | Ada (reuse) |
+
+### B. URUTAN PENGERJAAN
+
+```
+PHASE 1 — Core System
+  1. Pollution manager + CanvasModulate overlay
+  2. O₂ system on player_swim
+  3. Grace period 60 detik
+  4. Diving → collect → return flow
+  → Test: Pollution naik/turun, threshold effects, game over
+
+PHASE 2 — Sorting & Recycling
+  5. Sorting station (3 bin, drag & drop)
+  6. Recycling mini-game (Plastik, Logam, Organik)
+  7. Inventory 3 trash + 3 material
+  → Test: All 3 trash types, correct/wrong, material output
+
+PHASE 3 — Progression
+  8. Upgrade shop (replace material shop existing)
+  9. 4 ocean zone + unlock system
+  10. Marina character + dialogue
+  11. Daily quest system (Marina)
+  → Test: Full progression Beach → Deep Sea
+
+PHASE 4 — Narrative & Polish
+  12. Ocean encyclopedia
+  13. Ending poem (reuse existing)
+  14. Visual polish (tween, particles)
+  → Test: Full game start → ending
+```
+
+### C. TARGET PENYELESAIAN
+
+| Phase | Target | Durasi Estimasi |
+|-------|--------|-----------------|
+| Phase 1 | Core loop functional | 1 minggu |
+| Phase 2 | Sorting + recycling | 1 minggu |
+| Phase 3 | Progression + zone unlock | 1 minggu |
+| Phase 4 | Narrative + polish | 3 hari |
+
+### D. PEMBAGIAN TUGAS
+
+| Role | Tugas |
+|------|-------|
+| Programmer 1 | Pollution system, O₂ system, scene transitions |
+| Programmer 2 | Sorting station, recycling mini-game, inventory |
+| Programmer 3 | Upgrade shop, zone unlock, UI, asset integration |
+
+*Catatan: Pembagian bisa disesuaikan dengan kapasitas tim.*
+
+### E. POTENSI KENDALA
+
+| Kendala | Dampak | Mitigasi |
+|---------|--------|----------|
+| Asset bin icon tidak ada | Sorting UI tidak punya visual bin | Cari gratis di OpenGameArt / itch.io — 3 icon kecil |
+| Web build file system | Poem ending tidak bisa save | Gunakan JavaScriptBridge.download_buffer |
+| Godot version mismatch | Project tidak bisa dibuka | Pastikan semua pakai Godot 4.7 |
+| Dialogue Manager plugin error | Dialog tidak jalan | Cek versi plugin, fallback ke custom dialog |
+
+---
+
+## BAB 10: RENCANA CADANGAN
+
+### A. EVALUASI RENCANA GAME
+
+Jika progress tidak sesuai target per phase, evaluasi dilakukan dengan:
+
+1. Cek fitur mana yang paling berat (waktu vs kompleksitas)
+2. Prioritaskan fitur P1 (core loop) di atas P2/P3
+3. Pastikan minimal: pollution system + diving + sorting berfungsi
+
+### B. PENYEDERHANAAN FITUR
+
+Jika waktu terbatas, fitur berikut bisa disederhanakan/dihapus:
+
+| Fitur | Prioritas | Alternatif |
+|-------|-----------|------------|
+| 4 ocean zone | P2 | → 2 zone (Beach + Coral Reef) |
+| Recycling mini-game | P2 | → 1 button recycle (tanpa mini-game) |
+| Daily quest | P2 | → Hapus, quest cukup 1x trigger |
+| Musuh (hiu/swordfish) | P3 | → Hapus, fokus ke collecting |
+| Encyclopedia | P3 | → Hapus, lore via dialog saja |
+| Marina cutscene | P2 | → Dialog biasa tanpa cutscene |
+
+**Prioritas WAJIB (tidak bisa dihapus):**
+1. Pollution system + grace period
+2. Diving + O₂ + collect
+3. Sorting 3 bin
+4. Upgrade shop
+
+---
+
+> **Dokumen lengkap:** `docs/gdd-coralism.md`
+> **Versi:** 1.0
+> **Engine:** Godot 4.7 | GDScript
+> **Terakhir diperbarui:** Juli 2026

@@ -16,18 +16,19 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="projek agate"
 run/main_scene="uid://bdbi1cdq5jjwr"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="uid://dcq2hbspo2imt"
 
 [audio]
 
-buses/default_bus_layout="uid://dinik57gds5nl"
+buses/default_bus_layout=""
 
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameManager="*res://gamemanager.gd"
 AudioManager="*uid://0181fvn5aigb"
+AirQuality="*res://air_quality.tscn"
 
 [dialogue_manager]
 

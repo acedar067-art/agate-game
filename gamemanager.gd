@@ -205,6 +205,20 @@ func _unhandled_input(event: InputEvent) -> void:
 func all_quests_done() -> bool:
 	return quest_times_completed >= 2
 
+func reset_for_respawn() -> void:
+	quest_active = false
+	quest_completed = false
+	quest_failed = false
+	trash_count = 0
+	time_remaining = 0.0
+	timer_active = false
+	spawn_at_bridge = false
+	intro_shown = false
+	inventory = {"besi": 0, "pasir": 0, "cable_ties": 0}
+	coins = 0
+	score = 0
+	print("[GameManager] Reset for respawn")
+
 func print_inventory_debug() -> void:
 	print("\n=== 🎒 CURRENT INVENTORY ===")
 	print("Coins: ", coins)

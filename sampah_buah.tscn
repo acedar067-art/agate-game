@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://84gfuxh2xy0a"]
+
+[ext_resource type="Texture2D" uid="uid://cqj8b506a2dtf" path="res://tests/sampah buah.png" id="1_maqna"]
+[ext_resource type="Script" uid="uid://dfa0i4tm85loa" path="res://sampah_buah.gd" id="1_xum0a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 30.0
+
+[node name="sampah buah" type="Area2D" unique_id=1832732192]
+script = ExtResource("1_xum0a")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=760363828]
+texture = ExtResource("1_maqna")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=915241973]
+shape = SubResource("CircleShape2D_g4v7s")

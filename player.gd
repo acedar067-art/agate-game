@@ -97,6 +97,7 @@ func try_pickup_trash():
 		var trash = nearby_trash[0]
 		if is_instance_valid(trash):
 			GameManager.collect_trash()
+			AirQuality.on_collect_trash()
 			trash.queue_free()
 			nearby_trash.erase(trash)
 			print("[Player] Picked up trash!")

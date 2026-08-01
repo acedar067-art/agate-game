@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://qad2m0rpx3gb"]
+
+[ext_resource type="Script" uid="uid://c4qh4ki0ktsrm" path="res://plastic.gd" id="1_eituy"]
+[ext_resource type="Texture2D" uid="uid://cloiab7jmtw27" path="res://Asset sampah/plastic.png" id="1_psudf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(16, 32)
+
+[node name="Plastic" type="Area2D" unique_id=461474739]
+script = ExtResource("1_eituy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=708796719]
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=512299135]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=615746801]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2107450201]
+scale = Vector2(0.096813716, 0.09765624)
+texture = ExtResource("1_psudf")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=2105109606]
