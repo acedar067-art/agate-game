@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://4ww2tp1s8u22"
+path="res://.godot/imported/marina.dialogue-a7c3eacc1402920d7861790b595e5d48.tres"
+
+[deps]
+
+source_file="res://marina.dialogue"
+dest_files=["res://.godot/imported/marina.dialogue-a7c3eacc1402920d7861790b595e5d48.tres"]
+
+[params]
+
+defaults=true

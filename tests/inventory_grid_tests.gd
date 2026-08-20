@@ -20,7 +20,7 @@ func init_suite():
 		"test_move_item_to",
 		"test_sort",
 		"test_serialize",
-        "test_serialize_json"
+		"test_serialize_json"
 	]
 
 
@@ -57,10 +57,10 @@ func test_find_free_place() -> void:
 	var grid_constraint: GridConstraint = inventory_3x3.get_constraint(GridConstraint)
 	assert(grid_constraint.add_item_at(item_1x1, Vector2i(0, 0)))
 	# Find place for an item that's already in the inventory
-    var free_place := grid_constraint.find_free_place(item_1x1)
-    assert(free_place.success)
-    assert(free_place.position.x == 0)
-    assert(free_place.position.y == 1)
+	var free_place := grid_constraint.find_free_place(item_1x1)
+	assert(free_place.success)
+	assert(free_place.position.x == 0)
+	assert(free_place.position.y == 1)
 
 	# Find place for an item that's not in the inventory
 	free_place = grid_constraint.find_free_place(item_2x2)

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dqndh5v02axv7"]
+[gd_scene load_steps=37 format=3 uid="uid://dqndh5v02axv7"]
 
 [ext_resource type="Script" uid="uid://h0oxvs65jj5c" path="res://ikan_pink.gd" id="1_e6yuu"]
 [ext_resource type="Texture2D" uid="uid://bie5ie5p7usw7" path="res://arts/characters/Pink.png" id="1_e840e"]
@@ -238,15 +238,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_bcc7t"]
 radius = 7.0
 
-[node name="ikan pink" type="Sprite2D" unique_id=1027729427]
+[node name="ikan pink" type="Sprite2D"]
 script = ExtResource("1_e6yuu")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=177469416]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ju3em")
 autoplay = "default"
-frame_progress = 0.07351692
+frame_progress = 0.0735169
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2124380835]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=435176629]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_bcc7t")

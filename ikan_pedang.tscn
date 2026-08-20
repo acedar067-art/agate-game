@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dhr6kxwc0o3dn"]
+[gd_scene load_steps=13 format=3 uid="uid://dhr6kxwc0o3dn"]
 
 [ext_resource type="Texture2D" uid="uid://4vcrevw42c8p" path="res://arts/characters/SwordFish.png" id="1_3mx52"]
 [ext_resource type="Script" uid="uid://bvkpcl25h61eq" path="res://ikan_pedang.gd" id="1_86f13"]
@@ -68,19 +68,19 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3mx52"]
-radius = 8.001389
-height = 42.05439
+radius = 8.00139
+height = 42.0544
 
-[node name="ikan pedang" type="Sprite2D" unique_id=2004964973]
+[node name="ikan pedang" type="Sprite2D"]
 script = ExtResource("1_86f13")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1690662794]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_44lq4")
 autoplay = "default"
-frame_progress = 0.56835186
+frame_progress = 0.568352
 
-[node name="Area2D" type="Area2D" parent="." unique_id=340576399]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1838979672]
-rotation = 1.5693998
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5694
 shape = SubResource("CapsuleShape2D_3mx52")

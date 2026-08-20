@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bmubc7p2x1sn"]
+[gd_scene load_steps=5 format=3 uid="uid://bmubc7p2x1sn"]
 
 [ext_resource type="Texture2D" uid="uid://bvcf6ihnvvel4" path="res://Mermaid Coralism/Marina dialogue S1.png" id="1_msged"]
 [ext_resource type="Texture2D" uid="uid://r1budq7c6ofv" path="res://Mermaid Coralism/Marina dialogue S2.png" id="2_rtemy"]
@@ -13,13 +13,13 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_rtemy")
 }],
-"loop": 1,
+"loop": true,
 "name": &"default",
 "speed": 0.9
 }]
 
-[node name="Dialogue Marine" type="AnimatedSprite2D" unique_id=1558511188]
+[node name="Dialogue Marine" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 autoplay = "default"
-frame_progress = 0.010050028
+frame_progress = 0.01005
 script = ExtResource("2_x1pgp")

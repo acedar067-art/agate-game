@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dmdidu3d7rrfo"]
+[gd_scene load_steps=15 format=3 uid="uid://dmdidu3d7rrfo"]
 
 [ext_resource type="Script" uid="uid://dlmnvmbjj28gr" path="res://angler_fish.gd" id="1_3qjql"]
 [ext_resource type="Texture2D" uid="uid://d17leulqfdhs0" path="res://arts/characters/SeaAngler.png" id="1_iiefk"]
@@ -84,15 +84,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_u28fs"]
 radius = 13.0
 
-[node name="angler fish" type="Sprite2D" unique_id=99796875]
+[node name="angler fish" type="Sprite2D"]
 script = ExtResource("1_3qjql")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=915302519]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7emd1")
 autoplay = "default"
 frame_progress = 0.849932
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1085727712]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2114425808]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_u28fs")

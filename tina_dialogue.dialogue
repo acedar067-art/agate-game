@@ -48,6 +48,14 @@ Tina: Jangan biarkan karang-karang itu memutih dan mati sendirian.
 Tina: Beli peralatan di toko, dan jadilah penyembuh bagi samudra.
 => END
 
+~ go_meet_marina
+Tina: Karang yang kau perbaiki... sepertinya ada harapan baru di sana.
+Tina: Aku mendengar bisikan dari kedalaman. Seorang penjaga menantimu di terumbu karang.
+Tina: Namanya Marina. Ia tahu cara menyembuhkan laut yang lebih menyeluruh.
+Tina: Menyelamlah kembali, dan temui ia di dasar lautan.
+Tina: Ia akan membimbingmu membersihkan seluruh samudra ini.
+=> END
+
 ~ ending
 Tina: Rasakan itu...
 Tina: Ombak tidak lagi menangis. Mereka bernyanyi.

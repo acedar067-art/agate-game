@@ -54,17 +54,31 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Marina" type="CharacterBody2D" unique_id=457734440]
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 40.792156
+
+[node name="Marina" type="CharacterBody2D" unique_id=1525694815]
 script = ExtResource("1_rpsd3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=133907410]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1990263654]
 shape = SubResource("CapsuleShape2D_wnvte")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=992101385]
-position = Vector2(0, 16.000002)
-scale = Vector2(0.8888889, 0.86824334)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=835749051]
+position = Vector2(0, 16)
+scale = Vector2(0.888889, 0.868243)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 autoplay = "default"
-frame_progress = 0.7141176
+frame_progress = 0.714118
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=747126482]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1411718184]
+
+[node name="area_chat_detection" type="Area2D" parent="." unique_id=1753505493]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_chat_detection" unique_id=487966937]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Timer" type="Timer" parent="." unique_id=1347704613]
+
+[connection signal="body_entered" from="area_chat_detection" to="." method="_on_area_chat_detection_body_entered"]
+[connection signal="body_exited" from="area_chat_detection" to="." method="_on_area_chat_detection_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

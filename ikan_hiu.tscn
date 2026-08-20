@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://76qyi1xfwljs"]
+[gd_scene load_steps=15 format=3 uid="uid://76qyi1xfwljs"]
 
 [ext_resource type="Texture2D" uid="uid://cu8v3ifcs4nep" path="res://arts/characters/Shark.png" id="1_pd0if"]
 [ext_resource type="Script" uid="uid://yhdqiqrj04fk" path="res://ikan_hiu.gd" id="1_tr328"]
@@ -85,17 +85,17 @@ animations = [{
 radius = 6.0
 height = 26.0
 
-[node name="ikan hiu" type="Sprite2D" unique_id=334323042]
+[node name="ikan hiu" type="Sprite2D"]
 script = ExtResource("1_tr328")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=646619563]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_60l35")
 autoplay = "default"
-frame_progress = 0.7981506
+frame_progress = 0.798151
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1524482896]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=975212913]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(3, 1)
-rotation = 1.5652816
+rotation = 1.56528
 shape = SubResource("CapsuleShape2D_pd0if")

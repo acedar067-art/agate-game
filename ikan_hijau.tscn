@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://di7s0d8mpybho"]
+[gd_scene load_steps=37 format=3 uid="uid://di7s0d8mpybho"]
 
 [ext_resource type="Script" uid="uid://d6wx86b1kreq" path="res://ikan_hijau.gd" id="1_2bwee"]
 [ext_resource type="Texture2D" uid="uid://ch5wnm1m241xu" path="res://arts/characters/Green.png" id="1_ob803"]
@@ -236,17 +236,17 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7754x"]
-radius = 7.071068
+radius = 7.07107
 
-[node name="ikan hijau" type="Sprite2D" unique_id=912294391]
+[node name="ikan hijau" type="Sprite2D"]
 script = ExtResource("1_2bwee")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=258038992]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ylpla")
 autoplay = "default"
-frame_progress = 0.8716177
+frame_progress = 0.871618
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1453434088]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1846414174]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_7754x")

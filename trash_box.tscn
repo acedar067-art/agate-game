@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b35gkxf1yaoj0"]
+[gd_scene load_steps=5 format=3 uid="uid://b35gkxf1yaoj0"]
 
 [ext_resource type="Texture2D" uid="uid://cjd5jcayr7clq" path="res://addons/trash assets/box tile 16x16 5.png" id="1_okuni"]
 [ext_resource type="Script" uid="uid://b6npdie1m3tlu" path="res://trash_box.gd" id="1_y2eyt"]
@@ -7,18 +7,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2eyt"]
 size = Vector2(18, 18)
 
-[node name="trash" type="Area2D" unique_id=1810590889]
+[node name="trash" type="Area2D"]
 z_index = 11
 script = ExtResource("1_y2eyt")
 
-[node name="Node2D" parent="." unique_id=677608672 instance=ExtResource("2_4hp1h")]
+[node name="Node2D" parent="." instance=ExtResource("2_4hp1h")]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1891172001]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=688638873]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_y2eyt")
 
-[node name="BoxTile16x165" type="Sprite2D" parent="." unique_id=326740350]
-scale = Vector2(0.9687498, 0.84374994)
+[node name="BoxTile16x165" type="Sprite2D" parent="."]
+scale = Vector2(0.96875, 0.84375)
 texture = ExtResource("1_okuni")

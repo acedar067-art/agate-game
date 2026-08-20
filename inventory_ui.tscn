@@ -1,12 +1,12 @@
-[gd_scene format=3 uid="uid://dsxve5b1tbtg6"]
+[gd_scene load_steps=3 format=3 uid="uid://dsxve5b1tbtg6"]
 
 [ext_resource type="Script" uid="uid://4fp8dwcryxdd" path="res://inventory_ui.gd" id="1_5v8q7"]
 [ext_resource type="Texture2D" uid="uid://b5ofonghwswhs" path="res://inv1.png" id="2_gf3dx"]
 
-[node name="InventoryUI" type="CanvasLayer" unique_id=1923181981]
+[node name="InventoryUI" type="CanvasLayer"]
 script = ExtResource("1_5v8q7")
 
-[node name="Control" type="Control" parent="." unique_id=1943324830]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 128.0
@@ -14,13 +14,13 @@ offset_top = 128.0
 offset_right = 168.0
 offset_bottom = 168.0
 
-[node name="Panel" type="Panel" parent="." unique_id=1671971791]
+[node name="Panel" type="Panel" parent="."]
 offset_left = 256.0
 offset_top = 176.0
 offset_right = 888.0
 offset_bottom = 512.0
 
-[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=1130171424]
+[node name="TextureRect" type="TextureRect" parent="Panel"]
 layout_mode = 0
 offset_left = -240.0
 offset_top = -264.0
@@ -28,14 +28,14 @@ offset_right = 840.0
 offset_bottom = 616.0
 texture = ExtResource("2_gf3dx")
 
-[node name="Label" type="Label" parent="Panel" unique_id=642784395]
+[node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
 offset_right = 116.0
 offset_bottom = 35.0
 theme_override_font_sizes/font_size = 25
 text = "Inventory"
 
-[node name="CoinLabel" type="Label" parent="Panel" unique_id=999999999]
+[node name="CoinLabel" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 40.0
@@ -44,7 +44,7 @@ offset_bottom = 66.0
 theme_override_colors/font_color = Color(1, 0.84, 0, 1)
 text = "Coins: 0"
 
-[node name="ItemGrid" type="GridContainer" parent="Panel" unique_id=1504730295]
+[node name="ItemGrid" type="GridContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,7 +59,7 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 3
 
-[node name="Button" type="Button" parent="Panel" unique_id=1638570143]
+[node name="Button" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 600.0
 offset_top = 8.0
@@ -67,7 +67,7 @@ offset_right = 618.0
 offset_bottom = 39.0
 text = "X"
 
-[node name="ItemGrid2" type="GridContainer" parent="Panel" unique_id=1846727813]
+[node name="ItemGrid2" type="GridContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -82,7 +82,7 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 3
 
-[node name="ItemGrid3" type="GridContainer" parent="Panel" unique_id=1658886224]
+[node name="ItemGrid3" type="GridContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

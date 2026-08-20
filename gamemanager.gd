@@ -217,6 +217,8 @@ func reset_for_respawn() -> void:
 	inventory = {"besi": 0, "pasir": 0, "cable_ties": 0}
 	coins = 0
 	score = 0
+	coral_repaired = false
+	marina_met = false
 	print("[GameManager] Reset for respawn")
 
 func print_inventory_debug() -> void:
@@ -228,10 +230,15 @@ func print_inventory_debug() -> void:
 			print("- ", item.capitalize(), ": ", count)
 # === ENDING MECHANIC ===
 var coral_repaired: bool = false
+var marina_met: bool = false
 
 func set_coral_repaired() -> void:
 	coral_repaired = true
 	print("[GameManager] Coral Repaired! Ending unlocked.")
+
+func set_marina_met() -> void:
+	marina_met = true
+	print("[GameManager] Marina telah ditemui!")
 
 func save_poem_to_txt() -> void:
 	var poem_content = """

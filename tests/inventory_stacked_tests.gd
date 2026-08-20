@@ -29,7 +29,7 @@ func init_suite() -> void:
 		"test_add_item_autosplitmerge_limited_capacity",
 		"test_add_item_autosplitmerge_limited_capacity_with_item",
 		"test_serialize",
-        "test_serialize_json"
+		"test_serialize_json"
 	]
 
 

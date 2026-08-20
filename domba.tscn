@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dcse1gjiowho8"]
+[gd_scene load_steps=10 format=3 uid="uid://dcse1gjiowho8"]
 
 [ext_resource type="Texture2D" uid="uid://brocev06l2c5n" path="res://arts/tilesets/spr_deco_sheep_01_strip4.png" id="1_764ul"]
 [ext_resource type="Script" uid="uid://cqqstpx2485d0" path="res://domba.gd" id="1_sy7qe"]
@@ -43,25 +43,25 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sy7qe"]
-radius = 16.27882
+radius = 16.2788
 
-[node name="domba" type="CharacterBody2D" unique_id=2096821153]
+[node name="domba" type="CharacterBody2D"]
 z_index = 14
 script = ExtResource("1_sy7qe")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1518065625]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 14
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_ogbjv")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=671755990]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=777594215]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 sprite_frames = SubResource("SpriteFrames_4lche")
 animation = &"IDLE"
 autoplay = "IDLE"
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1446948982]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 z_index = -1
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_sy7qe")

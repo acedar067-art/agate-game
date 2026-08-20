@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://daiusl88ba6g6"]
+[gd_scene load_steps=16 format=3 uid="uid://daiusl88ba6g6"]
 
 [ext_resource type="Texture2D" uid="uid://c52qkb53dmyif" path="res://Oxygen Coralism/oxygen.png" id="1_7q1qm"]
 [ext_resource type="Script" uid="uid://wfv48pi8a7pw" path="res://oxygen.gd" id="1_orth8"]
@@ -90,17 +90,17 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cbcqt")
 }],
-"loop": 1,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Oxygen" type="Node2D" unique_id=1476862055]
+[node name="Oxygen" type="Node2D"]
 script = ExtResource("1_orth8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=353126252]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(127.75, 64)
-scale = Vector2(2.7620687, 2.6000001)
+scale = Vector2(2.76207, 2.6)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 autoplay = "default"
 frame_progress = 0.393991

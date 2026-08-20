@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bmqaphievt0c8"]
+[gd_scene load_steps=39 format=3 uid="uid://bmqaphievt0c8"]
 
 [ext_resource type="Script" uid="uid://dthp7rni07cq2" path="res://player_swim.gd" id="1_8bixb"]
 [ext_resource type="Texture2D" uid="uid://dut8jmy5ul74p" path="res://3 SteamMan/Idle2.png" id="1_wm6bs"]
@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://daiusl88ba6g6" path="res://oxygen.tscn" id="7_rbqtj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_er3tt"]
-radius = 9.990763
-height = 44.131256
+radius = 9.99076
+height = 44.1313
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4a7y"]
 atlas = ExtResource("2_8bixb")
@@ -137,7 +137,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i7ocn")
 }],
-"loop": 1,
+"loop": true,
 "name": &"hurt_swim",
 "speed": 5.0
 }, {
@@ -151,7 +151,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ybrwm")
 }],
-"loop": 1,
+"loop": true,
 "name": &"hurt_swim_up",
 "speed": 5.0
 }, {
@@ -174,7 +174,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1swk8")
 }],
-"loop": 1,
+"loop": true,
 "name": &"idle_swim",
 "speed": 5.0
 }, {
@@ -197,7 +197,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_idtjc")
 }],
-"loop": 1,
+"loop": true,
 "name": &"swim_idle",
 "speed": 5.0
 }, {
@@ -214,7 +214,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6l4u1")
 }],
-"loop": 1,
+"loop": true,
 "name": &"swim_repair",
 "speed": 5.0
 }, {
@@ -237,28 +237,28 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dswxe")
 }],
-"loop": 1,
+"loop": true,
 "name": &"swim_up",
 "speed": 5.0
 }]
 
-[node name="player_swim" type="CharacterBody2D" unique_id=402193575]
+[node name="player_swim" type="CharacterBody2D"]
 script = ExtResource("1_8bixb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1724473969]
-rotation = 1.5278078
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.52781
 shape = SubResource("CapsuleShape2D_er3tt")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=26428418]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -2)
 zoom = Vector2(2, 2)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=902706589]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -2)
-rotation = 0.025094336
-scale = Vector2(1.0110174, 1)
+rotation = 0.0250943
+scale = Vector2(1.01102, 1)
 sprite_frames = SubResource("SpriteFrames_i7ocn")
 animation = &"hurt_swim_up"
 
-[node name="Oxygen" parent="." unique_id=1476862055 instance=ExtResource("7_rbqtj")]
+[node name="Oxygen" parent="." instance=ExtResource("7_rbqtj")]
 position = Vector2(-384, -280)

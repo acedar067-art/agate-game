@@ -1,0 +1,24 @@
+~ start
+Marina: Kamu... kamu berhasil menyelamatkan karangku!
+Marina: Terima kasih. Aku Marina, penjaga kedalaman samudra ini.
+Marina: Selama bertahun-tahun aku menyaksikan laut ini mati pelan-pelan.
+Marina: Plastik, logam, dan limbah organik mencekik terumbu karang yang dulu tak terkalahkan.
+Marina: Tapi tanganmu... telah memulihkan keajaiban yang sudah lama hilang.
+Marina: Ini baru permulaan. Laut lepas masih sekarat dan menantimu.
+Marina: Setiap sampah yang kau pungut di dasar laut akan kau pilah ke tempatnya yang benar.
+Marina: Mari bersama membersihkan samudra ini, sedikit demi sedikit. Selami horizon selanjutnya.
+do GameManager.set_marina_met()
+=> END
+
+~ coral_first
+Marina: Seorang penyembuh... aku bisa merasakan kesungguhanmu.
+Marina: Tapi ada satu karang di dekatku yang masih terluka.
+Marina: Sembuhkan karang itu dengan Besi, Pasir, dan Kabel.
+Marina: Lalu kita akan bicara lebih jauh, sahabat laut.
+=> END
+
+~ meet_again
+Marina: Senang melihatmu kembali, sahabat laut.
+Marina: Ombak masih membisikkan nama kita, meminta keselamatan.
+Marina: Setiap tetes usaha kita mengubah lautan, selami terus dan jangan berhenti.
+=> END

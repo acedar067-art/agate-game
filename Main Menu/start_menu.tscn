@@ -1,21 +1,21 @@
-[gd_scene format=3 uid="uid://bdbi1cdq5jjwr"]
+[gd_scene load_steps=7 format=3 uid="uid://bdbi1cdq5jjwr"]
 
 [ext_resource type="Texture2D" uid="uid://d3dbcr1lrn3yt" path="res://Main Menu/BackgroundMainMenu.png" id="1_85w0r"]
 [ext_resource type="Texture2D" uid="uid://ctjl7xf4ssjsf" path="res://Main Menu/StartButtonFixFinal.png" id="2_2rrg5"]
 [ext_resource type="Texture2D" uid="uid://cpqpmq2fdjxkk" path="res://Main Menu/StartButtonPressedFinal.png" id="3_2rrg5"]
 [ext_resource type="Texture2D" uid="uid://c62k5dlnef4re" path="res://Main Menu/ExitButtonFixNoRevisiAsli.png" id="3_h3wwt"]
 [ext_resource type="Texture2D" uid="uid://brck7nkp22urf" path="res://Main Menu/ExitButtonPressed.png" id="4_t8gia"]
-[ext_resource type="Script" path="res://Main Menu/start_menu.gd" id="5_logic"]
+[ext_resource type="Script" uid="uid://daikxqnn652ts" path="res://Main Menu/start_menu.gd" id="5_logic"]
 
-[node name="Button_manager" type="Node2D" unique_id=1733171814]
+[node name="Button_manager" type="Node2D"]
 script = ExtResource("5_logic")
 
-[node name="BackgroundMainMenu" type="Sprite2D" parent="." unique_id=2087721074]
+[node name="BackgroundMainMenu" type="Sprite2D" parent="."]
 position = Vector2(575.75, 323.5)
-scale = Vector2(1.0383228, 1.0015432)
+scale = Vector2(1.03832, 1.00154)
 texture = ExtResource("1_85w0r")
 
-[node name="Control" type="Control" parent="." unique_id=521283845]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -19.0
@@ -23,7 +23,7 @@ offset_top = 3.0
 offset_right = 1135.0
 offset_bottom = 651.0
 
-[node name="Button" type="TextureButton" parent="Control" unique_id=247852155]
+[node name="Button" type="TextureButton" parent="Control"]
 z_index = 1
 layout_mode = 0
 offset_left = 597.0
@@ -33,7 +33,7 @@ offset_bottom = 460.0
 texture_normal = ExtResource("2_2rrg5")
 texture_pressed = ExtResource("3_2rrg5")
 
-[node name="Button2" type="TextureButton" parent="Control" unique_id=1333473301]
+[node name="Button2" type="TextureButton" parent="Control"]
 z_index = 1
 layout_mode = 0
 offset_left = 656.0

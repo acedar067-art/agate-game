@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://2cbrhka004qp"]
+[gd_scene load_steps=11 format=3 uid="uid://2cbrhka004qp"]
 
 [ext_resource type="Script" uid="uid://dcrmqthp56rw4" path="res://tina.gd" id="1_4k2qf"]
 [ext_resource type="Texture2D" uid="uid://74utlakbbfk5" path="res://arts/Quest Giver/Quest_Giver.png" id="2_j5fib"]
@@ -44,29 +44,29 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5vr8a"]
-radius = 26.989689
+radius = 26.9897
 
-[node name="QuestGiver" type="CharacterBody2D" unique_id=440083063]
+[node name="QuestGiver" type="CharacterBody2D"]
 scale = Vector2(0.89, 0.89)
 script = ExtResource("1_4k2qf")
 dialogue_resource = ExtResource("2_xl5ah")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1234283109]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_nyvg2")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=55877074]
-position = Vector2(0, -1.1235955)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1.1236)
 sprite_frames = SubResource("SpriteFrames_8n56s")
 animation = &"idle"
-frame_progress = 0.4223147
+frame_progress = 0.422315
 
-[node name="chat_detection_area" type="Area2D" parent="." unique_id=324717825]
+[node name="chat_detection_area" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area" unique_id=1756203765]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
 shape = SubResource("CircleShape2D_5vr8a")
 
-[node name="Timer" type="Timer" parent="." unique_id=685333348]
+[node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [connection signal="body_entered" from="chat_detection_area" to="." method="_on_chat_detection_area_body_entered"]
